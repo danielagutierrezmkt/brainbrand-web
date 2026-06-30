@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tu kit de Esencia de Marca — Daniela Gutiérrez</title>
+<meta name="description" content="Tu kit de Esencia de Marca: la skill de Claude, el prompt para copiar y la guía corta para empezar hoy." />
+<meta name="robots" content="noindex" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap');
+
+#lpEntregaRoot{
+  --lp-lime:#d5f379;
+  --lp-purple:#bb65ee;
+  --lp-deep:#310075;
+  --lp-green:#a9e700;
+  --lp-dark:#141f33;
+  --lp-gray:#f5f5f5;
+  --lp-white:#fff;
+
+  position:relative;
+  width:100vw;max-width:100vw;
+  left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;
+  overflow-x:hidden;
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  color:var(--lp-dark);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+#lpEntregaRoot :where(p){margin:0}
+#lpEntregaRoot *,#lpEntregaRoot *::before,#lpEntregaRoot *::after{box-sizing:border-box}
+#lpEntregaRoot h1,#lpEntregaRoot h2,#lpEntregaRoot h3{
+  font-family:'Million Design','Archivo Black','Arial Black',sans-serif;
+  text-transform:uppercase;letter-spacing:-.01em;line-height:1;margin:0;font-weight:400;
+}
+
+.lp-section{padding:clamp(3.5rem,7vw,5.5rem) 1.5rem}
+.lp-inner{max-width:860px;margin:0 auto}
+
+.lp-bg-navy{background:var(--lp-dark);color:var(--lp-white)}
+.lp-bg-navy h1,.lp-bg-navy h2,.lp-bg-navy h3{color:var(--lp-white)}
+.lp-bg-purple{background:var(--lp-purple);color:var(--lp-white)}
+.lp-bg-purple h1,.lp-bg-purple h2{color:var(--lp-white)}
+.lp-bg-white{background:var(--lp-white)}
+.lp-bg-gray{background:var(--lp-gray)}
+
+.lp-label{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  padding:.4rem .85rem;border-radius:999px;margin-bottom:1.1rem;
+}
+.lp-label--ondark{background:rgba(169,231,0,.16);color:var(--lp-green)}
+.lp-label--onlight{background:rgba(187,101,238,.14);color:var(--lp-purple)}
+.lp-hl{color:var(--lp-lime)}
+
+/* ===== Hero ===== */
+.lp-hero{text-align:center}
+.lp-hero h1{font-size:clamp(2rem,5vw,3.4rem)}
+.lp-hero>.lp-inner>p{font-size:clamp(1.05rem,2vw,1.2rem);max-width:600px;margin:1.2rem auto 0;color:rgba(255,255,255,.82)}
+
+/* ===== Botones ===== */
+.lp-btn{
+  display:inline-block;font-family:inherit;font-weight:700;text-decoration:none;cursor:pointer;border:0;
+  padding:.95rem 2rem;border-radius:13px;font-size:1rem;text-align:center;
+  transition:transform .2s ease,background-color .2s ease,opacity .2s ease;
+}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33!important}
+.lp-btn--primary:hover{background:var(--lp-green);transform:translateY(-3px)}
+.lp-btn--ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
+.lp-btn--ghost:hover{border-color:#fff;transform:translateY(-3px)}
+
+/* ===== Pasos / guía ===== */
+.lp-head{text-align:center;max-width:680px;margin:0 auto 2.4rem}
+.lp-head h2{font-size:clamp(1.8rem,4.4vw,2.6rem)}
+.lp-head p{color:#5a6478;margin-top:.9rem!important;font-size:1.05rem}
+.lp-steps{display:grid;gap:.9rem}
+.lp-step{
+  display:flex;align-items:flex-start;gap:1rem;
+  background:var(--lp-white);border:2px solid #ececf2;border-radius:18px;padding:1.2rem 1.4rem;
+}
+.lp-step__n{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-family:'Million Design','Archivo Black','Arial Black',sans-serif;font-size:1.05rem;
+  background:rgba(187,101,238,.12);color:var(--lp-purple);
+}
+.lp-step__t{font-weight:700;color:var(--lp-dark);margin-bottom:.2rem!important}
+.lp-step__d{font-size:.94rem;color:#5a6478}
+
+/* ===== Recursos (prompt + skill) ===== */
+.lp-res{display:grid;gap:1.4rem;margin-top:1rem}
+.lp-resblock{
+  background:var(--lp-white);border:2px solid #ececf2;border-radius:22px;
+  padding:clamp(1.4rem,3.5vw,2rem);
+}
+.lp-resblock__kind{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lp-purple);margin-bottom:.4rem}
+.lp-resblock__t{font-size:1.3rem;font-weight:700;color:var(--lp-dark);margin-bottom:.5rem!important}
+.lp-resblock__d{font-size:.95rem;color:#5a6478;margin-bottom:1.1rem!important}
+
+.lp-prompt-wrap{position:relative}
+.lp-prompt{
+  background:var(--lp-dark);color:#e7ebf3;border-radius:14px;
+  padding:1.2rem 1.2rem;max-height:340px;overflow:auto;
+  font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.84rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin:0;
+}
+.lp-copy{
+  position:absolute;top:.8rem;right:.8rem;
+  background:var(--lp-lime);color:#141f33!important;border:0;cursor:pointer;
+  font-family:inherit;font-weight:700;font-size:.8rem;padding:.5rem .9rem;border-radius:9px;
+  transition:background-color .2s ease,transform .2s ease;
+}
+.lp-copy:hover{background:var(--lp-green);transform:translateY(-2px)}
+.lp-copy.is-done{background:var(--lp-green)}
+
+.lp-dl{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.lp-dl small{color:#8a93a6;font-size:.82rem}
+
+/* ===== CTA ===== */
+.lp-cta{text-align:center}
+.lp-cta h2{font-size:clamp(1.9rem,4.5vw,2.8rem)}
+.lp-cta p{max-width:560px;margin:1.1rem auto 2rem;font-size:1.08rem;color:rgba(255,255,255,.85)}
+
+/* ===== Footer ===== */
+.lp-foot{text-align:center;padding:2.6rem 1.5rem;background:var(--lp-dark);color:rgba(255,255,255,.6)}
+.lp-foot strong{color:#fff;font-weight:700;letter-spacing:.02em}
+.lp-foot p{font-size:.85rem;margin-top:.5rem!important}
+</style>
+</head>
+<body>
+
+<div id="lpEntregaRoot">
+
+  <!-- HERO -->
+  <section class="lp-section lp-bg-navy lp-hero">
+    <div class="lp-inner">
+      <span class="lp-label lp-label--ondark">¡Listo! Tu kit está aquí</span>
+      <h1>Bienvenida.<br>Vamos a definir tu <span class="lp-hl">esencia</span>.</h1>
+      <p>Te lo dejé también en tu correo, pero puedes empezar ahora mismo desde aquí. Guarda esta página.</p>
+    </div>
+  </section>
+
+  <!-- GUÍA CORTA -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head">
+        <span class="lp-label lp-label--onlight">La guía corta</span>
+        <h2>Cómo usar tu kit en 4 pasos</h2>
+        <p>15 minutos honestos contigo y sales con tu Esencia de Marca por escrito.</p>
+      </div>
+      <div class="lp-steps">
+        <div class="lp-step">
+          <div class="lp-step__n">1</div>
+          <div><p class="lp-step__t">Elige tu herramienta</p><p class="lp-step__d">¿Usas Claude? Instala la skill de abajo. ¿Prefieres algo directo? Copia el prompt y pégalo en ChatGPT o Claude. Las dos llegan al mismo lugar.</p></div>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__n">2</div>
+          <div><p class="lp-step__t">Responde sin filtro</p><p class="lp-step__d">Te va a preguntar una cosa a la vez. Contesta como le hablarías a una amiga—sin pose, sin sonar "profesional". Ahí está el oro.</p></div>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__n">3</div>
+          <div><p class="lp-step__t">Recibe tu documento</p><p class="lp-step__d">Al final te entrega tu Esencia de Marca: propósito, valores, big idea, personalidad y un manifiesto—en tu voz, no en la de un manual.</p></div>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__n">4</div>
+          <div><p class="lp-step__t">Úsala esta semana</p><p class="lp-step__d">Reescribe tu bio con tu big idea, convierte un valor en tu próximo post y deja tu manifiesto fijado. Tu esencia tiene que verse, no quedarse en un documento.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner">
+      <div class="lp-head">
+        <span class="lp-label lp-label--onlight">Tus recursos</span>
+        <h2>El prompt y la skill</h2>
+      </div>
+      <div class="lp-res">
+
+        <!-- PROMPT -->
+        <div class="lp-resblock">
+          <p class="lp-resblock__kind">Opción 1 · para todas</p>
+          <p class="lp-resblock__t">El prompt para copiar</p>
+          <p class="lp-resblock__d">Cópialo completo y pégalo en ChatGPT o Claude. Responde lo que te pregunte y listo.</p>
+          <div class="lp-prompt-wrap">
+            <button class="lp-copy" id="lpCopy" type="button">Copiar</button>
+            <pre class="lp-prompt" id="lpPrompt">Eres una estratega de marca formada en psicología del consumidor y neuromarketing. Tu trabajo es ayudarme a definir la Esencia de mi Marca—el núcleo que explica por qué existe, qué la mueve y qué la hace inconfundible. No es un logo ni una paleta: es el alma desde la que después se construye todo lo demás.
+
+CÓMO TRABAJAS
+- Hablas claro, cercano y sin rodeos. Nada de palabrería de manual.
+- Usas em-dashes cerrados (palabra—palabra), nunca con espacios.
+- Nunca inventas datos, cifras ni testimonios. Si falta información, me la pides o la marcas como [PENDIENTE].
+- No usas la palabra "branding". Dices "marca", "estrategia de marca", "esencia".
+- Una pregunta a la vez (máximo dos si están muy ligadas). Esperas mi respuesta antes de seguir. No avanzas en bloque.
+
+LO QUE VAS A HACER
+Paso 1 — Entrevista. Hazme estas preguntas, una por una, en este orden. Profundiza si una respuesta queda superficial:
+1. ¿Qué haces y a quién ayudas? Descríbelo como si me lo contaras a una amiga.
+2. ¿Por qué empezaste esto? ¿Qué te movió—y qué te sigue moviendo hoy?
+3. Si tu marca desapareciera mañana, ¿qué perdería el mundo (o tu cliente)?
+4. ¿Qué te molesta de cómo hace las cosas el resto de tu industria? ¿Qué harías tú distinto aunque nadie te lo pida?
+5. ¿En qué crees con firmeza? Dame 3 a 5 cosas que defenderías aunque no sean populares.
+6. ¿Cómo quieres que se sienta alguien después de toparse con tu marca?
+7. ¿A dónde quieres llevar a tu cliente? ¿Cómo es su vida del otro lado de trabajar contigo?
+8. Si tu marca fuera una persona, ¿cómo es? Dame 3 rasgos de personalidad y 1 cosa que jamás haría.
+
+Paso 2 — Devuélveme el documento. Cuando tengas suficiente, redacta mi Documento de Esencia de Marca con esta estructura exacta, en MI voz (que suene a mí, no a un consultor). Cada sección breve y filosa:
+1. Propósito (el para qué): una frase honesta de por qué existe esta marca, más allá de vender.
+2. Misión: qué hace la marca, para quién y con qué intención, en presente, en una frase clara.
+3. Visión: a dónde va. El mundo (o el cliente) que esta marca quiere ayudar a construir.
+4. Valores (3 a 5): cada uno con su nombre + una línea de qué significa EN LA PRÁCTICA para esta marca.
+5. Big idea / Promesa central: la idea-fuerza que sostiene todo, en una sola frase memorable y repetible.
+6. Personalidad de marca: 3 a 5 rasgos + cómo se traduce en su forma de hablar. Incluye un "esta marca nunca…".
+7. Manifiesto (5 a 8 líneas): un texto corto en primera persona, con ritmo, que mi gente querría guardar.
+
+Paso 3 — Cierre. Después del documento, dame 3 formas concretas de usarlo esta semana. Cortas y accionables.
+
+Empieza saludándome y haciéndome solo la pregunta 1. Espera mi respuesta.</pre>
+          </div>
+        </div>
+
+        <!-- SKILL -->
+        <div class="lp-resblock">
+          <p class="lp-resblock__kind">Opción 2 · para quien usa Claude</p>
+          <p class="lp-resblock__t">La skill instalable</p>
+          <p class="lp-resblock__d">Descárgala, instálala en Claude y queda lista para usar cuando quieras con un solo comando. Dentro viene el instructivo.</p>
+          <div class="lp-dl">
+            <a class="lp-btn lp-btn--primary" href="[PLACEHOLDER: URL del archivo de skill]" download>Descargar la skill (.zip)</a>
+            <small>¿No usas Claude? Quédate con el prompt de arriba—hace lo mismo.</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="lp-section lp-bg-purple lp-cta">
+    <div class="lp-inner">
+      <h2>Ya tienes tu raíz.<br>¿La convertimos en una marca que vende?</h2>
+      <p>La esencia es el primer documento del Método RAYO. Si quieres aterrizarla en una marca completa, agenda una sesión diagnóstica de 20 minutos—gratis.</p>
+      <a class="lp-btn lp-btn--primary" href="/diagnostico-gratis">Agendar sesión diagnóstica</a>
+    </div>
+  </section>
+
+  <footer class="lp-foot">
+    <strong>Daniela Gutiérrez</strong>
+    <p>Estrategia de marca y contenido · Método RAYO</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('lpCopy'),
+      pre=document.getElementById('lpPrompt');
+  if(!btn||!pre) return;
+  btn.addEventListener('click',function(){
+    var text=pre.textContent;
+    var done=function(){
+      btn.textContent='¡Copiado!';
+      btn.classList.add('is-done');
+      setTimeout(function(){ btn.textContent='Copiar'; btn.classList.remove('is-done'); },2200);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta=document.createElement('textarea');
+      ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
