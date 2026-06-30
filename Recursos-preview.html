@@ -1,0 +1,198 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recursos — preview</title></head><body style="margin:0"><!-- ============================================================
+     RECURSOS (un solo bloque HTML para Elementor)
+     Mismo sistema visual que el resto del sitio · Million Design + DM Sans · prefijos lp-
+     ------------------------------------------------------------
+     Herramientas y sus rutas (enlaces internos):
+       /calculadoradeengagement · /quizpilares · /generadoresencia
+       /generadorbio · /calculadorapreciossmm
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;--lp-purple:#bb65ee;--lp-deep:#310075;--lp-green:#a9e700;
+  --lp-dark:#141f33;--lp-gray:#f5f5f5;--lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+  font-family:var(--lp-body);color:var(--lp-dark);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  position:relative;width:100vw;max-width:100vw;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root :where(p){margin:0;}/* :where()=0 especificidad: resetea <p> sin pisar márgenes de clases */
+.lp-root h1,.lp-root h2,.lp-root h3,.lp-root h4{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;}
+
+.lp-section{padding:clamp(4rem,8vw,7rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1.1rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.4vw,3.2rem);}
+.lp-lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.7;}
+.lp-hl{color:var(--lp-lime);}
+.lp-head{max-width:62ch;margin:0 auto 3rem;text-align:center;}
+
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-family:var(--lp-body);
+  font-weight:700;font-size:1rem;line-height:1;padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+.lp-btn--ghost{background:transparent;color:#fff !important;border-color:rgba(255,255,255,.4);}
+.lp-btn--ghost:hover{border-color:var(--lp-lime);color:var(--lp-lime) !important;transform:translateY(-3px);}
+
+/* HERO */
+.lp-hero{text-align:center;}
+.lp-hero__in{max-width:780px;margin:0 auto;}
+.lp-hero h1{color:#fff;font-size:clamp(2.4rem,5.4vw,4.2rem);margin-bottom:1.4rem;}
+.lp-hero p{color:#e7defb;font-size:clamp(1.05rem,1.6vw,1.22rem);line-height:1.7;margin:0 auto;max-width:60ch;}
+
+/* TOOLS grid */
+.lp-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.lp-tool{display:flex;flex-direction:column;background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:20px;
+  padding:30px 26px;transition:transform .25s,border-color .25s,box-shadow .25s;height:100%;position:relative;}
+.lp-tool:hover{transform:translateY(-6px);border-color:var(--lp-purple);box-shadow:0 24px 48px rgba(187,101,238,.16);}
+.lp-tool__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;}
+.lp-tool__ic{font-size:2rem;line-height:1;}
+.lp-tool__free{font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#141f33;
+  background:var(--lp-lime);padding:.32rem .7rem;border-radius:999px;}
+.lp-tool h3{font-size:1.22rem;color:var(--lp-dark);line-height:1.14;margin-bottom:.7rem;}
+.lp-tool p{font-size:.92rem;color:#3a4256;line-height:1.6;margin-bottom:1.4rem;}
+.lp-tool .lp-btn{margin-top:auto;width:100%;padding:.85rem 1rem;font-size:.92rem;}
+
+/* PRÓXIMAMENTE */
+.lp-soon{max-width:760px;margin:0 auto;text-align:center;border:2px dashed #c9c9d4;border-radius:22px;
+  padding:clamp(28px,5vw,48px);background:rgba(187,101,238,.04);}
+.lp-soon__tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--lp-deep);background:#ece6f7;padding:.4rem .9rem;border-radius:999px;margin-bottom:1.2rem;}
+.lp-soon h3{color:var(--lp-dark);font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:.9rem;}
+.lp-soon p{color:#3a4256;font-size:1.02rem;line-height:1.7;margin:0 auto;max-width:48ch;}
+
+/* CTA */
+.lp-cta{text-align:center;}
+.lp-cta__in{max-width:720px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:1.3rem;}
+.lp-cta h2 .lp-hl{color:var(--lp-lime);}
+.lp-cta p{color:#efe6ff;font-size:1.1rem;line-height:1.7;margin:0 auto 2.2rem;max-width:50ch;}
+
+/* reveal */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* responsive */
+@media(max-width:1024px){ .lp-tools{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:620px){
+  .lp-tools{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ===== HERO ===== -->
+  <section class="lp-section lp-bg-purple lp-hero">
+    <div class="lp-inner lp-hero__in lp-reveal">
+      <span class="lp-label lp-label--ondark">Recursos para ti</span>
+      <h1>Herramientas <span class="lp-hl">gratuitas</span> para tu marca.</h1>
+      <p>Calculadoras, quizzes y generadores diseñados para ayudarte a crear contenido estratégico, cobrar lo justo y construir tu marca con claridad. Sin costo, listas para usar.</p>
+    </div>
+  </section>
+
+  <!-- ===== RECURSOS GRATUITOS ===== -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">Recursos gratuitos</span>
+        <h2 class="lp-h2">Cinco herramientas para empezar hoy.</h2>
+      </div>
+      <div class="lp-tools lp-reveal">
+
+        <div class="lp-tool">
+          <div class="lp-tool__top"><span class="lp-tool__ic">📊</span><span class="lp-tool__free">Gratis</span></div>
+          <h3>Calculadora de engagement</h3>
+          <p>Mide el engagement real de tu cuenta de Instagram en segundos. Descubre si tus números acompañan a tu contenido y qué tan conectada está tu audiencia.</p>
+          <a class="lp-btn lp-btn--primary" href="/calculadoradeengagement">Acceder gratis →</a>
+        </div>
+
+        <div class="lp-tool">
+          <div class="lp-tool__top"><span class="lp-tool__ic">🧩</span><span class="lp-tool__free">Gratis</span></div>
+          <h3>Quiz: tus pilares de contenido</h3>
+          <p>Responde unas preguntas y descubre los pilares de contenido ideales para tu marca: sobre qué hablar para atraer, conectar y vender sin quedarte en blanco.</p>
+          <a class="lp-btn lp-btn--primary" href="/quizpilares">Hacer el quiz →</a>
+        </div>
+
+        <div class="lp-tool">
+          <div class="lp-tool__top"><span class="lp-tool__ic">⚡</span><span class="lp-tool__free">Gratis</span></div>
+          <h3>Tu documento de esencia de marca</h3>
+          <p>Crea una primera versión de tu Esencia de Marca: tu propósito, tu diferencial y lo que te hace única, en un documento listo para guiar todo lo que comunicas.</p>
+          <a class="lp-btn lp-btn--primary" href="/generadoresencia">Crear el mío →</a>
+        </div>
+
+        <div class="lp-tool">
+          <div class="lp-tool__top"><span class="lp-tool__ic">✍️</span><span class="lp-tool__free">Gratis</span></div>
+          <h3>Generador de biografías para Instagram</h3>
+          <p>Crea una bio de Instagram clara y estratégica que diga quién eres, a quién ayudas y por qué deberían seguirte — lista en segundos.</p>
+          <a class="lp-btn lp-btn--primary" href="/generadorbio">Generar mi bio →</a>
+        </div>
+
+        <div class="lp-tool">
+          <div class="lp-tool__top"><span class="lp-tool__ic">💰</span><span class="lp-tool__free">Gratis</span></div>
+          <h3>Calculadora de precios para SMM</h3>
+          <p>Calcula cuánto cobrar por tus servicios de Social Media Manager con base en valor real, no en inseguridad. Precios justos, sin adivinar.</p>
+          <a class="lp-btn lp-btn--primary" href="/calculadorapreciossmm">Calcular mis precios →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECURSOS DE PAGO / PRÓXIMAMENTE ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">Recursos de pago</span>
+        <h2 class="lp-h2">Próximamente.</h2>
+      </div>
+      <div class="lp-soon lp-reveal">
+        <span class="lp-soon__tag">Próximamente</span>
+        <h3>Más recursos en camino.</h3>
+        <p>Estoy preparando más herramientas, plantillas y cursos para ti. Mantente atenta a las novedades — lo nuevo llega primero a mi Instagram.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="lp-section lp-bg-navy lp-cta">
+    <div class="lp-inner lp-cta__in lp-reveal">
+      <span class="lp-label lp-label--ondark">El siguiente paso</span>
+      <h2>¿Quieres algo más <span class="lp-hl">hecho a tu medida?</span></h2>
+      <p>Las herramientas te dan un empujón. Si quieres una estrategia construida específicamente para tu marca, hablemos.</p>
+      <a class="lp-btn lp-btn--primary" href="/contactame">Contáctame</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.10,rootMargin:'0px 0px -6% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>
+</body></html>

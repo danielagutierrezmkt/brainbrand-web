@@ -1,0 +1,315 @@
+<!-- ============================================================
+     FORMACIONES — PÁGINA COMPLETA (un solo bloque HTML para Elementor)
+     Mismo sistema visual que la homepage · Million Design + DM Sans · prefijos lp-
+     Pégalo en UN widget HTML y elimina/oculta los widgets viejos de la página.
+     ------------------------------------------------------------
+     IMÁGENES (súbelas a Biblioteca de Medios; revisa las URLs):
+       smartbrand.jpg · conferencia.jpg · altovalor.jpg · dandoclases.jpg · urbe1.jpg · urbe2.jpg
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;--lp-purple:#bb65ee;--lp-deep:#310075;--lp-green:#a9e700;
+  --lp-dark:#141f33;--lp-gray:#f5f5f5;--lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+  font-family:var(--lp-body);color:var(--lp-dark);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  position:relative;width:100vw;max-width:100vw;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root p{margin:0;}
+.lp-root h1,.lp-root h2,.lp-root h3{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;}
+
+.lp-section{padding:clamp(4rem,8vw,7rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1.1rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.4vw,3.2rem);}
+.lp-lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.7;}
+.lp-hl{color:var(--lp-lime);}
+.lp-head{max-width:60ch;margin:0 auto 3.25rem;text-align:center;}
+
+/* botones */
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-family:var(--lp-body);
+  font-weight:700;font-size:1rem;line-height:1;padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+.lp-btn--ghost{background:transparent;color:#fff !important;border-color:rgba(255,255,255,.4);}
+.lp-btn--ghost:hover{border-color:var(--lp-lime);color:var(--lp-lime) !important;transform:translateY(-3px);}
+
+/* split texto + foto */
+.lp-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
+.lp-media{border-radius:22px;overflow:hidden;background:#0f1626;box-shadow:0 24px 50px rgba(0,0,0,.28);}
+.lp-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.lp-media:hover img{transform:scale(1.05);}
+.lp-ar43{aspect-ratio:4/3;}
+.lp-ar45{aspect-ratio:4/5;}
+
+/* HERO con foto de fondo */
+.lp-hero{background:linear-gradient(rgba(49,0,117,.80),rgba(20,31,51,.93)),url('https://danielagutierrezmkt.com/wp-content/uploads/2026/06/smartbrand.jpg') center/cover no-repeat;color:#fff;}
+.lp-hero h1{color:#fff;font-size:clamp(2.6rem,6vw,4.8rem);margin-bottom:1.4rem;max-width:18ch;}
+.lp-hero__sub{color:#e7defb;max-width:56ch;margin-bottom:1.3rem;}
+.lp-hero__line{font-size:.95rem;color:#cfc2ec;}
+.lp-hero__line a{color:var(--lp-purple);font-weight:600;border-bottom:1px solid rgba(187,101,238,.5);transition:border-color .2s;}
+.lp-hero__line a:hover{border-bottom-color:var(--lp-purple);}
+
+/* frase */
+.lp-quote{border-left:4px solid var(--lp-purple);padding-left:24px;}
+.lp-quote h2{font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--lp-dark);margin-bottom:1rem;line-height:1.25;}
+.lp-quote p{color:#3a4256;font-size:1.05rem;line-height:1.75;}
+.lp-quote em{color:var(--lp-deep);font-style:italic;font-weight:600;}
+
+/* empresas */
+.lp-emp h2{color:#fff;margin-bottom:1.3rem;}
+.lp-emp__sub{color:#aeb8cf;}
+.lp-emp__sub b{color:#fff;}
+.lp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 18px;}
+.lp-tcard{background:#1b2742;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:24px 22px;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+.lp-tcard:hover{transform:translateY(-5px);border-color:var(--lp-green);box-shadow:0 18px 38px rgba(0,0,0,.35);}
+.lp-tcard .dot{display:block;width:10px;height:10px;border-radius:50%;margin-bottom:14px;}
+.lp-tcard h3{color:#fff;font-size:1.05rem;line-height:1.2;margin-bottom:.55rem;}
+.lp-tcard p{color:#9aa6c0;font-size:.92rem;line-height:1.6;}
+.lp-tcard:nth-child(3n+1) .dot{background:var(--lp-green);}
+.lp-tcard:nth-child(3n+2) .dot{background:var(--lp-purple);}
+.lp-tcard:nth-child(3n+3) .dot{background:var(--lp-lime);}
+.lp-other{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:rgba(187,101,238,.1);
+  border:1px dashed rgba(187,101,238,.45);border-radius:16px;padding:18px 22px;margin:0 0 40px;}
+.lp-other p{color:#e3d4f7;font-size:.98rem;}
+.lp-other a{color:var(--lp-purple);font-weight:700;white-space:nowrap;}
+.lp-other a:hover{text-decoration:underline;}
+.lp-emp__cta{text-align:center;}
+
+/* cursos */
+.lp-courses{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.lp-ccard{display:flex;flex-direction:column;background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:20px;
+  padding:26px 24px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;height:100%;}
+.lp-ccard:hover{transform:translateY(-6px);border-color:var(--lp-deep);box-shadow:0 22px 45px rgba(20,31,51,.12);}
+.lp-ccard--feat{background:var(--lp-deep);border-color:#4a1a9e;}
+.lp-cbadge{display:inline-block;align-self:flex-start;font-size:.66rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:.32rem .7rem;border-radius:999px;margin-bottom:1rem;}
+.lp-cbadge--live{background:var(--lp-green);color:#141f33;}
+.lp-cbadge--soon{background:#e4e4ea;color:#6b7388;}
+.lp-ccard--feat .lp-cbadge--soon{background:rgba(255,255,255,.14);color:#cbb0e8;}
+.lp-cemoji{font-size:1.8rem;margin-bottom:.8rem;}
+.lp-ccard h3{font-size:1.12rem;line-height:1.18;margin-bottom:.6rem;color:var(--lp-dark);}
+.lp-ccard--feat h3{color:#fff;}
+.lp-ccard p{font-size:.9rem;line-height:1.6;color:#3a4256;margin-bottom:1.1rem;flex-grow:1;}
+.lp-ccard--feat p{color:#cbb0e8;}
+.lp-ctags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.4rem;}
+.lp-ctag{font-size:.68rem;font-weight:600;padding:.28rem .65rem;border-radius:999px;background:#eceaf2;color:var(--lp-deep);}
+.lp-ccard--feat .lp-ctag{background:rgba(187,101,238,.2);color:#e4cffb;}
+.lp-cfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;}
+.lp-price{font-family:var(--lp-display);font-size:1.9rem;line-height:1;color:var(--lp-deep);}
+.lp-ccard--feat .lp-price{color:var(--lp-lime);}
+.lp-cbtn{font-family:var(--lp-body);font-size:.82rem;font-weight:700;padding:.6rem 1.1rem;border-radius:9px;white-space:nowrap;transition:all .2s;}
+.lp-cbtn--live{background:var(--lp-lime);color:#141f33;}
+.lp-cbtn--live:hover{background:var(--lp-green);transform:translateY(-2px);}
+.lp-cbtn--soon{background:transparent;color:#8a91a3;border:1px solid #cfcfd6;}
+.lp-ccard--feat .lp-cbtn--soon{color:#cbb0e8;border-color:rgba(255,255,255,.25);}
+
+/* alumnos */
+.lp-alum__grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:920px;margin:0 auto;}
+.lp-alum__grid .lp-media{aspect-ratio:4/3;}
+
+/* CTA */
+.lp-cta{text-align:center;}
+.lp-cta__in{max-width:720px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);margin-bottom:1.3rem;}
+.lp-cta p{color:#efe6ff;font-size:1.12rem;line-height:1.7;margin:0 auto 2.2rem;max-width:46ch;}
+
+/* reveal */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* responsive */
+@media(max-width:880px){
+  .lp-split{grid-template-columns:1fr;}
+  .lp-split .lp-media{order:-1;max-width:480px;margin:0 auto;width:100%;}
+  .lp-grid,.lp-courses{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .lp-grid,.lp-courses,.lp-alum__grid{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ===== HERO ===== -->
+  <section class="lp-section lp-hero">
+    <div class="lp-inner lp-reveal">
+      <span class="lp-label lp-label--ondark">Formaciones</span>
+      <h1>Aprende lo que nadie te enseñó sobre <span class="lp-hl">marca, mente y ventas.</span></h1>
+      <p class="lp-lead lp-hero__sub">Cada formación nace de un problema real que vi en mis clientes. Nada teórico, nada genérico. Solo lo que funciona cuando entiendes la psicología detrás del negocio.</p>
+      <p class="lp-hero__line"><a href="https://wa.me/584227138195" target="_blank" rel="noopener">¿Tienes un equipo o empresa? También diseño formaciones a medida. Escríbeme.</a></p>
+    </div>
+  </section>
+
+  <!-- ===== FRASE + FOTO ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner lp-split lp-reveal">
+      <div class="lp-quote">
+        <h2>No enseño por enseñar. Enseño porque vi lo que pasa cuando alguien entiende de verdad.</h2>
+        <p>Cada curso que lancé nació porque alguien me dijo <em>"nadie me había explicado esto así"</em>. Eso es lo único que me importa lograr.</p>
+      </div>
+      <div class="lp-media lp-ar45">
+        <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/conferencia.jpg" alt="Daniela en una conferencia">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORMACIONES PARA EMPRESAS ===== -->
+  <section class="lp-section lp-bg-navy lp-emp">
+    <div class="lp-inner">
+      <div class="lp-split lp-reveal" style="margin-bottom:40px;">
+        <div>
+          <span class="lp-label lp-label--ondark">Formaciones In-Company</span>
+          <h2 class="lp-h2">Llevo la formación directamente a tu equipo.</h2>
+          <p class="lp-lead lp-emp__sub" style="margin-top:1.2rem;">Diseño talleres y programas formativos a medida para empresas que quieren que su equipo entienda al cliente, comunique mejor y venda con propósito. <b>No es un curso enlatado.</b> Es una formación construida según lo que tu negocio necesita.</p>
+        </div>
+        <div class="lp-media lp-ar43">
+          <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/altovalor.jpg" alt="Daniela impartiendo una formación de alto valor">
+        </div>
+      </div>
+
+      <div class="lp-grid lp-reveal">
+        <div class="lp-tcard"><span class="dot"></span><h3>Neuroventas y psicología del consumidor</h3><p>Para equipos comerciales que quieren entender cómo decide el cliente.</p></div>
+        <div class="lp-tcard"><span class="dot"></span><h3>Comunicación estratégica y marca</h3><p>Para profesionales que necesitan comunicar con más autoridad e intención.</p></div>
+        <div class="lp-tcard"><span class="dot"></span><h3>Inteligencia emocional aplicada a ventas</h3><p>Para equipos que necesitan conectar antes de vender.</p></div>
+        <div class="lp-tcard"><span class="dot"></span><h3>Creación de contenido con propósito</h3><p>Para equipos de marketing interno que publican sin estrategia.</p></div>
+        <div class="lp-tcard"><span class="dot"></span><h3>Personal branding para profesionales</h3><p>Para empresas con figuras públicas: médicos, abogados, gerentes.</p></div>
+        <div class="lp-tcard"><span class="dot"></span><h3>Graba sin estrés</h3><p>Para equipos con miedo a la cámara o que necesitan producir video corporativo.</p></div>
+        <div class="lp-tcard"><span class="dot"></span><h3>Social Media Manager</h3><p>Para empresas que quieren formar a su equipo en gestión profesional de redes: estrategia, contenido, calendario y reportes.</p></div>
+      </div>
+
+      <div class="lp-other lp-reveal">
+        <p>¿Buscabas otra temática? La diseño a la medida de tu equipo.</p>
+        <a href="https://wa.me/584227138195" target="_blank" rel="noopener">Escríbeme y la armamos →</a>
+      </div>
+
+      <div class="lp-emp__cta lp-reveal">
+        <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero una formación para mi empresa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CURSOS INDIVIDUALES ===== -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-split lp-reveal" style="margin-bottom:44px;">
+        <div>
+          <span class="lp-label lp-label--onlight">Elige tu formación</span>
+          <h2 class="lp-h2">Lo que puedes aprender hoy.</h2>
+          <p class="lp-lead" style="color:#3a4256;margin-top:1.2rem;">Formaciones individuales para aplicar el método por tu cuenta, a tu ritmo. Cada una nace de un problema real que vi en mis clientes.</p>
+        </div>
+        <div class="lp-media lp-ar45">
+          <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/dandoclases.jpg" alt="Daniela dando una clase">
+        </div>
+      </div>
+
+      <div class="lp-courses lp-reveal">
+
+        <div class="lp-ccard lp-ccard--feat">
+          <span class="lp-cbadge lp-cbadge--soon">Próximamente</span>
+          <div class="lp-cemoji">⚡</div>
+          <h3>Método RAYO</h3>
+          <p>La metodología completa para construir las bases de tu marca desde adentro: esencia, voz, identidad, cliente ideal, análisis de mercado y sistema de trabajo.</p>
+          <div class="lp-ctags"><span class="lp-ctag">Marca personal</span><span class="lp-ctag">Estrategia</span></div>
+          <div class="lp-cfoot"><span class="lp-price">$37</span><a class="lp-cbtn lp-cbtn--soon" href="https://cuandotengasellandingponloaqui.com/metodo-rayo" target="_blank">Próximamente</a></div>
+        </div>
+
+        <div class="lp-ccard">
+          <span class="lp-cbadge lp-cbadge--soon">Próximamente</span>
+          <div class="lp-cemoji">🧠</div>
+          <h3>Neuromarketing aplicado a las RRSS</h3>
+          <p>Cómo funciona la mente de tu consumidor, cómo el cerebro decide, psicología del color y cómo usar el diseño a tu favor.</p>
+          <div class="lp-ctags"><span class="lp-ctag">Neuromarketing</span><span class="lp-ctag">Psicología</span></div>
+          <div class="lp-cfoot"><span class="lp-price">$47</span><a class="lp-cbtn lp-cbtn--soon" href="https://cuandotengasellandingponloaqui.com/neuromarketing" target="_blank">Próximamente</a></div>
+        </div>
+
+        <div class="lp-ccard">
+          <span class="lp-cbadge lp-cbadge--soon">Próximamente</span>
+          <div class="lp-cemoji">📱</div>
+          <h3>Creación de Contenido + Social Media Management</h3>
+          <p>Pensamiento estratégico, pilares, calendario mensual, IA como aliada y cómo entregar todo a un cliente de forma profesional.</p>
+          <div class="lp-ctags"><span class="lp-ctag">Contenido</span><span class="lp-ctag">SMM</span><span class="lp-ctag">IA</span></div>
+          <div class="lp-cfoot"><span class="lp-price">$80</span><a class="lp-cbtn lp-cbtn--soon" href="https://cuandotengasellandingponloaqui.com/contenido-smm" target="_blank">Próximamente</a></div>
+        </div>
+
+        <div class="lp-ccard">
+          <span class="lp-cbadge lp-cbadge--live">Disponible</span>
+          <div class="lp-cemoji">🎥</div>
+          <h3>Graba sin estrés</h3>
+          <p>Psicología para gestionar el miedo a la cámara, desactivar creencias limitantes y empezar a grabarte con autenticidad real. Sin técnicas de actuación.</p>
+          <div class="lp-ctags"><span class="lp-ctag">Psicología</span><span class="lp-ctag">Cámara</span><span class="lp-ctag">Pre-grabado</span></div>
+          <div class="lp-cfoot"><span class="lp-price">$27</span><a class="lp-cbtn lp-cbtn--live" href="https://www.guaybo.com/daniela-gutierrez/graba-sin-estres" target="_blank">Quiero este →</a></div>
+        </div>
+
+        <div class="lp-ccard">
+          <span class="lp-cbadge lp-cbadge--soon">Próximamente</span>
+          <div class="lp-cemoji">🧑‍⚕️</div>
+          <h3>Creación de Contenido para Psicólogos</h3>
+          <p>Cómo comunicar tu práctica sin perder tu esencia clínica, atraer clientes con ética y convertir tu conocimiento en contenido que educa y vende.</p>
+          <div class="lp-ctags"><span class="lp-ctag">Psicólogos</span><span class="lp-ctag">Contenido</span></div>
+          <div class="lp-cfoot"><span class="lp-price" style="font-size:1.05rem;font-family:var(--lp-body);font-weight:700;color:#6b7388;">¿Te interesa?</span><a class="lp-cbtn lp-cbtn--soon" href="https://wa.me/584227138195" target="_blank">Avísame →</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EN EL AULA ===== -->
+  <section class="lp-section lp-bg-purple">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--ondark">En el aula</span>
+        <h2 class="lp-h2" style="color:#fff;">Formación que se vive, no solo se escucha.</h2>
+        <p class="lp-lead" style="color:#e7defb;margin:1.1rem auto 0;">Universidades, empresas y eventos donde he llevado el método en vivo.</p>
+      </div>
+      <div class="lp-alum__grid lp-reveal">
+        <div class="lp-media"><img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/urbe1.jpg" alt="Daniela con un grupo de alumnos universitarios"></div>
+        <div class="lp-media"><img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/urbe2.jpg" alt="Daniela con otro grupo de alumnos universitarios"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="lp-section lp-bg-navy lp-cta">
+    <div class="lp-inner lp-cta__in lp-reveal">
+      <span class="lp-label lp-label--ondark" style="color:var(--lp-lime);">El siguiente paso</span>
+      <h2>¿Lista para dejar de publicar y empezar a vender?</h2>
+      <p>Agenda una sesión gratuita de 20 minutos para diagnosticar tu marca y saber desde dónde arrancar.</p>
+      <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/diagnostico-gratis">Agendar sesión diagnóstica</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>

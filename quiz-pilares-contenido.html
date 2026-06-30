@@ -1,0 +1,953 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Archivo+Black&display=swap');
+
+#lpQuizRoot{
+  --lp-lime:#d5f379;
+  --lp-purple:#bb65ee;
+  --lp-deep:#310075;
+  --lp-green:#a9e700;
+  --lp-dark:#141f33;
+  --lp-gray:#f5f5f5;
+  --lp-white:#fff;
+
+  position:relative;
+  width:100vw;max-width:100vw;
+  left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;
+  overflow-x:hidden;
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  color:var(--lp-dark);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+
+#lpQuizRoot :where(p){margin:0}
+#lpQuizRoot *,#lpQuizRoot *::before,#lpQuizRoot *::after{box-sizing:border-box}
+
+#lpQuizRoot h1,#lpQuizRoot h2,#lpQuizRoot h3{
+  font-family:'Million Design','Archivo Black','Arial Black',sans-serif;
+  text-transform:uppercase;letter-spacing:-.01em;line-height:.98;margin:0;font-weight:400;
+}
+
+.lp-section{padding:clamp(3.5rem,7vw,6rem) 1.5rem}
+.lp-inner{max-width:1100px;margin:0 auto}
+.lp-inner--narrow{max-width:860px}
+
+.lp-bg-navy{background:var(--lp-dark);color:var(--lp-white)}
+.lp-bg-navy h1,.lp-bg-navy h2,.lp-bg-navy h3{color:var(--lp-white)}
+.lp-bg-purple{background:var(--lp-purple);color:var(--lp-white)}
+.lp-bg-purple h1,.lp-bg-purple h2,.lp-bg-purple h3{color:var(--lp-white)}
+.lp-bg-white{background:var(--lp-white)}
+.lp-bg-gray{background:var(--lp-gray)}
+
+.lp-label{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  padding:.4rem .85rem;border-radius:999px;margin-bottom:1.1rem;
+}
+.lp-label--ondark{background:rgba(169,231,0,.16);color:var(--lp-green)}
+.lp-label--onlight{background:rgba(187,101,238,.14);color:var(--lp-purple)}
+
+.lp-hero{text-align:center}
+.lp-hero h1{font-size:clamp(2.2rem,5.6vw,4rem)}
+.lp-hero>.lp-inner>p{font-size:clamp(1.05rem,2vw,1.25rem);max-width:600px;margin:1.3rem auto 0;color:rgba(255,255,255,.82)}
+.lp-hl{color:var(--lp-lime)}
+
+/* ===== Quiz card ===== */
+.lp-quiz{
+  background:var(--lp-white);color:var(--lp-dark);
+  border-radius:26px;margin:2.6rem auto 0;max-width:760px;text-align:left;
+  box-shadow:0 30px 70px -28px rgba(20,31,51,.5);
+  overflow:hidden;
+}
+#lpQuizRoot .lp-quiz h1,#lpQuizRoot .lp-quiz h2,#lpQuizRoot .lp-quiz h3{color:var(--lp-dark)}
+.lp-quiz__bar{height:7px;background:var(--lp-gray)}
+.lp-quiz__fill{height:100%;width:0;background:var(--lp-green);transition:width .4s cubic-bezier(.22,1,.36,1)}
+.lp-quiz__body{padding:clamp(1.7rem,4vw,2.8rem)}
+
+.lp-step__count{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lp-purple);margin-bottom:.7rem}
+.lp-step__q{font-size:clamp(1.45rem,3.4vw,2rem);margin-bottom:.4rem}
+.lp-step__sub{color:#5a6478;font-size:.96rem;margin-bottom:1.5rem!important}
+
+.lp-opts{display:grid;gap:.7rem}
+.lp-opts--grid{grid-template-columns:1fr 1fr;gap:.6rem}
+.lp-opts--grid .lp-opt{padding:.8rem .9rem}
+.lp-opts--grid .lp-opt__txt b{font-size:.95rem}
+.lp-opts--grid .lp-opt__txt span{font-size:.78rem}
+@media(max-width:560px){.lp-opts--grid{grid-template-columns:1fr}}
+.lp-opt{
+  display:flex;align-items:flex-start;gap:.85rem;text-align:left;width:100%;
+  font-family:inherit;cursor:pointer;background:var(--lp-white);
+  border:2px solid #e6e8ef;border-radius:16px;padding:1rem 1.1rem;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.lp-opt:hover{transform:translateY(-3px);border-color:var(--lp-purple);box-shadow:0 16px 30px -22px rgba(20,31,51,.5)}
+.lp-opt.is-sel{border-color:var(--lp-purple);background:rgba(187,101,238,.06);box-shadow:0 0 0 4px rgba(187,101,238,.12)}
+.lp-opt__radio{
+  flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:2px solid #cdd2de;margin-top:.1rem;
+  position:relative;transition:border-color .18s ease;
+}
+.lp-opt.is-sel .lp-opt__radio{border-color:var(--lp-purple)}
+.lp-opt.is-sel .lp-opt__radio::after{
+  content:'';position:absolute;inset:4px;border-radius:50%;background:var(--lp-purple);
+}
+.lp-opt__txt b{display:block;font-weight:700;font-size:1.02rem;color:var(--lp-dark)}
+.lp-opt__txt span{display:block;color:#5a6478;font-size:.88rem;margin-top:.15rem}
+
+.lp-otro{margin-top:.8rem;display:none}
+.lp-otro.is-on{display:block}
+.lp-otro input{
+  width:100%;font-family:inherit;font-size:1.02rem;font-weight:600;
+  padding:.85rem 1rem;border:2px solid #e6e8ef;border-radius:13px;color:var(--lp-dark);
+}
+.lp-otro input:focus{outline:none;border-color:var(--lp-purple);box-shadow:0 0 0 4px rgba(187,101,238,.14)}
+
+.lp-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.8rem;gap:1rem}
+.lp-btn{
+  display:inline-block;font-family:inherit;font-weight:700;text-decoration:none;cursor:pointer;border:0;
+  padding:.95rem 2rem;border-radius:13px;font-size:1rem;
+  transition:transform .2s ease,background-color .2s ease,opacity .2s ease;
+}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33!important}
+.lp-btn--primary:hover{background:var(--lp-green);transform:translateY(-3px)}
+.lp-btn--primary:disabled{opacity:.4;cursor:not-allowed;transform:none;background:var(--lp-lime)}
+.lp-btn--back{background:transparent;color:#5a6478;padding:.95rem .6rem;font-weight:600}
+.lp-btn--back:hover{color:var(--lp-dark)}
+.lp-btn--ghost{background:transparent;color:var(--lp-dark);border:2px solid #d4d8e2}
+.lp-btn--ghost:hover{border-color:var(--lp-dark);transform:translateY(-3px)}
+
+/* ===== Resultado ===== */
+.lp-res__head{text-align:center;margin-bottom:2rem}
+.lp-res__head .lp-step__count{color:var(--lp-green)}
+.lp-res__title{font-size:clamp(1.7rem,4vw,2.6rem)}
+.lp-res__intro{color:#5a6478;max-width:540px;margin:.9rem auto 0!important}
+.lp-res__badge{
+  display:inline-block;margin-top:1rem;font-size:.8rem;font-weight:700;
+  background:rgba(187,101,238,.12);color:var(--lp-purple);
+  padding:.45rem 1rem;border-radius:999px;
+}
+
+.lp-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:680px){.lp-pillars{grid-template-columns:1fr}}
+.lp-pillar{
+  border:2px solid #ececf2;border-radius:20px;padding:1.4rem 1.4rem 1.5rem;
+  background:var(--lp-white);position:relative;transition:transform .25s ease,box-shadow .25s ease;
+}
+.lp-pillar:hover{transform:translateY(-5px);box-shadow:0 22px 40px -26px rgba(20,31,51,.45)}
+.lp-pillar--anchor{border-color:var(--lp-purple);background:linear-gradient(180deg,rgba(187,101,238,.05),transparent)}
+.lp-pillar__tag{
+  position:absolute;top:-11px;left:18px;font-size:.64rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--lp-purple);color:#fff;padding:.3rem .7rem;border-radius:999px;
+}
+.lp-pillar__kind{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lp-purple);margin-bottom:.35rem}
+.lp-pillar__emoji{font-size:1.5rem;line-height:1;margin-bottom:.5rem}
+.lp-pillar__name{font-size:1.22rem;font-weight:700;color:var(--lp-dark);line-height:1.2;margin-bottom:.5rem!important}
+.lp-pillar__why{font-size:.9rem;color:#5a6478;margin-bottom:.9rem!important}
+.lp-pillar__ideas{list-style:none;padding:0;margin:0 0 .9rem;display:grid;gap:.4rem}
+.lp-pillar__ideas li{font-size:.88rem;color:var(--lp-dark);padding-left:1.2rem;position:relative}
+.lp-pillar__ideas li::before{content:'›';position:absolute;left:0;color:var(--lp-purple);font-weight:700}
+.lp-pillar__fmt{font-size:.78rem;color:#8a93a6;border-top:1px solid #eef0f4;padding-top:.7rem}
+.lp-pillar__fmt b{color:var(--lp-dark)}
+
+.lp-plan{
+  margin-top:1.6rem;background:var(--lp-dark);color:#fff;border-radius:18px;padding:1.4rem 1.5rem;
+}
+.lp-plan__cap{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lp-green);margin-bottom:.5rem}
+.lp-plan p{color:rgba(255,255,255,.85);font-size:.95rem}
+
+.lp-res__actions{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.8rem}
+
+/* ===== Tips ===== */
+.lp-tips{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.2rem}
+@media(max-width:720px){.lp-tips{grid-template-columns:1fr}}
+.lp-tip{background:var(--lp-white);border:2px solid #ececf2;border-radius:20px;padding:1.5rem 1.4rem;transition:transform .25s ease,border-color .25s ease}
+.lp-tip:hover{transform:translateY(-6px);border-color:var(--lp-purple)}
+.lp-tip__n{font-family:'Million Design','Archivo Black','Arial Black',sans-serif;font-size:1.4rem;color:var(--lp-purple)}
+.lp-tip__t{font-weight:700;margin:.5rem 0 .3rem!important}
+.lp-tip__d{color:#5a6478;font-size:.9rem}
+
+/* ===== CTA ===== */
+.lp-cta{text-align:center}
+.lp-cta h2{font-size:clamp(1.9rem,4.5vw,3rem)}
+.lp-cta p{max-width:560px;margin:1.1rem auto 2rem;font-size:1.08rem;color:rgba(255,255,255,.85)}
+
+.lp-js .lp-in{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.lp-js .lp-in.is-vis{opacity:1;transform:none}
+</style>
+
+<div id="lpQuizRoot">
+
+  <!-- HERO + QUIZ -->
+  <section class="lp-section lp-bg-navy lp-hero">
+    <div class="lp-inner">
+      <span class="lp-label lp-label--ondark">Quiz · 6 preguntas · 2 minutos</span>
+      <h1>Descubre tus <span class="lp-hl">4 pilares</span><br>de contenido</h1>
+      <p>Dejar de improvisar empieza por saber de qué hablar. Responde y te entrego 4 temas específicos—y en tendencia—sobre los que tu marca debería estar publicando.</p>
+
+      <div class="lp-quiz" id="lpQuiz">
+        <div class="lp-quiz__bar"><div class="lp-quiz__fill" id="lpFill"></div></div>
+        <div class="lp-quiz__body" id="lpBody"><!-- render JS --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div style="text-align:center">
+        <span class="lp-label lp-label--onlight">Ya tienes tus pilares, ¿ahora qué?</span>
+        <h2 style="font-size:clamp(1.8rem,4.4vw,2.8rem)">Pilares no es <span style="color:var(--lp-purple)">publicar al azar</span></h2>
+      </div>
+      <div class="lp-tips">
+        <div class="lp-tip lp-in"><div class="lp-tip__n">01</div><p class="lp-tip__t">Rota, no repitas</p><p class="lp-tip__d">Ve alternando tus 4 pilares. Así tu audiencia te ve completa y tú nunca te quedas sin tema.</p></div>
+        <div class="lp-tip lp-in"><div class="lp-tip__n">02</div><p class="lp-tip__t">Específico vende</p><p class="lp-tip__d">"Ansiedad laboral" conecta más que "ansiedad". Mientras más preciso el tema, más se siente que le hablas a ella.</p></div>
+        <div class="lp-tip lp-in"><div class="lp-tip__n">03</div><p class="lp-tip__t">Conecta con tu oferta</p><p class="lp-tip__d">Cada pilar debe llevar—sin que se note forzado—a lo que vendes. Contenido bonito que no vende es un hobby.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="lp-section lp-bg-purple lp-cta">
+    <div class="lp-inner lp-inner--narrow">
+      <h2 class="lp-in">Tus pilares atraen.<br>¿Y si además vendieran?</h2>
+      <p class="lp-in">Convertir 4 temas en una marca que llena tu agenda es estrategia, no suerte. Te lo aterrizo en una sesión diagnóstica de 20 minutos, gratis.</p>
+      <a class="lp-btn lp-btn--primary lp-in" href="/diagnostico-gratis">Agendar sesión diagnóstica</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('lpQuizRoot');
+  root.classList.add('lp-js');
+  var body=root.querySelector('#lpBody'),
+      fill=root.querySelector('#lpFill');
+
+  /* ===== Preguntas ===== */
+  var questions=[
+    {key:'field',q:'¿En qué se enfoca tu marca?',sub:'Elige lo más cercano. Si no está, marca "Otro" y escríbelo.',
+     opts:[
+       {v:'psicologia',t:'Psicología y salud mental',d:'Terapia, emociones'},
+       {v:'nutricion',t:'Nutrición',d:'Comida, hábitos'},
+       {v:'fitness',t:'Fitness y movimiento',d:'Entrenamiento, cuerpo'},
+       {v:'coaching',t:'Coaching y desarrollo personal',d:'Hábitos, propósito'},
+       {v:'marketing',t:'Marca, marketing y negocios',d:'Emprender, vender'},
+       {v:'finanzas',t:'Finanzas personales',d:'Dinero, ahorro'},
+       {v:'reposteria',t:'Repostería y pastelería',d:'Tortas, postres'},
+       {v:'restaurante',t:'Restaurante o café',d:'Comida, experiencia'},
+       {v:'peluqueria',t:'Peluquería y spa',d:'Cabello, belleza'},
+       {v:'unas',t:'Uñas y nail art',d:'Manicure, diseños'},
+       {v:'estetica',t:'Estética y medicina estética',d:'Piel, tratamientos'},
+       {v:'dental',t:'Clínica dental',d:'Odontología, sonrisa'},
+       {v:'veterinaria',t:'Veterinaria y mascotas',d:'Salud animal'},
+       {v:'tienda',t:'Tienda de ropa o maquillaje',d:'Moda, belleza'},
+       {v:'joyeria',t:'Joyería y accesorios',d:'Joyas, regalos'},
+       {v:'floristeria',t:'Floristería y arreglos',d:'Flores, eventos'},
+       {v:'fotografia',t:'Fotografía',d:'Eventos, retratos'},
+       {v:'decoracion',t:'Decoración e interiorismo',d:'Hogar, espacios'},
+       {v:'inmobiliario',t:'Bienes raíces',d:'Inmuebles, propiedades'},
+       {v:'cardealer',t:'Venta de autos',d:'Carros, concesionario'},
+       {v:'viajes',t:'Agencia de viajes',d:'Turismo, destinos'},
+       {v:'eventos',t:'Wedding y event planner',d:'Bodas, eventos'},
+       {v:'otro',t:'Otro / no está aquí',d:'Escríbelo tú'}
+     ]},
+    {key:'lens',q:'¿Quién es tu cliente principal?',sub:'Esto es lo que hace tus pilares específicos en vez de genéricos.',
+     opts:[
+       {v:'0',t:'Clientes exigentes o premium',d:'Profesionales, alta exigencia, lo mejor'},
+       {v:'1',t:'Vínculos, familia y ocasiones',d:'Pareja, familia, regalos, celebraciones'},
+       {v:'2',t:'Gusto y expresión personal',d:'Autocuidado, estilo, crecimiento propio'}
+     ]},
+    {key:'angle',q:'¿Cuál es tu ángulo natural?',sub:'Tu forma de comunicar define cuál pilar será tu ancla.',
+     opts:[
+       {v:'mitos',t:'Voy de frente, rompo mitos',d:'Te gusta cuestionar lo que todos repiten'},
+       {v:'practica',t:'Soy práctica, paso a paso',d:'Enseñas el cómo, claro y aplicable'},
+       {v:'calida',t:'Soy cálida y emocional',d:'Conectas desde la historia y el sentir'},
+       {v:'datos',t:'Voy con datos y resultados',d:'Muestras evidencia, casos, antes y después'}
+     ]},
+    {key:'goal',q:'¿Qué quieres lograr ahora con tu contenido?',sub:'Para apuntar tus pilares al objetivo correcto.',
+     opts:[
+       {v:'conocer',t:'Que más gente me descubra',d:'Crecer audiencia y alcance'},
+       {v:'confianza',t:'Que confíen en mí',d:'Posicionarme como la referencia'},
+       {v:'vender',t:'Vender y llenar mi agenda',d:'Convertir seguidores en clientes'}
+     ]},
+    {key:'format',q:'¿Qué formato te sale más natural?',sub:'Tu punto de partida cómodo (luego ampliamos).',
+     opts:[
+       {v:'reels',t:'Hablar a cámara',d:'Reels, videos, tu voz y tu cara'},
+       {v:'escribir',t:'Escribir',d:'Carruseles, captions largos, palabra'},
+       {v:'stories',t:'Mostrar mi día',d:'Stories, detrás de cámara, cercanía'}
+     ]},
+    {key:'cadence',q:'¿Cada cuánto puedes crear?',sub:'Para armarte una distribución realista, no idealizada.',
+     opts:[
+       {v:'poco',t:'1–2 veces por semana',d:'Vas con calma y constancia'},
+       {v:'medio',t:'3–4 veces por semana',d:'Ritmo sostenible y activo'},
+       {v:'diario',t:'Casi todos los días',d:'Modo crecimiento, full presencia'}
+     ]}
+  ];
+
+  /* ===== Motor de pilares ===== */
+  var jobs=[
+    {key:'ancla',kind:'Pilar de autoridad',emoji:'🎯',why:'Tu terreno. Aquí demuestras criterio y te vuelves la referencia, no una más del montón.',fmt:'Carrusel educativo o reel explicativo'},
+    {key:'dolor',kind:'Pilar de conexión',emoji:'🔥',why:'Le pones nombre a lo que tu audiencia siente y no sabe explicar. Esto es lo que se guarda y se reenvía.',fmt:'Reel con gancho fuerte en los primeros 3 segundos'},
+    {key:'deseo',kind:'Pilar de aspiración',emoji:'✨',why:'Vendes el destino, no el esfuerzo. Aquí tu audiencia se ve a sí misma del otro lado.',fmt:'Reel narrativo o storytime'},
+    {key:'conversacion',kind:'Pilar de conversación',emoji:'⚡',why:'Entras al debate que ya está pasando y tomas postura. Tu contenido más compartible.',fmt:"Reel de opinión o carrusel 'hot take'"}
+  ];
+
+  // lens: 0 alta exigencia · 1 vínculos · 2 proceso personal
+  var lib={
+    psicologia:{
+      ancla:[
+        {n:'Ansiedad laboral y burnout',i:['Las 3 señales de burnout que confundes con estar cansada','Por qué tu ansiedad sube los domingos en la noche']},
+        {n:'Apego y dinámicas de pareja',i:['Cómo el apego ansioso sabotea tus relaciones sin que lo notes','La diferencia entre amar y necesitar a alguien']},
+        {n:'Autoestima y crítica interna',i:['De dónde viene esa voz que te dice que no eres suficiente','Cómo dejar de medir tu valor por lo que logras']}
+      ],
+      dolor:[
+        {n:'Hiperexigencia y culpa por descansar',i:['Por qué descansar te genera ansiedad en vez de paz','La trampa de cuando termine esto, paro']},
+        {n:'Límites con la familia que no respetan',i:['Frases exactas para poner un límite sin sentirte la mala','Por qué te cuesta decir que no a tu propia familia']},
+        {n:'Heridas de la infancia que aún te gobiernan',i:['3 patrones de adulta que en realidad vienen de tu niñez','Cómo saber si repites la historia de tus papás']}
+      ],
+      deseo:[
+        {n:'Calma sin dejar de ser ambiciosa',i:['Cómo lograr tus metas sin vivir en modo supervivencia','Productividad desde la calma, no desde el miedo']},
+        {n:'Vínculos seguros y sanos',i:['Cómo se siente una relación segura de verdad','Lo que cambia cuando sanas tu forma de querer']},
+        {n:'Reconciliarte con quién eres',i:['Cómo es vivir sin pelear contra ti misma todo el día','El día que dejas de buscar aprobación afuera']}
+      ],
+      conversacion:[
+        {n:"Mitos de la salud mental de Instagram",i:['No todo es ponte límites: lo que falta en ese consejo','Por qué pon de tu parte no cura la ansiedad']},
+        {n:'Lo que nadie te dice del sana primero',i:['Primero ámate tú suena lindo, pero tiene un problema','Por qué cortar a todo el que te incomoda no es sanar']},
+        {n:'Romper el mito del pensamiento positivo',i:['Por qué forzarte a pensar bonito te hace sentir peor','La diferencia entre aceptar y resignarte']}
+      ]
+    },
+    nutricion:{
+      ancla:[
+        {n:'Alimentación real para agendas llenas',i:['Cómo comer bien cuando no tienes tiempo ni de almorzar','Meal prep realista para quien odia cocinar']},
+        {n:'Alimentación en familia sin guerras',i:['Cómo lograr que tus hijos coman verduras sin pelear','Qué hacer cuando en tu casa nadie come igual']},
+        {n:'Relación sana con la comida',i:['Cómo dejar de sentir culpa cada vez que comes','Señales de que tu vida fitness ya es un desorden']}
+      ],
+      dolor:[
+        {n:'Comer por estrés y ansiedad',i:['Por qué atacas la nevera a las 11pm (y no es hambre)','El hambre emocional explicada en 30 segundos']},
+        {n:'Culpa por la comida de tus hijos',i:['No eres mala mamá por darle pasta otra vez','La presión imposible de alimentar perfecto']},
+        {n:'El círculo dieta–atracón–culpa',i:['Por qué cada lunes empiezas la dieta y el viernes la rompes','Cómo salir del todo o nada con la comida']}
+      ],
+      deseo:[
+        {n:'Energía estable todo el día',i:['Cómo comer para no chocar a las 3 de la tarde','Desayunos que no te dejan con hambre en una hora']},
+        {n:'Una mesa familiar tranquila',i:['Cómo se ve una casa donde comer no es un campo de batalla','Hábitos que tus hijos sí van a copiar']},
+        {n:'Comer sin reglas ni culpa',i:['Cómo es comerte un postre sin que arruine tu día','Libertad alimentaria explicada simple']}
+      ],
+      conversacion:[
+        {n:'Mitos de la vida saludable que vende Instagram',i:['No necesitas 6 comidas ni batidos caros: la verdad','Por qué el detox no existe (tu hígado ya lo hace)']},
+        {n:'El mito de la mamá que cocina todo perfecto',i:['Lo que esconde el feed de comida perfecta','Por qué comprar comida hecha no te hace mala madre']},
+        {n:'Romper la cultura de dieta',i:['Por qué bajar para el verano te tiene atrapada','Lo que la industria de dietas no quiere que sepas']}
+      ]
+    },
+    fitness:{
+      ancla:[
+        {n:'Entrenar con poco tiempo',i:['Rutina de 20 minutos para quien vive corriendo','Cómo entrenar en casa sin equipo ni excusas']},
+        {n:'Volver a moverte después de los hijos',i:['Cómo retomar el ejercicio post-parto sin lastimarte','Entrenar con poco sueño y cero energía: por dónde empezar']},
+        {n:'Fuerza y composición corporal',i:['Por qué levantar pesas no te pone grande','Cómo empezar en el gym sin sentirte perdida']}
+      ],
+      dolor:[
+        {n:'Falta de constancia y motivación',i:['Por qué empiezas el lunes y abandonas el jueves','El error de depender de la motivación para entrenar']},
+        {n:'Culpa por no recuperar el cuerpo',i:['Tu cuerpo cambió y está bien: hablemos en serio','La presión de volver a ser la de antes']},
+        {n:'Entrenar odiando tu cuerpo',i:['Por qué bajas de peso y sigues sin sentirte bien','Entrenar desde el odio no funciona: te explico']}
+      ],
+      deseo:[
+        {n:'Energía y fuerza para tu día',i:['Cómo el ejercicio te cambia el ánimo más que el cuerpo','Fuerte para tu vida, no para una foto']},
+        {n:'Moverte y sentirte tú otra vez',i:['Recuperar un espacio que sea solo tuyo','Cómo el movimiento te devuelve la energía con hijos']},
+        {n:'Sentirte fuerte y capaz',i:['El día que entrenas por cómo te sientes, no cómo te ves','Lo que cambia cuando dejas de pelear con la balanza']}
+      ],
+      conversacion:[
+        {n:'Mitos del fitness express',i:['No necesitas 2 horas de gym: la verdad','Por qué sin dolor no hay ganancia es mentira']},
+        {n:'El mito de recuperar la figura',i:['Por qué tu cuerpo post-bebé no tiene que volver','Lo que la industria fitness le vende a las mamás']},
+        {n:'Romper el culto a la balanza',i:['Por qué el peso no mide tu progreso','El antes y después que nadie te muestra']}
+      ]
+    },
+    coaching:{
+      ancla:[
+        {n:'Productividad y enfoque sin quemarte',i:['Cómo priorizar cuando todo parece urgente','El sistema simple para dejar de apagar incendios']},
+        {n:'Límites y relaciones sanas',i:['Cómo poner límites sin sentir culpa','La diferencia entre ayudar y cargar a todos']},
+        {n:'Hábitos y reinvención personal',i:['Cómo cambiar un hábito sin fuerza de voluntad','Por qué fallan tus propósitos de año nuevo']}
+      ],
+      dolor:[
+        {n:'Burnout y vivir en piloto automático',i:['Las señales de que estás funcionando, no viviendo','Por qué tenerlo todo bajo control te está agotando']},
+        {n:'Complacer a todos y perderte tú',i:['Cómo saber si eres complaciente crónica','El costo invisible de ser la que siempre puede']},
+        {n:'Estancamiento y miedo al cambio',i:['Por qué sigues en lo mismo aunque no te haga feliz','El miedo a empezar de nuevo, explicado']}
+      ],
+      deseo:[
+        {n:'Claridad y propósito',i:['Cómo saber qué quieres cuando todo te confunde','Tomar decisiones sin vivir en la duda']},
+        {n:'Relaciones donde no te abandonas',i:['Cómo es vincularte sin perderte','Decir que no y que igual te quieran']},
+        {n:'Convertirte en quien quieres ser',i:['Cómo se siente confiar en ti','El día que dejas de esperar el momento perfecto']}
+      ],
+      conversacion:[
+        {n:'Mitos de la productividad tóxica',i:['No tienes que despertarte a las 5 de la mañana','Por qué el hustle te vende agotamiento disfrazado']},
+        {n:'Lo que el coaching de Instagram simplifica',i:['Solo cambia tu mentalidad no siempre alcanza','Por qué no todo es falta de actitud']},
+        {n:'Romper el mito del cambio de la noche a la mañana',i:['Las transformaciones reales no son lineales','Por qué tu glow up no necesita ser público']}
+      ]
+    },
+    marketing:{
+      ancla:[
+        {n:'Estrategia de marca para emprendedoras',i:['Por qué publicas todos los días y no vendes','Cómo construir una marca que no dependa de ti gritando']},
+        {n:'Marca personal sin exponerte de más',i:['Cómo vender siendo tú sin contar toda tu vida','Marca personal para introvertidas']},
+        {n:'De hobby a negocio real',i:['Cuándo dejar de cobrar barato por miedo','Cómo poner precio sin regalar tu trabajo']}
+      ],
+      dolor:[
+        {n:'Crear contenido y que nadie compre',i:['Likes que no se convierten en clientes: el problema real','Por qué tu contenido entretiene pero no vende']},
+        {n:'Miedo a mostrarte y vender',i:['Por qué te da pena promocionar lo que haces','El miedo al qué dirán que te frena de vender']},
+        {n:'Síndrome del impostor emprendiendo',i:['Por qué sientes que no estás lista para cobrar más','Comparar tu inicio con el avanzado de otra']}
+      ],
+      deseo:[
+        {n:'Una marca que vende sola',i:['Cómo se siente tener una marca que la gente reconoce','Vender sin perseguir a nadie']},
+        {n:'Vender desde la confianza',i:['Cómo es promocionar sin sentir que molestas','El día que vender deja de darte ansiedad']},
+        {n:'Un negocio rentable y a tu manera',i:['Cómo es cobrar lo justo sin culpa','Un negocio que cabe en tu vida, no al revés']}
+      ],
+      conversacion:[
+        {n:'Mitos del contenido viral',i:['No necesitas hacerte viral para vender: la verdad','Por qué los trends no salvan a una marca sin estrategia']},
+        {n:'Lo que los gurús no te dicen',i:['Solo sé constante no es una estrategia','Por qué copiar al de los millones de seguidores te frena']},
+        {n:'Romper el mito de publica y vende',i:['Por qué publicar más no es vender más','Lo que de verdad mueve a alguien a comprarte']}
+      ]
+    },
+    finanzas:{
+      ancla:[
+        {n:'Orden financiero para emprendedoras',i:['Cómo separar el dinero del negocio y el tuyo','Por qué facturas y no te queda nada']},
+        {n:'Finanzas en pareja sin pelear',i:['Cómo hablar de dinero con tu pareja sin discutir','Cuentas juntas o separadas: cómo decidir']},
+        {n:'Tu relación emocional con el dinero',i:['Por qué gastas cuando estás ansiosa','De dónde vienen tus creencias sobre el dinero']}
+      ],
+      dolor:[
+        {n:'Vivir al día aunque ganes bien',i:['Por qué ganas más y sigues sin ahorrar','El sueldo te alcanza pero el mes no: por qué']},
+        {n:'Tensión por dinero en casa',i:['Cuando el dinero es el tema que nadie quiere tocar','Cómo dejar de discutir lo mismo cada fin de mes']},
+        {n:'Ansiedad y culpa con el dinero',i:['Por qué revisar tu cuenta te da pánico','La culpa de gastar en ti, explicada']}
+      ],
+      deseo:[
+        {n:'Tranquilidad financiera',i:['Cómo se siente tener un colchón de emergencia','Dormir tranquila aunque venga un mes flojo']},
+        {n:'Un equipo financiero en casa',i:['Cómo es construir metas de dinero juntos','Del tu dinero y el mío al nuestro plan']},
+        {n:'Libertad y poder con tu dinero',i:['El día que el dinero deja de darte miedo','Cómo es decidir sin que el dinero te frene']}
+      ],
+      conversacion:[
+        {n:'Mitos del hazte rico rápido',i:['No vas a ser libre financieramente con cripto en 3 meses','Por qué los consejos millonarios de Instagram fallan']},
+        {n:'El tabú de hablar de dinero',i:['Por qué en tu casa nunca te enseñaron de dinero','Romper el hablar de plata es de mala educación']},
+        {n:'Romper el mito del deja de tomar café',i:['No es tu cafecito: el problema es otro','Por qué la culpa no te va a hacer ahorrar']}
+      ]
+    },
+    reposteria:{
+      ancla:[
+        {n:'Repostería de autor para eventos',i:['Cómo elegir un postre que combine con tu marca o paleta','Qué pedir para que tu evento corporativo se vea de lujo']},
+        {n:'Tortas de celebración que cuentan una historia',i:['Cómo se diseña la torta perfecta para un cumpleaños','3 detalles que vuelven inolvidable una mesa dulce']},
+        {n:'Repostería artesanal para darte un gusto',i:['Por qué un postre hecho a mano sabe distinto','El antojo que sí vale cada caloría']}
+      ],
+      dolor:[
+        {n:'Por qué lo barato te sale caro en un evento',i:['La diferencia entre una torta de panadería y una de autor','Lo que nadie te cuenta de encargar postres a última hora']},
+        {n:'El estrés de organizar la mesa dulce',i:['Cómo dejar de improvisar el postre de cada cumpleaños','Lo que pasa cuando encargas con dos días de antelación']},
+        {n:'La culpa de darte un gusto dulce',i:['No, un postre artesanal no arruina tu semana','Calidad sobre cantidad: comer rico sin excederte']}
+      ],
+      deseo:[
+        {n:'Un evento que todos recuerdan por el detalle',i:['La cara de tus invitados cuando ven la mesa','Cómo un buen postre eleva toda la experiencia']},
+        {n:'El momento en que cortan la torta',i:['Esa foto familiar que queda para siempre','Cómo se siente sorprender a quien amas']},
+        {n:'Tu ritual dulce de la semana',i:['Date el permiso de disfrutar sin apuro','El placer simple de un buen café con postre']}
+      ],
+      conversacion:[
+        {n:'Mitos de la repostería de evento',i:['No, lo bonito no tiene que saber feo','Por qué el precio de una torta de autor no es capricho']},
+        {n:'Detrás de cámara de una torta personalizada',i:['Las horas reales que toma tu torta soñada','Por qué encargar artesanal no es comprar hecho']},
+        {n:'Lo que la repostería industrial no te dice',i:['Lee la etiqueta: qué tiene un postre de supermercado','Por qué lo artesanal cuesta y por qué lo vale']}
+      ]
+    },
+    restaurante:{
+      ancla:[
+        {n:'El spot ideal para reuniones de trabajo',i:['Por qué cerrar un negocio con un buen café funciona','El ambiente perfecto para tu próxima reunión']},
+        {n:'El lugar para celebrar en familia',i:['El plan ideal para un almuerzo de domingo','Por qué somos el spot favorito para citas']},
+        {n:'Una experiencia que vale cada bocado',i:['El plato del que todos hablan y por qué','Detrás de nuestra receta estrella']}
+      ],
+      dolor:[
+        {n:'El cansancio de siempre el mismo sitio',i:['Sal de la rutina del almuerzo de oficina','Lo que buscas y no encuentras cerca del trabajo']},
+        {n:'El estrés de elegir dónde celebrar',i:['Cómo evitar el plan que termina en mal rato','Lo que arruina una salida en familia']},
+        {n:'La decepción de comer rico pero sin alma',i:['Por qué la comida industrial te deja vacío','Lo que diferencia un plato hecho con amor']}
+      ],
+      deseo:[
+        {n:'Reuniones que fluyen con buen ambiente',i:['El lugar donde las ideas salen mejor','Café, calma y conversaciones que cierran tratos']},
+        {n:'Momentos que se vuelven recuerdos',i:['Esa mesa donde la familia se ríe','La cita que empieza con un buen plato']},
+        {n:'El placer de comer rico de verdad',i:['Ese primer bocado que lo cambia todo','Date el gusto que te merecías']}
+      ],
+      conversacion:[
+        {n:'Mitos de comer fuera',i:['No, comer rico no tiene que ser caro','Por qué el ambiente importa tanto como el plato']},
+        {n:'Detrás de cámara de la cocina',i:['Cómo nace el plato que tanto pides','Las horas detrás de tu experiencia favorita']},
+        {n:'Lo que la comida rápida no te cuenta',i:['Ingredientes frescos vs lo congelado: se nota','Por qué lo artesanal cuesta y lo vale']}
+      ]
+    },
+    peluqueria:{
+      ancla:[
+        {n:'Cambios de look que elevan tu imagen',i:['El corte que te hace ver más pulida en reuniones','Cómo elegir color según tu tono de piel']},
+        {n:'Looks para ocasiones especiales',i:['Peinados que duran toda la boda','El paquete novia: qué incluye y por qué importa']},
+        {n:'Rituales de autocuidado que sí se notan',i:['Tu cabello también refleja cómo te cuidas','El tratamiento que devuelve la vida a tu pelo']}
+      ],
+      dolor:[
+        {n:'Por qué tu look no acompaña tu nivel',i:['Las raíces descuidadas que opacan tu imagen','Cuánto resta una mala manicure en una reunión']},
+        {n:'El estrés de verte bien para el evento',i:['Cómo dejar de improvisar tu look a última hora','Lo que pasa cuando reservas el día anterior']},
+        {n:'El cabello maltratado que ya no sabes salvar',i:['Señales de que tu pelo pide ayuda profesional','Por qué los tintes de farmacia te están costando más']}
+      ],
+      deseo:[
+        {n:'Salir sintiéndote imparable',i:['Ese efecto confianza al verte al espejo','Cómo un buen look te cambia hasta la postura']},
+        {n:'Verte espectacular el día que importa',i:['Las fotos del evento donde sales radiante','El antes y después que enamora']},
+        {n:'Tu momento solo para ti',i:['Desconectar dos horas y salir nueva','El placer de que te consientan']}
+      ],
+      conversacion:[
+        {n:'Mitos del cuidado del cabello',i:['No, cortar las puntas no hace crecer más rápido','La verdad sobre lavarte el pelo todos los días']},
+        {n:'Detrás de cámara de un cambio de look',i:['Las horas reales detrás de ese balayage','Por qué un buen color no se hace en una hora']},
+        {n:'Lo que los productos de farmacia no te dicen',i:['Por qué tu shampoo del super te reseca','Calidad profesional vs promesa de etiqueta']}
+      ]
+    },
+    unas:{
+      ancla:[
+        {n:'Manos impecables que hablan de ti',i:['Por qué unas cuidadas elevan tu imagen','Diseños sobrios ideales para la oficina']},
+        {n:'Unas perfectas para tu evento',i:['El diseño que combina con tu look de fiesta','Cuánto dura el esmaltado para que aguante todo']},
+        {n:'Tus unas, tu lienzo',i:['Cómo elegir el nail art que va contigo','Tendencias de unas que sí valen la pena']}
+      ],
+      dolor:[
+        {n:'Unas descuidadas que restan puntos',i:['Lo que nota la gente y tú no','Por qué el autoesmaltado nunca queda igual']},
+        {n:'El apuro de hacerte las unas a último minuto',i:['Cómo dejar de improvisar antes del evento','Lo que pasa cuando vas sin cita']},
+        {n:'Unas que se dañan en pocos días',i:['Por qué tu esmaltado se levanta tan rápido','El cuidado que tus unas necesitan y no les das']}
+      ],
+      deseo:[
+        {n:'Verte pulida hasta en los detalles',i:['Ese plus de seguridad con manos perfectas','Cómo los detalles cierran tu imagen']},
+        {n:'Unas que completan tu look',i:['El detalle final que enamora en las fotos','Sentirte lista de pies a cabeza']},
+        {n:'Mirar tus manos y sonreír',i:['El gustito de unas que amas','Tu momento de mimarte cada quincena']}
+      ],
+      conversacion:[
+        {n:'Mitos del cuidado de unas',i:['No, el gel no arruina tus unas si se hace bien','La verdad sobre dejarlas respirar']},
+        {n:'Detrás de cámara de un diseño',i:['El tiempo real detrás de ese nail art','Por qué un buen trabajo cuesta lo que cuesta']},
+        {n:'Lo que el kit casero no te da',i:['Por qué tu manicure en casa no dura','Higiene y técnica que solo da un profesional']}
+      ]
+    },
+    estetica:{
+      ancla:[
+        {n:'Tratamientos que cuidan tu imagen',i:['Lo que un buen facial hace por ti','Cómo verte descansada aunque no lo estés']},
+        {n:'Verte radiante para tu gran día',i:['Cuándo empezar tu plan antes de la boda','El glow que sale en todas las fotos']},
+        {n:'Cuidarte es quererte',i:['Por qué la piel es reflejo de cómo te tratas','Pequeños rituales que cambian tu autoestima']}
+      ],
+      dolor:[
+        {n:'La piel que delata tu cansancio',i:['Lo que dicen tus ojeras en una reunión','Por qué las cremas solas ya no te alcanzan']},
+        {n:'El estrés de verte bien para la ocasión',i:['Cómo evitar empezar tratamientos a destiempo','Lo que pasa cuando improvisas tu piel']},
+        {n:'La inseguridad con tu piel',i:['Cuando ya probaste todo y nada funciona','Por qué tu rutina no te da resultados']}
+      ],
+      deseo:[
+        {n:'Una imagen que proyecta seguridad',i:['Cómo una piel cuidada te abre puertas','Verte tan bien como te sientes capaz']},
+        {n:'Brillar el día que importa',i:['Tu piel impecable en cada foto','Sentirte segura entrando a cualquier salón']},
+        {n:'Reconciliarte con el espejo',i:['Ese día en que te gusta lo que ves','La confianza que da sentirte bien en tu piel']}
+      ],
+      conversacion:[
+        {n:'Mitos de la medicina estética',i:['No, no te vas a ver falsa: hablemos en serio','Lo natural existe y te explico cómo']},
+        {n:'Detrás de cámara de un tratamiento',i:['Lo que de verdad pasa en una sesión','Por qué los resultados toman tiempo']},
+        {n:'Lo que el skincare de moda no te dice',i:['Por qué seguir cada tendencia daña tu piel','Menos productos, mejor elegidos']}
+      ]
+    },
+    dental:{
+      ancla:[
+        {n:'Una sonrisa que abre puertas',i:['Cómo tu sonrisa influye en tu vida profesional','Opciones para mejorar tu sonrisa de forma natural']},
+        {n:'Cuidado dental para toda la familia',i:['Desde qué edad llevar a tus hijos al dentista','Cómo lograr que los niños no le teman al odontólogo']},
+        {n:'Tu salud empieza en la boca',i:['Lo que tus encías dicen de tu salud general','Señales que no debes ignorar en tu boca']}
+      ],
+      dolor:[
+        {n:'La sonrisa que te frena sin notarlo',i:['Por qué cubres tu boca al sonreír en fotos','Lo que proyecta una sonrisa descuidada']},
+        {n:'El miedo de tus hijos al dentista',i:['Cómo evitar que la primera visita sea un trauma','Lo que pasa cuando se posterga la revisión']},
+        {n:'El pánico al dentista que arrastras',i:['Por qué evitar el dentista te sale más caro','Cómo es una consulta sin dolor de verdad']}
+      ],
+      deseo:[
+        {n:'Sonreír sin pensarlo dos veces',i:['Esa confianza al reír en cualquier lado','Cómo cambia tu imagen una sonrisa sana']},
+        {n:'Una familia con sonrisas sanas',i:['Niños sin miedo y con buenos hábitos','La tranquilidad de tener todo bajo control']},
+        {n:'Despedirte del miedo y el dolor',i:['El alivio de por fin atenderte','Cómo se siente una boca sana']}
+      ],
+      conversacion:[
+        {n:'Mitos de la estética dental',i:['No, los blanqueamientos no destruyen tus dientes','Lo natural sí es posible: te explico']},
+        {n:'Detrás de cámara de un tratamiento',i:['Lo que hacemos para que no sientas dolor','Por qué la prevención cuesta menos que la cura']},
+        {n:'Lo que tu cepillo solo no logra',i:['Por qué la limpieza profesional es necesaria','Mitos del cuidado dental que te hacen daño']}
+      ]
+    },
+    veterinaria:{
+      ancla:[
+        {n:'Cuidado premium para tu mascota',i:['Lo que un buen chequeo previene a tiempo','Cómo elegir la alimentación correcta para tu peludo']},
+        {n:'Una mascota sana en una familia feliz',i:['Cómo presentar la mascota a los niños','Rutinas de cuidado que todos pueden seguir']},
+        {n:'Tu peludo merece lo mejor',i:['Señales de que tu mascota te necesita','El lenguaje de tu perro o gato, explicado']}
+      ],
+      dolor:[
+        {n:'Lo que cuesta no prevenir a tiempo',i:['Síntomas que los dueños ignoran hasta que es tarde','Por qué lo barato en salud animal sale caro']},
+        {n:'El miedo de que tu mascota sufra',i:['Cómo saber si tu peludo está enfermo','Lo que pasa cuando se posterga una consulta']},
+        {n:'La culpa de no saber cuidarlo mejor',i:['No eres mal dueño: estás aprendiendo','Errores comunes que cometemos por amor']}
+      ],
+      deseo:[
+        {n:'Una mascota sana y llena de vida',i:['Esa energía cuando tu peludo está bien','La tranquilidad de un cuidado completo']},
+        {n:'Un miembro más de la familia',i:['Cómo tu mascota une a todos en casa','Los momentos que valen cada cuidado']},
+        {n:'El vínculo que solo tú y tu peludo entienden',i:['Ese amor incondicional que recibes','Cuidarlo bien es agradecerle todo lo que da']}
+      ],
+      conversacion:[
+        {n:'Mitos sobre el cuidado animal',i:['No, las sobras de la mesa no son buena idea','La verdad sobre vacunas y desparasitación']},
+        {n:'Detrás de cámara de la clínica',i:['Cómo tratamos a tu mascota cuando no la ves','Por qué la prevención cuesta menos que curar']},
+        {n:'Lo que tu mascota no puede decirte',i:['Señales de dolor que pasan desapercibidas','Por qué necesita más que comida y agua']}
+      ]
+    },
+    tienda:{
+      ancla:[
+        {n:'Verte impecable para el trabajo',i:['Maquillaje de oficina en 10 minutos','3 prendas que arman mil looks profesionales']},
+        {n:'El look perfecto para cada ocasión',i:['Qué ponerte para una boda sin opacar a la novia','Maquillaje que aguanta de la mañana a la fiesta']},
+        {n:'Encontrar tu estilo propio',i:['Cómo descubrir qué te queda y te representa','Construir un clóset que de verdad uses']}
+      ],
+      dolor:[
+        {n:'El clóset lleno y nada que ponerte',i:['Por qué compras y sigues sin saber qué usar','El error de comprar por tendencia y no por ti']},
+        {n:'El estrés de no tener qué ponerte para el evento',i:['Cómo dejar de comprar a último momento','Lo que pasa cuando improvisas el look']},
+        {n:'No sentirte tú con lo que usas',i:['Por qué la ropa de moda no siempre te queda','Vestir para gustarte a ti, no para encajar']}
+      ],
+      deseo:[
+        {n:'Salir lista y segura cada mañana',i:['Ese efecto de verte bien sin esfuerzo','Cómo un buen look te cambia el día']},
+        {n:'Ser la mejor versión el día del evento',i:['Las fotos donde sales radiante','Sentirte segura entrando a cualquier lugar']},
+        {n:'Sentirte tú al mirarte al espejo',i:['Cuando tu estilo por fin te representa','La confianza que da vestir como eres']}
+      ],
+      conversacion:[
+        {n:'Mitos de la moda y el maquillaje',i:['No necesitas mil productos: la base real','Por qué menos prendas bien elegidas es más']},
+        {n:'Detrás de cámara de un look completo',i:['Cómo armamos un outfit que enamora','Lo que cambia un buen asesoramiento de imagen']},
+        {n:'Lo que la industria de la moda no te dice',i:['La trampa de comprar cada tendencia','Calidad sobre cantidad: invertir en lo que dura']}
+      ]
+    },
+    joyeria:{
+      ancla:[
+        {n:'Joyas que son inversión, no gasto',i:['Por qué el oro nunca pasa de moda','Cómo reconocer una pieza que conserva su valor']},
+        {n:'El regalo que dice lo que no se dice',i:['Cómo elegir la joya perfecta para regalar','La pieza ideal para cada aniversario']},
+        {n:'Accesorios que cuentan quién eres',i:['Cómo una joya cambia todo un look','Encuentra la pieza que te representa']}
+      ],
+      dolor:[
+        {n:'El error de comprar joya sin saber',i:['Cómo evitar pagar de más por menos','Señales de una pieza que no vale lo que cuesta']},
+        {n:'El estrés de regalar sin acertar',i:['Cómo dejar de regalar lo mismo de siempre','Lo que pasa cuando compras a último momento']},
+        {n:'Accesorios que no te duran nada',i:['Por qué la bisutería barata te sale cara','Lo que se oxida vs lo que perdura']}
+      ],
+      deseo:[
+        {n:'Una joya que pasa de generación',i:['La pieza que algún día heredará tu hija','Lujo que se siente cada vez que lo usas']},
+        {n:'La cara de quien recibe el regalo',i:['Ese momento al abrir la cajita','Sorprender a quien lo tiene todo']},
+        {n:'Brillar siendo tú',i:['El accesorio que se vuelve tu firma','Cómo un detalle eleva tu confianza']}
+      ],
+      conversacion:[
+        {n:'Mitos sobre el oro y las joyas',i:['No todo lo que brilla conserva valor','Por qué el precio del oro no es capricho']},
+        {n:'Detrás de cámara de una pieza',i:['Las horas de trabajo en una joya artesanal','Por qué lo hecho a mano cuesta y lo vale']},
+        {n:'Lo que la joyería de moda no te dice',i:['La trampa de comprar tendencias que se opacan','Calidad sobre cantidad en tus accesorios']}
+      ]
+    },
+    floristeria:{
+      ancla:[
+        {n:'Flores que elevan tu evento o marca',i:['Cómo las flores transforman un espacio corporativo','El arreglo ideal para cada tipo de evento']},
+        {n:'El regalo que siempre emociona',i:['Qué flores regalar según lo que quieres decir','El ramo perfecto para cada ocasión']},
+        {n:'Flores para alegrarte el día',i:['Por qué tener flores en casa te cambia el ánimo','Cómo cuidar tu ramo para que dure más']}
+      ],
+      dolor:[
+        {n:'El evento que se ve plano sin flores',i:['Lo que falta cuando ahorras en lo visual','Por qué lo barato se nota en cámara']},
+        {n:'El estrés de regalar sin acertar',i:['Cómo evitar el ramo genérico de siempre','Lo que pasa cuando encargas a último momento']},
+        {n:'Flores que se marchitan en dos días',i:['Por qué tus flores no duran y cómo lograrlo','La diferencia entre flores frescas y de nevera']}
+      ],
+      deseo:[
+        {n:'Un evento que enamora a primera vista',i:['Ese efecto al entrar y ver todo florido','Cómo las flores vuelven inolvidable tu marca']},
+        {n:'La emoción de recibir flores',i:['Esa cara cuando llega el ramo sorpresa','Decir te amo sin palabras']},
+        {n:'Tu casa más bonita y viva',i:['El rincón que cambia con un solo ramo','El placer simple de flores frescas']}
+      ],
+      conversacion:[
+        {n:'Mitos sobre las flores',i:['No, las flores de verdad no son un lujo absurdo','Por qué un arreglo de autor cuesta lo que cuesta']},
+        {n:'Detrás de cámara de un arreglo',i:['Las horas detrás de ese ramo perfecto','Por qué lo artesanal supera al supermercado']},
+        {n:'Lo que las flores de gasolinera no te dan',i:['Frescura real vs flores a punto de morir','Cómo reconocer una floristería que cuida su producto']}
+      ]
+    },
+    fotografia:{
+      ancla:[
+        {n:'Fotos que elevan tu marca',i:['Por qué tus fotos venden más que mil palabras','Qué transmite una buena foto de producto']},
+        {n:'Capturar los momentos que no se repiten',i:['Cómo se prepara una sesión familiar relajada','Lo que mira un fotógrafo en una boda']},
+        {n:'Una sesión que te muestra como eres',i:['Cómo dejar la pena frente a la cámara','El antes y después de una sesión personal']}
+      ],
+      dolor:[
+        {n:'Fotos amateur que opacan tu marca',i:['Lo que dice de ti una foto mal tomada','Por qué el celular no basta para vender']},
+        {n:'El miedo a que el momento se pierda',i:['Lo que pasa cuando no contratas a tiempo','Recuerdos borrosos que ya no vuelven']},
+        {n:'Sentirte incómoda frente a la cámara',i:['No es que salgas mal, es la dirección','Por qué odias tus fotos y cómo cambiarlo']}
+      ],
+      deseo:[
+        {n:'Una imagen profesional que inspira confianza',i:['Cómo se ve una marca que invierte en su imagen','Fotos que hacen que te tomen en serio']},
+        {n:'Recuerdos que vas a atesorar',i:['Esa foto que cuelgas en la sala para siempre','Volver a sentir el día al ver las imágenes']},
+        {n:'Verte y por fin gustarte',i:['Sorprenderte de lo bien que sales','Tu mejor versión, capturada']}
+      ],
+      conversacion:[
+        {n:'Mitos de la fotografía profesional',i:['No, no pagas la foto: pagas el ojo','Por qué un buen fotógrafo cobra lo que cobra']},
+        {n:'Detrás de cámara de una sesión',i:['Las horas de edición que no ves','Lo que cuesta de verdad esa foto perfecta']},
+        {n:'Lo que los filtros no te dan',i:['Por qué una foto real supera cualquier filtro','La diferencia entre editar y falsear']}
+      ]
+    },
+    decoracion:{
+      ancla:[
+        {n:'Espacios comerciales que venden solos',i:['Cómo el diseño de tu local sube tus ventas','Lo que siente un cliente al entrar a un buen espacio']},
+        {n:'Un hogar que abraza a tu familia',i:['Cómo distribuir para que la casa fluya','Detalles que vuelven acogedor cualquier espacio']},
+        {n:'Tu espacio, tu refugio',i:['Cómo crear un rincón que te dé paz','Diseña tu casa según cómo vives, no según una foto']}
+      ],
+      dolor:[
+        {n:'El local bonito que igual no vende',i:['Por qué la estética sin estrategia no funciona','Lo que ahuyenta clientes sin que lo notes']},
+        {n:'La casa que nunca sientes terminada',i:['Por qué compras cosas y nada combina','El error de decorar sin un plan']},
+        {n:'Vivir en un espacio que no te representa',i:['Cuando tu casa no refleja quién eres','Lo que tu desorden dice de tu energía']}
+      ],
+      deseo:[
+        {n:'Un espacio que la gente quiere fotografiar',i:['El local del que todos hablan','Cómo el diseño vuelve memorable tu marca']},
+        {n:'Llegar a casa y respirar',i:['Esa sensación de hogar al abrir la puerta','El espacio donde tu familia quiere estar']},
+        {n:'Un hogar que te hace bien',i:['Cómo se siente vivir en tu lugar soñado','Tu espacio diseñado a tu medida']}
+      ],
+      conversacion:[
+        {n:'Mitos de la decoración',i:['No necesitas gastar mucho para verte caro','Por qué copiar tendencias no siempre funciona']},
+        {n:'Detrás de cámara de un proyecto',i:['Lo que hay detrás de un antes y después','Por qué un interiorista te ahorra dinero']},
+        {n:'Lo que las tiendas de muebles no te dicen',i:['Comprar barato y repetir vs invertir una vez','La diferencia entre amueblar y diseñar']}
+      ]
+    },
+    inmobiliario:{
+      ancla:[
+        {n:'Cómo invertir en inmuebles sin equivocarte',i:['Qué mirar antes de comprar para alquilar','Las zonas que se están revalorizando ahora']},
+        {n:'Encontrar el hogar ideal para tu familia',i:['Cómo elegir casa pensando en 10 años','Checklist para visitar una propiedad con niños']},
+        {n:'Tu primera propiedad sin morir en el intento',i:['Pasos reales para comprar tu primer apartamento','Cuánto necesitas de verdad para empezar']}
+      ],
+      dolor:[
+        {n:'Errores que le cuestan miles al inversionista',i:['La propiedad barata que termina saliendo cara','Por qué el flujo importa más que el precio']},
+        {n:'El miedo a equivocarte con la compra más grande',i:['Lo que nadie te dice de comprar con apuro','Cómo evitar arrepentirte de tu casa nueva']},
+        {n:'Sentir que comprar casa es imposible para ti',i:['No necesitas ser rico para empezar: te explico','El mito de esperar el momento perfecto']}
+      ],
+      deseo:[
+        {n:'Tu dinero trabajando mientras duermes',i:['Cómo se siente recibir rentas cada mes','El patrimonio que construyes ladrillo a ladrillo']},
+        {n:'Las llaves de tu nuevo hogar',i:['Ese día en que la casa por fin es tuya','Imaginar a tu familia creciendo ahí']},
+        {n:'Dejar de pagar alquiler de una vez',i:['Tu primer espacio propio, por fin','La libertad de no depender de un casero']}
+      ],
+      conversacion:[
+        {n:'Mitos de invertir en bienes raíces',i:['No, no necesitas comprar de contado','Por qué el ladrillo sigue siendo refugio']},
+        {n:'Detrás de cámara de una venta',i:['Lo que hace un agente que tú no ves','Por qué una buena asesoría te ahorra dinero']},
+        {n:'Lo que el mercado no te cuenta',i:['Alquilar no es tirar el dinero, pero hay un punto','Cuándo conviene comprar y cuándo no']}
+      ]
+    },
+    cardealer:{
+      ancla:[
+        {n:'El carro que acompaña tu nivel',i:['Cómo elegir un auto que proyecte lo que eres','Sedán o SUV: cuál te conviene según tu vida']},
+        {n:'El carro familiar seguro y práctico',i:['Qué mirar en seguridad cuando viajas con niños','Espacio, consumo y confort: el balance ideal']},
+        {n:'Tu primer carro sin estrés',i:['Qué revisar antes de comprar tu primer auto','Nuevo o usado: cuál conviene para empezar']}
+      ],
+      dolor:[
+        {n:'El error de comprar solo por la marca',i:['Lo que de verdad pierde valor en un auto','Por qué el más caro no siempre es el mejor']},
+        {n:'El miedo a comprar un carro con problemas',i:['Señales de un usado que te va a dar dolores','Cómo evitar la compra que arruina el presupuesto']},
+        {n:'Sentir que comprar carro es un mundo',i:['Todo lo que nadie te explica de tu primer auto','El papeleo que asusta, simplificado']}
+      ],
+      deseo:[
+        {n:'Llegar y que el carro hable por ti',i:['Esa sensación al manejar lo que te mereces','Cómo tu auto suma a tu imagen']},
+        {n:'Viajes en familia sin preocupaciones',i:['El carro donde caben todos y las maletas','Tranquilidad en cada viaje a la playa']},
+        {n:'La libertad de tener tu propio carro',i:['Ya no depender de nadie para moverte','Tu independencia tiene cuatro ruedas']}
+      ],
+      conversacion:[
+        {n:'Mitos al comprar carro',i:['No, financiar no siempre es mala idea','La verdad sobre el carro que se devalúa']},
+        {n:'Detrás de cámara de una buena compra',i:['Lo que revisamos que el vendedor común ignora','Por qué una inspección honesta te ahorra miles']},
+        {n:'Lo que no te dicen del carro usado',i:['Kilometraje bajo no siempre es buena señal','Cómo saber si un precio es demasiado bueno']}
+      ]
+    },
+    viajes:{
+      ancla:[
+        {n:'Viajes sin estrés para gente ocupada',i:['Cómo armamos un itinerario que solo disfrutas','Por qué delegar tu viaje te ahorra tiempo y dinero']},
+        {n:'El viaje familiar que todos recuerdan',i:['Destinos ideales para viajar con niños','Cómo planear sin que se vuelva un caos']},
+        {n:'La aventura que estás soñando',i:['Cómo elegir tu próximo destino según lo que buscas','Lo que nadie te cuenta de viajar sola']}
+      ],
+      dolor:[
+        {n:'El estrés de organizar todo tú',i:['Las horas que pierdes armando un viaje','Lo que sale mal cuando reservas por tu cuenta']},
+        {n:'El miedo a que el viaje familiar salga mal',i:['Cómo evitar imprevistos con los niños','Lo que pasa cuando ahorras en lo importante']},
+        {n:'Postergar el viaje que tanto quieres',i:['El para algún día que nunca llega','Por qué siempre hay una excusa para no viajar']}
+      ],
+      deseo:[
+        {n:'Llegar y solo disfrutar',i:['Todo resuelto para que tú descanses','El lujo de no preocuparte por nada']},
+        {n:'Recuerdos familiares que duran toda la vida',i:['Esa foto del viaje que ponen de fondo','Los momentos que tus hijos no van a olvidar']},
+        {n:'Cumplir ese viaje soñado',i:['Por fin el destino de tu lista','La libertad de descubrir el mundo']}
+      ],
+      conversacion:[
+        {n:'Mitos de viajar',i:['No, una agencia no te cobra de más: te ahorra','Por qué reservar barato a veces sale caro']},
+        {n:'Detrás de cámara de un viaje planeado',i:['Todo lo que cuidamos para que no falle nada','Lo que hace un buen asesor de viajes']},
+        {n:'Lo que las redes no te muestran del viaje',i:['La foto perfecta vs la realidad del destino','Cómo viajar de verdad y no solo por la foto']}
+      ]
+    },
+    eventos:{
+      ancla:[
+        {n:'Eventos de marca que dejan huella',i:['Lo que vuelve memorable un evento corporativo','Cómo cada detalle comunica tu marca']},
+        {n:'La boda que siempre soñaste, sin estrés',i:['Por dónde empezar a planear tu boda','Lo que mira un planner que tú pasarías por alto']},
+        {n:'Celebraciones con alma',i:['Cómo crear un evento que se sienta tuyo','Detalles pequeños que emocionan a todos']}
+      ],
+      dolor:[
+        {n:'El evento que sale caro y no impacta',i:['Por qué gastar mucho no garantiza un buen evento','Lo que falla cuando no hay un plan claro']},
+        {n:'El estrés de organizar tu propia boda',i:['Cómo dejar de vivir la planeación con angustia','Lo que pasa cuando quieres hacerlo todo tú']},
+        {n:'La celebración que no salió como querías',i:['Por qué improvisar arruina el momento','Lo que se pierde sin alguien que coordine']}
+      ],
+      deseo:[
+        {n:'Un evento del que todos hablan',i:['Esa sensación cuando todo sale perfecto','Cómo tu evento eleva la imagen de tu marca']},
+        {n:'Vivir tu boda, no sufrirla',i:['Disfrutar tu día sin preocuparte por nada','La tranquilidad de tenerlo todo bajo control']},
+        {n:'Un momento que nadie olvida',i:['Las caras de tus invitados al llegar','La emoción de ver tu sueño hecho realidad']}
+      ],
+      conversacion:[
+        {n:'Mitos de organizar eventos',i:['No, un planner no es un gasto: es un ahorro','Por qué el detrás de cámara importa tanto']},
+        {n:'Detrás de cámara de una boda',i:['Los meses de trabajo detrás de un solo día','Lo que pasa cuando algo falla y nadie lo nota']},
+        {n:'Lo que las redes no te dicen de tu evento',i:['La diferencia entre la idea y la ejecución','Por qué copiar un evento ajeno no funciona']}
+      ]
+    }
+  };
+
+  function fallback(tema){
+    var t=tema||'tu tema';
+    return {
+      ancla:{n:'Tu especialidad en '+t,i:['El error más común que comete tu cliente con '+t,'Cómo se hace bien '+t+' (y por qué importa)']},
+      dolor:{n:'El problema que tu cliente vive con '+t,i:['Lo que tu cliente siente y no sabe nombrar sobre '+t,'La frustración número uno alrededor de '+t]},
+      deseo:{n:'La transformación que logras con '+t,i:['Cómo se ve el después cuando resuelves '+t,'Lo que cambia en la vida de tu cliente gracias a '+t]},
+      conversacion:{n:'Mitos y verdades de '+t,i:['El mito más común sobre '+t+' que vas a romper','Lo que nadie te dice sobre '+t]}
+    };
+  }
+
+  var anchorMap={mitos:'conversacion',practica:'ancla',calida:'deseo',datos:'dolor'};
+  var angleBadge={mitos:'Ángulo: rompo mitos',practica:'Ángulo: práctica y aplicable',calida:'Ángulo: cálida y emocional',datos:'Ángulo: datos y resultados'};
+  var lensLabel=['enfocada en clientes exigentes','centrada en vínculos y ocasiones','enfocada en el gusto personal'];
+  var goalLine={
+    conocer:'Tu objetivo ahora es que más gente te descubra, así que apóyate fuerte en tu pilar de Conversación: es el más compartible.',
+    confianza:'Tu objetivo es posicionarte, así que tu pilar de Autoridad y el de Conexión son los que más confianza construyen.',
+    vender:'Tu objetivo es vender, así que cada pilar debe cerrar conectando con tu oferta—sobre todo el de Aspiración.'
+  };
+  var fmtNatural={reels:'hablar a cámara (reels)',escribir:'escribir (carruseles)',stories:'mostrar tu día (stories)'};
+  var planTxt={
+    poco:'Con 1–2 piezas por semana: trabaja 1 pilar por semana y ve rotando los 4. En un mes tocas todos sin saturarte ni quedarte sin ideas.',
+    medio:'Con 3–4 piezas por semana: una de cada pilar. Abre la semana con tu Autoridad y ciérrala con Conversación para mover el alcance.',
+    diario:'Casi a diario: reparte 2 de Autoridad, 2 de Conexión, 1 de Aspiración y 1 de Conversación. Deja un día de stories para respirar.'
+  };
+
+  /* ===== Estado ===== */
+  var step=0,answers={field:null,otroText:'',lens:null,angle:null,goal:null,format:null,cadence:null};
+
+  function setFill(){
+    var pct=(step/questions.length)*100;
+    fill.style.width=pct+'%';
+  }
+
+  function renderStep(){
+    setFill();
+    var qd=questions[step];
+    var sel=answers[qd.key];
+    var html='<div class="lp-step__count">Pregunta '+(step+1)+' de '+questions.length+'</div>';
+    html+='<h2 class="lp-step__q">'+qd.q+'</h2>';
+    html+='<p class="lp-step__sub">'+qd.sub+'</p>';
+    html+='<div class="lp-opts'+(qd.key==='field'?' lp-opts--grid':'')+'">';
+    qd.opts.forEach(function(o){
+      var on=(sel===o.v)?' is-sel':'';
+      html+='<button type="button" class="lp-opt'+on+'" data-v="'+o.v+'">'+
+            '<span class="lp-opt__radio"></span>'+
+            '<span class="lp-opt__txt"><b>'+o.t+'</b><span>'+o.d+'</span></span></button>';
+    });
+    html+='</div>';
+    if(qd.key==='field'){
+      var on=(answers.field==='otro')?' is-on':'';
+      html+='<div class="lp-otro'+on+'" id="lpOtro"><input type="text" id="lpOtroInput" placeholder="Ej. fotografía de bodas, asesoría de imagen, repostería…" value="'+(answers.otroText||'')+'"></div>';
+    }
+    html+='<div class="lp-nav">';
+    html+=step>0?'<button type="button" class="lp-btn lp-btn--back" id="lpBack">← Atrás</button>':'<span></span>';
+    var last=(step===questions.length-1);
+    html+='<button type="button" class="lp-btn lp-btn--primary" id="lpNext">'+(last?'Ver mis pilares':'Continuar')+'</button>';
+    html+='</div>';
+    body.innerHTML=html;
+
+    body.querySelectorAll('.lp-opt').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        answers[qd.key]=btn.getAttribute('data-v');
+        renderStep();
+      });
+    });
+    var next=body.querySelector('#lpNext');
+    var otroInput=body.querySelector('#lpOtroInput');
+    if(otroInput){otroInput.addEventListener('input',function(){answers.otroText=otroInput.value;next.disabled=!validStep();});}
+
+    next.disabled=!validStep();
+    next.addEventListener('click',function(){
+      if(!validStep())return;
+      if(step===questions.length-1){renderResult();}
+      else{step++;renderStep();body.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+    var back=body.querySelector('#lpBack');
+    if(back){back.addEventListener('click',function(){step--;renderStep();});}
+  }
+
+  function validStep(){
+    var qd=questions[step];
+    if(!answers[qd.key])return false;
+    if(qd.key==='field'&&answers.field==='otro'&&!(answers.otroText||'').trim())return false;
+    return true;
+  }
+
+  function pillarsFor(){
+    var li=parseInt(answers.lens,10)||0;
+    var src=(answers.field==='otro'||!lib[answers.field])?fallback((answers.otroText||'').trim()):null;
+    return jobs.map(function(j){
+      var data=src?src[j.key]:lib[answers.field][j.key][li];
+      return {kind:j.kind,emoji:j.emoji,why:j.why,fmt:j.fmt,name:data.n,ideas:data.i,key:j.key};
+    });
+  }
+
+  function renderResult(){
+    fill.style.width='100%';
+    var pillars=pillarsFor();
+    var anchorKey=anchorMap[answers.angle]||'ancla';
+    // ancla primero
+    pillars.sort(function(a,b){
+      if(a.key===anchorKey)return -1;
+      if(b.key===anchorKey)return 1;
+      return 0;
+    });
+    var fieldName=(answers.field==='otro')?((answers.otroText||'tu marca').trim()):questions[0].opts.filter(function(o){return o.v===answers.field;})[0].t.toLowerCase();
+    var li=parseInt(answers.lens,10)||0;
+
+    var html='<div class="lp-res__head">';
+    html+='<div class="lp-step__count">Listo · tu resultado</div>';
+    html+='<h2 class="lp-res__title">Tus 4 pilares<br>de contenido</h2>';
+    html+='<p class="lp-res__intro">Para tu marca de <strong>'+fieldName+'</strong> '+lensLabel[li]+', estos son los 4 temas sobre los que deberías estar publicando:</p>';
+    html+='<span class="lp-res__badge">'+(angleBadge[answers.angle]||'')+'</span>';
+    html+='</div>';
+
+    html+='<div class="lp-pillars">';
+    pillars.forEach(function(p,idx){
+      var isA=(p.key===anchorKey);
+      html+='<div class="lp-pillar'+(isA?' lp-pillar--anchor':'')+'">';
+      if(isA)html+='<span class="lp-pillar__tag">★ Tu pilar ancla</span>';
+      html+='<div class="lp-pillar__emoji">'+p.emoji+'</div>';
+      html+='<div class="lp-pillar__kind">'+p.kind+'</div>';
+      html+='<p class="lp-pillar__name">'+p.name+'</p>';
+      html+='<p class="lp-pillar__why">'+p.why+'</p>';
+      html+='<ul class="lp-pillar__ideas">';
+      p.ideas.forEach(function(idea){html+='<li>'+idea+'</li>';});
+      html+='</ul>';
+      html+='<div class="lp-pillar__fmt">Formato sugerido: <b>'+p.fmt+'</b></div>';
+      html+='</div>';
+    });
+    html+='</div>';
+
+    html+='<div class="lp-plan"><div class="lp-plan__cap">Tu plan según tu ritmo</div>';
+    html+='<p>'+planTxt[answers.cadence]+' Tu formato base es <strong>'+fmtNatural[answers.format]+'</strong>—empieza por ahí. '+goalLine[answers.goal]+'</p></div>';
+
+    html+='<div class="lp-res__actions">';
+    html+='<button type="button" class="lp-btn lp-btn--ghost" id="lpCopy">Copiar mis pilares</button>';
+    html+='<a class="lp-btn lp-btn--primary" href="/diagnostico-gratis">Quiero ayuda con mi estrategia</a>';
+    html+='<button type="button" class="lp-btn lp-btn--back" id="lpRestart">↻ Repetir quiz</button>';
+    html+='</div>';
+
+    body.innerHTML=html;
+    body.scrollIntoView({behavior:'smooth',block:'start'});
+
+    body.querySelector('#lpRestart').addEventListener('click',function(){
+      step=0;answers={field:null,otroText:'',lens:null,angle:null,goal:null,format:null,cadence:null};renderStep();
+    });
+    body.querySelector('#lpCopy').addEventListener('click',function(e){
+      var txt='MIS 4 PILARES DE CONTENIDO\\n\\n';
+      pillars.forEach(function(p,i){
+        txt+=(i+1)+'. '+p.name+' ('+p.kind+')\\n   - '+p.ideas[0]+'\\n   - '+p.ideas[1]+'\\n\\n';
+      });
+      var btn=e.target;
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(function(){btn.textContent='¡Copiado! ✓';setTimeout(function(){btn.textContent='Copiar mis pilares';},2000);});
+      }else{btn.textContent='Cópialos manualmente abajo';}
+    });
+  }
+
+  renderStep();
+
+  /* Reveal */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-vis');io.unobserve(en.target);}});
+    },{threshold:.14});
+    root.querySelectorAll('.lp-in').forEach(function(el){io.observe(el);});
+  }else{root.querySelectorAll('.lp-in').forEach(function(el){el.classList.add('is-vis');});}
+})();
+</script>

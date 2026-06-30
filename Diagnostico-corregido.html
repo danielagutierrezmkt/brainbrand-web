@@ -1,0 +1,274 @@
+<!-- ============================================================
+     DANIELA GUTIÉRREZ — SESIÓN DIAGNÓSTICA (bloque HTML Elementor)
+     Mismo sistema visual que la homepage · prefijos lp- · CSS embebido
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;
+  --lp-purple:#bb65ee;
+  --lp-deep:#310075;
+  --lp-green:#a9e700;
+  --lp-dark:#141f33;
+  --lp-gray:#f5f5f5;
+  --lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+
+  font-family:var(--lp-body);
+  color:var(--lp-dark);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+
+  /* full-bleed: rompe el contenedor "boxed" de Elementor */
+  position:relative;
+  width:100vw;
+  max-width:100vw;
+  left:50%;
+  right:50%;
+  margin-left:-50vw;
+  margin-right:-50vw;
+  overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root p{margin:0;}
+.lp-root h1,.lp-root h2,.lp-root h3{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.04;letter-spacing:-.01em;text-transform:uppercase;}
+
+/* ---------- layout ---------- */
+.lp-section{padding:clamp(4.5rem,9vw,8rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+/* ---------- shared ---------- */
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.25rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.6vw,3.4rem);}
+.lp-lead{font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.65;max-width:46ch;}
+.lp-hl{color:var(--lp-lime);}
+.lp-hl-purple{color:var(--lp-purple);}
+.lp-head{max-width:62ch;margin:0 auto;text-align:center;}
+.lp-head .lp-lead{margin:1.25rem auto 0;}
+
+/* ---------- buttons ---------- */
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  font-family:var(--lp-body);font-weight:700;font-size:1rem;line-height:1;
+  padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;cursor:pointer;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+.lp-btn--full{width:100%;}
+
+/* ---------- HERO (centrado, morado) ---------- */
+.lp-hero-c{text-align:center;max-width:880px;margin:0 auto;position:relative;z-index:1;}
+.lp-badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;font-size:.82rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.55rem 1.1rem;border-radius:999px;margin-bottom:1.8rem;
+  background:rgba(169,231,0,.12);border:1px solid rgba(169,231,0,.45);color:var(--lp-green);}
+.lp-hero-c h1{font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;margin-bottom:1.6rem;}
+.lp-hero-c .lp-lead{color:#e7defb;margin:0 auto 2.4rem;max-width:54ch;}
+.lp-hero-c__note{margin-top:1.6rem;font-size:.92rem;color:#b9a8e0;letter-spacing:.02em;}
+.lp-hero-c__glow{position:absolute;width:520px;height:520px;border-radius:50%;background:var(--lp-purple);
+  filter:blur(150px);opacity:.25;top:-200px;left:50%;transform:translateX(-50%);pointer-events:none;}
+
+/* ---------- ¿ES PARA TI? (gris, 4 cards) ---------- */
+.lp-pq__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.lp-pqcard{background:#fff;border:1px solid #e6e6e6;border-radius:20px;padding:2rem 1.75rem;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;height:100%;}
+.lp-pqcard:hover{transform:translateY(-6px);border-color:var(--lp-deep);box-shadow:0 22px 45px rgba(20,31,51,.1);}
+.lp-pqcard__ico{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  font-size:1.7rem;margin-bottom:1.4rem;}
+.lp-ico-1{background:rgba(49,0,117,.1);}
+.lp-ico-2{background:rgba(187,101,238,.18);}
+.lp-ico-3{background:rgba(169,231,0,.2);}
+.lp-ico-4{background:rgba(213,243,121,.4);}
+.lp-pqcard h3{font-size:1.25rem;color:var(--lp-dark);margin-bottom:.7rem;line-height:1.1;}
+.lp-pqcard p{font-size:.97rem;color:#3a4256;line-height:1.6;}
+
+/* ---------- CÓMO FUNCIONA (navy, pasos) ---------- */
+.lp-steps__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.lp-step{background:#1b2742;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2.1rem 1.75rem;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;height:100%;}
+.lp-step:hover{transform:translateY(-6px);border-color:var(--lp-green);box-shadow:0 20px 45px rgba(0,0,0,.35);}
+.lp-step__num{font-family:var(--lp-display);font-size:1.5rem;color:#141f33;width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;}
+.lp-snum-1{background:var(--lp-lime);}
+.lp-snum-2{background:var(--lp-green);}
+.lp-snum-3{background:var(--lp-purple);}
+.lp-snum-4{background:#fff;}
+.lp-step h3{font-size:1.2rem;color:#fff;margin-bottom:.7rem;line-height:1.12;}
+.lp-step p{font-size:.95rem;color:#aeb8cf;line-height:1.6;}
+
+/* ---------- IMPORTANTE + PRECIOS (blanco) ---------- */
+.lp-imp__head{max-width:60ch;margin:0 auto 3.25rem;text-align:center;}
+.lp-price__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.75rem;max-width:920px;margin:0 auto;}
+.lp-pcard{display:flex;flex-direction:column;background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:22px;
+  padding:2.5rem 2.25rem;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+.lp-pcard:hover{transform:translateY(-6px);border-color:var(--lp-purple);box-shadow:0 24px 50px rgba(20,31,51,.12);}
+.lp-pcard__ico{font-size:2rem;margin-bottom:1.1rem;}
+.lp-pcard h3{font-size:1.4rem;color:var(--lp-dark);margin-bottom:.9rem;line-height:1.12;}
+.lp-pcard p{font-size:.98rem;color:#3a4256;line-height:1.65;margin-bottom:1.5rem;flex-grow:1;}
+.lp-pcard__price{font-family:var(--lp-display);font-size:2.6rem;color:var(--lp-deep);line-height:1;margin-bottom:1.5rem;}
+.lp-pcard__price span{font-family:var(--lp-body);font-size:.85rem;font-weight:600;color:#6b7388;margin-left:.5rem;text-transform:none;letter-spacing:0;}
+
+/* ---------- CTA FINAL (morado sólido) ---------- */
+.lp-cta{background:var(--lp-deep);text-align:center;}
+.lp-cta__inner{max-width:760px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.8vw,3.6rem);margin-bottom:1.4rem;}
+.lp-cta p{color:#efe6ff;font-size:1.15rem;line-height:1.7;margin:0 auto 2.4rem;max-width:50ch;}
+
+/* ---------- reveal ---------- */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .lp-pq__grid,.lp-steps__grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:680px){
+  .lp-pq__grid,.lp-steps__grid,.lp-price__grid{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ============ HERO ============ -->
+  <section class="lp-section lp-bg-purple">
+    <span class="lp-hero-c__glow"></span>
+    <div class="lp-inner">
+      <div class="lp-hero-c lp-reveal">
+        <span class="lp-badge">✨ 100% Gratuita · 20 minutos</span>
+        <h1>Sesión Diagnóstica <span class="lp-hl">Gratuita</span></h1>
+        <p class="lp-lead">20 minutos conmigo para revisar tu marca, identificar qué está frenando tu crecimiento y darte una guía clara de por dónde empezar. Sin costo. Sin compromiso.</p>
+        <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/formulario-sesion-gratis">Agendar mi sesión gratis →</a>
+        <p class="lp-hero-c__note">Paso 1: Llenar formulario · Paso 2: Agendar fecha</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ¿ES PARA TI? ============ -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal" style="margin-bottom:3.5rem;">
+        <span class="lp-label lp-label--onlight">¿Es para ti?</span>
+        <h2 class="lp-h2">Esta sesión gratuita es para ti si...</h2>
+        <p class="lp-lead">Tienes una marca personal o de negocio en redes sociales pero sientes que algo no está funcionando. No sabes exactamente qué está mal, pero sabes que tus resultados no reflejan el esfuerzo que le pones.</p>
+      </div>
+      <div class="lp-pq__grid">
+        <div class="lp-pqcard lp-reveal">
+          <div class="lp-pqcard__ico lp-ico-1">🎯</div>
+          <h3>Publicas pero no conviertes</h3>
+          <p>Tienes contenido frecuente pero no se traduce en clientes, ventas o el crecimiento que esperabas.</p>
+        </div>
+        <div class="lp-pqcard lp-reveal">
+          <div class="lp-pqcard__ico lp-ico-2">🧠</div>
+          <h3>No sabes por dónde empezar</h3>
+          <p>Hay mil cosas que podrías mejorar pero no tienes claro qué priorizar ni qué hacer primero.</p>
+        </div>
+        <div class="lp-pqcard lp-reveal">
+          <div class="lp-pqcard__ico lp-ico-3">💭</div>
+          <h3>Sientes que algo falta</h3>
+          <p>Tu mensaje no conecta, tu contenido no destaca, tu marca no comunica claridad. Pero no sabes cómo arreglarlo.</p>
+        </div>
+        <div class="lp-pqcard lp-reveal">
+          <div class="lp-pqcard__ico lp-ico-4">⚡</div>
+          <h3>Quieres claridad antes de invertir</h3>
+          <p>Antes de contratar servicios completos, quieres entender qué necesita tu marca realmente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO FUNCIONA EL PROCESO ============ -->
+  <section class="lp-section lp-bg-navy">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal" style="margin-bottom:3.5rem;">
+        <span class="lp-label lp-label--ondark">Qué hablamos en la sesión</span>
+        <h2 class="lp-h2" style="color:#fff;">Cómo funciona el proceso</h2>
+      </div>
+      <div class="lp-steps__grid">
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__num lp-snum-1">00</div>
+          <h3>Formulario previo</h3>
+          <p>Antes de agendar, llenas un formulario breve con información sobre tu marca. Esto me da contexto para investigar antes de la reunión.</p>
+        </div>
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__num lp-snum-2">01</div>
+          <h3>Revisión rápida de tu marca</h3>
+          <p>Miramos tu perfil, tu contenido, tu mensaje. Identifico qué está funcionando y qué no a simple vista.</p>
+        </div>
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__num lp-snum-3">02</div>
+          <h3>Conversación sobre tu situación</h3>
+          <p>Hablamos de tus objetivos, tus frustraciones, qué has intentado, qué sientes que falla. No es un checklist, es una conversación real.</p>
+        </div>
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__num lp-snum-4">03</div>
+          <h3>Identificación del problema</h3>
+          <p>Te digo exactamente qué creo que está frenando tu crecimiento. El problema raíz, no solo síntomas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPORTANTE + SERVICIOS ============ -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-imp__head lp-reveal">
+        <span class="lp-label lp-label--onlight">Importante</span>
+        <h2 class="lp-h2">Esta sesión <span class="lp-hl-purple">NO</span> incluye seguimiento, estrategias ni entregables.</h2>
+        <p class="lp-lead" style="margin:1.25rem auto 0;">Es una sesión diagnóstica de 20 minutos para entender cuál es tu siguiente paso. Si necesitas un acompañamiento más profundo, tengo estos servicios:</p>
+      </div>
+      <div class="lp-price__grid">
+        <div class="lp-pcard lp-reveal">
+          <div class="lp-pcard__ico">🎯</div>
+          <h3>Diagnóstico Estratégico de Marca</h3>
+          <p>60 minutos + plan de acción + seguimiento por WhatsApp + segunda llamada explicativa. Para cuando necesitas claridad total y un plan para ejecutar.</p>
+          <div class="lp-pcard__price">$87</div>
+          <a class="lp-btn lp-btn--primary lp-btn--full" href="https://danielagutierrezmkt.com/diagnostico-estrategico">Ver diagnóstico completo →</a>
+        </div>
+        <div class="lp-pcard lp-reveal">
+          <div class="lp-pcard__ico">🎓</div>
+          <h3>Mentoría 1:1 para Social Media Managers</h3>
+          <p>4 clases en vivo + seguimiento semanal + revisión de tareas. Para cuando quieres construir tu marca de SMM desde cero con acompañamiento personalizado.</p>
+          <div class="lp-pcard__price">$127<span>de contado</span></div>
+          <a class="lp-btn lp-btn--primary lp-btn--full" href="https://danielagutierrezmkt.com/mentoria-para-smm">Ver mentoría completa →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="lp-section lp-cta">
+    <div class="lp-inner lp-cta__inner lp-reveal">
+      <span class="lp-label lp-label--ondark" style="color:var(--lp-lime);">El siguiente paso</span>
+      <h2>¿Lista para tener claridad de por dónde empezar?</h2>
+      <p>20 minutos gratuitos que pueden cambiar completamente tu perspectiva sobre tu marca. Sin costo. Sin compromiso. Solo claridad.</p>
+      <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/formulario-sesion-gratis">Llenar formulario y agendar →</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>

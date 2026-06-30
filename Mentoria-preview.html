@@ -1,0 +1,358 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mentoría — preview</title></head><body style="margin:0"><!-- ============================================================
+     MENTORÍA 1:1 PARA SMM (un solo bloque HTML para Elementor)
+     Mismo sistema visual que el resto del sitio · Million Design + DM Sans · prefijos lp-
+     ------------------------------------------------------------
+     RECURSOS a subir a tu Biblioteca de Medios (revisa las URLs):
+       dandoclases.jpg · conoceme.jpg
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;--lp-purple:#bb65ee;--lp-deep:#310075;--lp-green:#a9e700;
+  --lp-dark:#141f33;--lp-gray:#f5f5f5;--lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+  font-family:var(--lp-body);color:var(--lp-dark);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  position:relative;width:100vw;max-width:100vw;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root :where(p){margin:0;}/* :where()=0 especificidad: resetea <p> sin pisar márgenes de clases (.lp-paynote, etc.) */
+.lp-root h1,.lp-root h2,.lp-root h3,.lp-root h4{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;}
+
+.lp-section{padding:clamp(4rem,8vw,7rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1.1rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.4vw,3.2rem);}
+.lp-lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.7;}
+.lp-hl{color:var(--lp-lime);}
+.lp-head{max-width:62ch;margin:0 auto 3rem;text-align:center;}
+
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-family:var(--lp-body);
+  font-weight:700;font-size:1rem;line-height:1;padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+.lp-btn--ghost{background:transparent;color:#fff !important;border-color:rgba(255,255,255,.4);}
+.lp-btn--ghost:hover{border-color:var(--lp-lime);color:var(--lp-lime) !important;transform:translateY(-3px);}
+
+.lp-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
+.lp-media{border-radius:22px;overflow:hidden;background:#0f1626;box-shadow:0 24px 50px rgba(0,0,0,.28);}
+.lp-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.lp-ar45{aspect-ratio:4/5;}.lp-ar34{aspect-ratio:3/4;}
+
+/* HERO */
+.lp-hero h1{color:#fff;font-size:clamp(2.2rem,4.8vw,3.7rem);margin-bottom:1.3rem;}
+.lp-hero__sub{color:#e7defb;margin-bottom:1.6rem;max-width:52ch;}
+.lp-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.8rem;}
+.lp-pill{display:flex;flex-direction:column;gap:.1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;padding:.6rem .9rem;}
+.lp-pill b{color:var(--lp-lime);font-size:.92rem;font-weight:700;line-height:1.1;}
+.lp-pill span{color:#cbb0e8;font-size:.74rem;font-weight:600;letter-spacing:.03em;}
+.lp-hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px;}
+.lp-hero__price{color:#fff;font-size:.95rem;line-height:1.45;}
+.lp-hero__price b{color:var(--lp-lime);font-family:var(--lp-display);font-size:1.35rem;letter-spacing:.01em;margin-right:.15em;}
+.lp-hero__price s{color:#9f93c4;}
+
+/* PROBLEMA */
+.lp-prob__copy h2{color:var(--lp-dark);font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.1;margin-bottom:1.4rem;}
+.lp-prob__copy h2 .lp-mk{background:linear-gradient(transparent 62%,var(--lp-lime) 62%);padding:0 .08em;}
+.lp-prob__copy p{color:#3a4256;font-size:1.05rem;line-height:1.75;margin-bottom:1.2rem;max-width:60ch;}
+.lp-prob__copy p strong{color:var(--lp-deep);font-weight:700;}
+
+/* FEATURE GRID (qué incluye) */
+.lp-feat{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.lp-fcard{background:#1b2742;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:24px 22px;height:100%;
+  transition:transform .25s,border-color .25s,box-shadow .25s;}
+.lp-fcard:hover{transform:translateY(-6px);border-color:var(--lp-green);box-shadow:0 22px 44px rgba(0,0,0,.35);}
+.lp-fcard__ic{font-size:1.7rem;line-height:1;margin-bottom:1rem;display:block;}
+.lp-fcard h4{color:#fff;font-size:1.04rem;line-height:1.15;margin-bottom:.55rem;}
+.lp-fcard p{color:#9aa6c0;font-size:.88rem;line-height:1.55;}
+
+/* CLASES (4 pasos) */
+.lp-classes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.lp-class{display:flex;gap:18px;background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:18px;padding:26px 24px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;}
+.lp-class:hover{transform:translateY(-6px);border-color:var(--lp-purple);box-shadow:0 22px 44px rgba(187,101,238,.16);}
+.lp-class__n{flex-shrink:0;font-family:var(--lp-display);font-size:1.2rem;color:#fff;background:var(--lp-deep);width:52px;height:52px;
+  border-radius:13px;display:flex;align-items:center;justify-content:center;}
+.lp-class__tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lp-deep);margin-bottom:.4rem;}
+.lp-class h4{color:var(--lp-dark);font-size:1.18rem;line-height:1.12;margin-bottom:.55rem;}
+.lp-class p{color:#3a4256;font-size:.92rem;line-height:1.6;}
+
+/* ¿ES PARA TI? */
+.lp-fit{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+.lp-fitcard{border-radius:20px;padding:30px 28px;height:100%;}
+.lp-fitcard--yes{background:#fff;border:2px solid var(--lp-green);box-shadow:0 18px 40px rgba(169,231,0,.14);}
+.lp-fitcard--no{background:#fff;border:1px solid #e6e6e6;}
+.lp-fitcard h3{font-size:1.3rem;line-height:1.1;margin-bottom:1.3rem;display:flex;align-items:center;gap:.5rem;}
+.lp-fitcard--yes h3{color:var(--lp-deep);}
+.lp-fitcard--no h3{color:#6b7388;}
+.lp-fitcard ul{list-style:none;margin:0;padding:0;}
+.lp-fitcard li{font-size:.94rem;line-height:1.5;padding-left:1.9rem;position:relative;margin-bottom:.85rem;color:#2a3145;}
+.lp-fitcard li:last-child{margin-bottom:0;}
+.lp-fitcard--yes li::before{content:"✓";position:absolute;left:0;top:-.05rem;color:#fff;background:var(--lp-green);
+  width:1.35rem;height:1.35rem;border-radius:50%;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.lp-fitcard--no li{color:#8a91a3;}
+.lp-fitcard--no li::before{content:"✕";position:absolute;left:0;top:-.05rem;color:#b6bccb;background:#eef0f4;
+  width:1.35rem;height:1.35rem;border-radius:50%;font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+
+/* PRECIOS */
+.lp-pay{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:860px;margin:0 auto;align-items:stretch;}
+.lp-paycard{display:flex;flex-direction:column;background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:22px;
+  padding:32px 30px;position:relative;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.lp-paycard:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(20,31,51,.12);}
+.lp-paycard--best{border-color:var(--lp-purple);box-shadow:0 18px 40px rgba(187,101,238,.18);}
+.lp-paycard__flag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--lp-green);color:#141f33;
+  font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.34rem .9rem;border-radius:999px;white-space:nowrap;}
+.lp-paycard__tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lp-deep);margin-bottom:.9rem;}
+.lp-paycard__price{font-family:var(--lp-display);font-size:3rem;color:var(--lp-deep);line-height:1;margin-bottom:.3rem;}
+.lp-paycard__price small{font-family:var(--lp-body);font-size:1rem;color:#6b7388;font-weight:700;}
+.lp-paycard__meta{font-size:.86rem;color:#6b7388;font-weight:600;margin-bottom:1.4rem;}
+.lp-paycard ul{list-style:none;margin:0 0 1.6rem;padding:0;}
+.lp-paycard li{font-size:.9rem;color:#2a3145;line-height:1.45;padding-left:1.4rem;position:relative;margin-bottom:.6rem;}
+.lp-paycard li::before{content:"✓";position:absolute;left:0;color:var(--lp-green);font-weight:800;}
+.lp-paycard .lp-btn{margin-top:auto;width:100%;}
+.lp-paynote{text-align:center;color:#6b7388;font-size:.9rem;margin:1.8rem auto 0;max-width:60ch;}
+
+/* CTA */
+.lp-cta{text-align:center;}
+.lp-cta__in{max-width:760px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);margin-bottom:1.3rem;}
+.lp-cta h2 .lp-hl{color:var(--lp-lime);}
+.lp-cta p{color:#efe6ff;font-size:1.12rem;line-height:1.7;margin:0 auto 2.2rem;max-width:52ch;}
+
+/* reveal */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* responsive */
+@media(max-width:1024px){
+  .lp-feat{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:880px){
+  .lp-split{grid-template-columns:1fr;}
+  .lp-split .lp-media{order:-1;max-width:420px;margin:0 auto;width:100%;}
+  .lp-classes,.lp-fit,.lp-pay{grid-template-columns:1fr;}
+}
+@media(max-width:620px){
+  .lp-feat{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+  .lp-class{flex-direction:column;gap:12px;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ===== HERO ===== -->
+  <section class="lp-section lp-bg-purple lp-hero">
+    <div class="lp-inner lp-split lp-reveal">
+      <div>
+        <span class="lp-label lp-label--ondark">Mentoría hiperpersonalizada</span>
+        <h1>Mentoría 1:1 para <span class="lp-hl">Social Media Managers</span> en formación.</h1>
+        <p class="lp-lead lp-hero__sub">4 clases en vivo conmigo + seguimiento semanal por WhatsApp + revisión de tareas, para que construyas tu marca de Social Media Manager desde cero y arranques con bases sólidas.</p>
+        <div class="lp-pills">
+          <div class="lp-pill"><b>4 clases</b><span>En vivo 1:1</span></div>
+          <div class="lp-pill"><b>Seguimiento</b><span>Por WhatsApp</span></div>
+          <div class="lp-pill"><b>Marca lista</b><span>Para arrancar</span></div>
+        </div>
+        <div class="lp-hero__cta">
+          <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero la mentoría →</a>
+          <p class="lp-hero__price"><b>$127</b> pago de contado<br><s>o $150</s> en 3 cuotas cada 15 días</p>
+        </div>
+      </div>
+      <div class="lp-media lp-ar34">
+        <img src="imagenes-optimizadas/dandoclases.jpg" alt="Daniela Gutiérrez dando clases">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EL PROBLEMA REAL ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner lp-split lp-reveal">
+      <div class="lp-media lp-ar45">
+        <img src="imagenes-optimizadas/conoceme.jpg" alt="Daniela Gutiérrez">
+      </div>
+      <div class="lp-prob__copy">
+        <span class="lp-label lp-label--onlight">El problema real</span>
+        <h2>Sabes que quieres ser Social Media Manager. Pero <span class="lp-mk">no sabes por dónde empezar.</span></h2>
+        <p>Hay mil cursos, mil videos en YouTube, mil «expertos» diciendo cosas contradictorias. Y tú sigues sin saber cómo construir tu marca personal, cómo conseguir tu primer cliente, cómo cobrar sin sentirte incómoda o cómo armar un portafolio cuando no tienes experiencia.</p>
+        <p><strong>No necesitas otro curso genérico.</strong> Necesitas que alguien te tome de la mano, te guíe paso a paso y te ayude a construir TU marca, no una copia de otra persona.</p>
+        <p>Esta mentoría no es un curso pregrabado donde estás sola. Es un acompañamiento real y personalizado, donde trabajo contigo cada semana para que termines con tu marca lista, tu perfil optimizado, tu diferencial claro y hasta tus primeros contenidos corregidos por mí.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUÉ INCLUYE ===== -->
+  <section class="lp-section lp-bg-navy">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--ondark">Qué incluye</span>
+        <h2 class="lp-h2" style="color:#fff;">Todo lo que necesitas para arrancar.</h2>
+      </div>
+      <div class="lp-feat lp-reveal">
+        <div class="lp-fcard"><span class="lp-fcard__ic">🎥</span><h4>4 clases en vivo 1:1 conmigo</h4><p>No es grupal. No es pregrabado. Son 4 sesiones personalizadas donde trabajamos juntas en tu marca, tu posicionamiento, tu contenido y tu estrategia comercial.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">💬</span><h4>Seguimiento semanal por WhatsApp</h4><p>Entre clase y clase hablamos por WhatsApp. Revisamos tus avances, resolvemos dudas y ajustamos lo que sea necesario. No estás sola.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">📝</span><h4>Revisión de tareas semanales</h4><p>Cada semana tienes tareas específicas. Yo las reviso, te doy feedback y nos aseguramos de que cada paso quede bien antes de avanzar al siguiente.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">📱</span><h4>Tu perfil de Instagram optimizado</h4><p>Terminas con tu perfil listo: bio clara, destacadas organizadas, feed con sentido. Todo funcionando como tu carta de presentación.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">⚡</span><h4>Tu diferencial y bases de marca</h4><p>Defines exactamente qué te hace diferente, a quién le hablas, cómo comunicas y por qué deberían elegirte a ti y no a otra persona.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">🗓️</span><h4>Tu primer calendario de contenido</h4><p>Si eres entregada y cumples con las tareas, terminamos con tu primer calendario listo. Y si te fajas más, hasta creamos y corregimos tus primeros contenidos.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">📂</span><h4>Recursos descargables</h4><p>Plantillas de Notion, guías, checklists, prompts y todo lo que necesites para ejecutar sin depender de mí después.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">🚀</span><h4>Marca lista para arrancar</h4><p>Al terminar, tienes TODO listo para empezar a buscar clientes con confianza y profesionalismo. Sin excusas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTENIDO / 4 CLASES ===== -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">Contenido de la mentoría</span>
+        <h2 class="lp-h2">Las 4 clases que construyen tu marca.</h2>
+      </div>
+      <div class="lp-classes lp-reveal">
+        <div class="lp-class">
+          <div class="lp-class__n">01</div>
+          <div>
+            <p class="lp-class__tag">Clase 1</p>
+            <h4>Construcción de marca personal</h4>
+            <p>Definimos tu diferencial, tu propuesta de valor, tu voz, tu estilo y cómo comunicar quién eres de forma clara y atractiva. Aquí nace tu marca.</p>
+          </div>
+        </div>
+        <div class="lp-class">
+          <div class="lp-class__n">02</div>
+          <div>
+            <p class="lp-class__tag">Clase 2</p>
+            <h4>Cómo conseguir tus primeros clientes</h4>
+            <p>Estrategias reales para conseguir clientes sin portafolio: cómo presentarte, qué decir, dónde buscar y cómo vender sin sentirte vendedora.</p>
+          </div>
+        </div>
+        <div class="lp-class">
+          <div class="lp-class__n">03</div>
+          <div>
+            <p class="lp-class__tag">Clase 3</p>
+            <h4>Portafolio y presencia digital</h4>
+            <p>Armamos tu portafolio aunque no tengas clientes, optimizamos tu perfil de Instagram y construimos tu presencia profesional en redes.</p>
+          </div>
+        </div>
+        <div class="lp-class">
+          <div class="lp-class__n">04</div>
+          <div>
+            <p class="lp-class__tag">Clase 4</p>
+            <h4>Pricing y propuestas comerciales</h4>
+            <p>Cómo fijar precios sin miedo, cómo armar propuestas que vendan, cómo cobrar lo justo y cómo presentarte de forma profesional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ¿ES PARA TI? ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">¿Es para ti?</span>
+        <h2 class="lp-h2">Esta mentoría es para ti si…</h2>
+      </div>
+      <div class="lp-fit lp-reveal">
+        <div class="lp-fitcard lp-fitcard--yes">
+          <h3>✅ Sí es para ti</h3>
+          <ul>
+            <li>Eres estudiante o recién egresada de mercadeo, comunicación, diseño o áreas afines.</li>
+            <li>Quieres empezar a trabajar como Social Media Manager pero no sabes por dónde arrancar.</li>
+            <li>No tienes experiencia ni portafolio, pero tienes ganas de aprender y trabajar.</li>
+            <li>Quieres alguien que te guíe paso a paso, no solo videos pregrabados.</li>
+            <li>Estás dispuesta a hacer las tareas, cumplir y comprometerte con el proceso.</li>
+            <li>Quieres construir tu marca de forma profesional desde el inicio.</li>
+          </ul>
+        </div>
+        <div class="lp-fitcard lp-fitcard--no">
+          <h3>✕ No es para ti si…</h3>
+          <ul>
+            <li>Buscas fórmulas mágicas para conseguir clientes sin esfuerzo.</li>
+            <li>No estás dispuesta a hacer tareas ni comprometerte con el proceso.</li>
+            <li>Quieres solo información teórica sin aplicarla a tu marca real.</li>
+            <li>Esperas que todo quede listo sin tu participación activa.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRECIOS ===== -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">Invierte en tu futuro</span>
+        <h2 class="lp-h2">Elige tu forma de pago.</h2>
+      </div>
+      <div class="lp-pay lp-reveal">
+        <div class="lp-paycard lp-paycard--best">
+          <span class="lp-paycard__flag">Ahorra $23</span>
+          <p class="lp-paycard__tag">Pago de contado</p>
+          <div class="lp-paycard__price">$127 <small>USD</small></div>
+          <p class="lp-paycard__meta">Pago único</p>
+          <ul>
+            <li>4 clases en vivo 1:1</li>
+            <li>Seguimiento semanal por WhatsApp</li>
+            <li>Revisión de tareas + feedback</li>
+            <li>Recursos descargables</li>
+          </ul>
+          <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero esta opción</a>
+        </div>
+        <div class="lp-paycard">
+          <p class="lp-paycard__tag">Pago en cuotas</p>
+          <div class="lp-paycard__price">$150 <small>USD</small></div>
+          <p class="lp-paycard__meta">3 cuotas de $50 cada 15 días</p>
+          <ul>
+            <li>4 clases en vivo 1:1</li>
+            <li>Seguimiento semanal por WhatsApp</li>
+            <li>Revisión de tareas + feedback</li>
+            <li>Recursos descargables</li>
+          </ul>
+          <a class="lp-btn lp-btn--ghost" style="color:#310075 !important;border-color:rgba(49,0,117,.35);" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero pagar en cuotas</a>
+        </div>
+      </div>
+      <p class="lp-paynote lp-reveal">¿Tienes dudas sobre cuál opción te conviene? Escríbeme y lo vemos juntas antes de que decidas.</p>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="lp-section lp-bg-navy lp-cta">
+    <div class="lp-inner lp-cta__in lp-reveal">
+      <span class="lp-label lp-label--ondark">El siguiente paso</span>
+      <h2>¿Lista para construir tu marca y arrancar como <span class="lp-hl">Social Media Manager?</span></h2>
+      <p>No más adivinar. No más soledad. Te tomo de la mano y construimos tu marca juntas, paso a paso, hasta que estés lista para arrancar.</p>
+      <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero la mentoría</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.10,rootMargin:'0px 0px -6% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>
+</body></html>

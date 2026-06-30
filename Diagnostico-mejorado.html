@@ -1,0 +1,277 @@
+<!-- ============================================================
+     DIAGNÓSTICO ESTRATÉGICO DE MARCA (un solo bloque HTML para Elementor)
+     Mismo sistema visual que el resto del sitio · Million Design + DM Sans · prefijos lp-
+     ------------------------------------------------------------
+     IMÁGENES (placeholders — cambia el link por el de tu Biblioteca de Medios):
+       HERO     -> .../uploads/2026/06/diagnostico-hero.jpg
+       PROBLEMA -> .../uploads/2026/06/diagnostico-problema.jpg
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;--lp-purple:#bb65ee;--lp-deep:#310075;--lp-green:#a9e700;
+  --lp-dark:#141f33;--lp-gray:#f5f5f5;--lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+  font-family:var(--lp-body);color:var(--lp-dark);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  position:relative;width:100vw;max-width:100vw;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root :where(p){margin:0;}/* :where()=0 especificidad: resetea <p> sin pisar márgenes de clases */
+.lp-root h1,.lp-root h2,.lp-root h3,.lp-root h4{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;}
+
+.lp-section{padding:clamp(4rem,8vw,7rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1.1rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.4vw,3.2rem);}
+.lp-lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.7;}
+.lp-hl{color:var(--lp-lime);}
+.lp-head{max-width:62ch;margin:0 auto 3rem;text-align:center;}
+
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-family:var(--lp-body);
+  font-weight:700;font-size:1rem;line-height:1;padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+.lp-btn--ghost{background:transparent;color:#fff !important;border-color:rgba(255,255,255,.4);}
+.lp-btn--ghost:hover{border-color:var(--lp-lime);color:var(--lp-lime) !important;transform:translateY(-3px);}
+
+.lp-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
+.lp-media{border-radius:22px;overflow:hidden;background:#0f1626;box-shadow:0 24px 50px rgba(0,0,0,.28);}
+.lp-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.lp-ar45{aspect-ratio:4/5;}.lp-ar34{aspect-ratio:3/4;}
+
+/* HERO */
+.lp-hero h1{color:#fff;font-size:clamp(2.3rem,5vw,4rem);margin-bottom:1.3rem;}
+.lp-hero__sub{color:#e7defb;margin-bottom:1.8rem;max-width:52ch;}
+.lp-hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px;}
+.lp-hero__price{color:#fff;font-size:.95rem;line-height:1.45;}
+.lp-hero__price b{color:var(--lp-lime);font-family:var(--lp-display);font-size:1.7rem;letter-spacing:.01em;margin-right:.2em;}
+
+/* PROBLEMA */
+.lp-prob__copy h2{color:var(--lp-dark);font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.1;margin-bottom:1.4rem;}
+.lp-prob__copy h2 .lp-mk{background:linear-gradient(transparent 62%,var(--lp-lime) 62%);padding:0 .08em;}
+.lp-prob__copy p{color:#3a4256;font-size:1.05rem;line-height:1.75;margin-bottom:1.2rem;max-width:60ch;}
+.lp-prob__copy p strong{color:var(--lp-deep);font-weight:700;}
+.lp-quote{margin:0 0 1.4rem;padding:1rem 0 1rem 1.4rem;border-left:4px solid var(--lp-purple);
+  font-family:var(--lp-display);text-transform:uppercase;font-size:clamp(1.05rem,1.8vw,1.35rem);line-height:1.15;
+  color:var(--lp-deep);letter-spacing:-.01em;}
+
+/* FEATURE GRID (qué incluye) — 3 col */
+.lp-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.lp-fcard{background:#1b2742;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:26px 24px;height:100%;
+  transition:transform .25s,border-color .25s,box-shadow .25s;}
+.lp-fcard:hover{transform:translateY(-6px);border-color:var(--lp-green);box-shadow:0 22px 44px rgba(0,0,0,.35);}
+.lp-fcard__ic{font-size:1.7rem;line-height:1;margin-bottom:1rem;display:block;}
+.lp-fcard h4{color:#fff;font-size:1.08rem;line-height:1.15;margin-bottom:.55rem;}
+.lp-fcard p{color:#9aa6c0;font-size:.9rem;line-height:1.6;}
+
+/* CÓMO FUNCIONA — 3 pasos */
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.lp-step{background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:18px;padding:30px 26px;height:100%;
+  transition:transform .25s,border-color .25s,box-shadow .25s;}
+.lp-step:hover{transform:translateY(-6px);border-color:var(--lp-purple);box-shadow:0 22px 44px rgba(187,101,238,.16);}
+.lp-step__n{font-family:var(--lp-display);font-size:1.3rem;color:#fff;background:var(--lp-deep);width:54px;height:54px;
+  border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.lp-step h4{color:var(--lp-dark);font-size:1.18rem;line-height:1.12;margin-bottom:.6rem;}
+.lp-step p{color:#3a4256;font-size:.94rem;line-height:1.65;}
+
+/* ¿ES PARA TI? */
+.lp-fit{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+.lp-fitcard{border-radius:20px;padding:30px 28px;height:100%;}
+.lp-fitcard--yes{background:#fff;border:2px solid var(--lp-green);box-shadow:0 18px 40px rgba(169,231,0,.14);}
+.lp-fitcard--no{background:#fff;border:1px solid #e6e6e6;}
+.lp-fitcard h3{font-size:1.3rem;line-height:1.1;margin-bottom:1.3rem;display:flex;align-items:center;gap:.5rem;}
+.lp-fitcard--yes h3{color:var(--lp-deep);}
+.lp-fitcard--no h3{color:#6b7388;}
+.lp-fitcard ul{list-style:none;margin:0;padding:0;}
+.lp-fitcard li{font-size:.94rem;line-height:1.5;padding-left:1.9rem;position:relative;margin-bottom:.85rem;color:#2a3145;}
+.lp-fitcard li:last-child{margin-bottom:0;}
+.lp-fitcard--yes li::before{content:"✓";position:absolute;left:0;top:-.05rem;color:#fff;background:var(--lp-green);
+  width:1.35rem;height:1.35rem;border-radius:50%;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.lp-fitcard--no li{color:#8a91a3;}
+.lp-fitcard--no li::before{content:"✕";position:absolute;left:0;top:-.05rem;color:#b6bccb;background:#eef0f4;
+  width:1.35rem;height:1.35rem;border-radius:50%;font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+
+/* CTA */
+.lp-cta{text-align:center;}
+.lp-cta__in{max-width:760px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);margin-bottom:1.3rem;}
+.lp-cta h2 .lp-hl{color:var(--lp-lime);}
+.lp-cta p{color:#efe6ff;font-size:1.12rem;line-height:1.7;margin:0 auto 2.2rem;max-width:52ch;}
+
+/* reveal */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* responsive */
+@media(max-width:1024px){
+  .lp-feat{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:880px){
+  .lp-split{grid-template-columns:1fr;}
+  .lp-split .lp-media{order:-1;max-width:420px;margin:0 auto;width:100%;}
+  .lp-steps,.lp-fit{grid-template-columns:1fr;}
+}
+@media(max-width:620px){
+  .lp-feat{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ===== HERO ===== -->
+  <section class="lp-section lp-bg-purple lp-hero">
+    <div class="lp-inner lp-split lp-reveal">
+      <div>
+        <span class="lp-label lp-label--ondark">Primer paso</span>
+        <h1>Diagnóstico Estratégico de <span class="lp-hl">Marca.</span></h1>
+        <p class="lp-lead lp-hero__sub">60 minutos + plan de acción para identificar exactamente por qué tu marca no convierte y qué necesita para empezar a hacerlo. No solo números: también tu energía, tu visión y tu mentalidad frente al negocio.</p>
+        <div class="lp-hero__cta">
+          <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Agendar diagnóstico →</a>
+          <p class="lp-hero__price"><b>$87</b> Sesión + Plan de acción + Seguimiento</p>
+        </div>
+      </div>
+      <div class="lp-media lp-ar34">
+        <!-- CAMBIA ESTE LINK por el de tu Biblioteca de Medios -->
+        <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/diagnostico-hero.jpg" alt="Daniela Gutiérrez en sesión de diagnóstico de marca">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EL PROBLEMA REAL ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner lp-split lp-reveal">
+      <div class="lp-media lp-ar45">
+        <!-- CAMBIA ESTE LINK por el de tu Biblioteca de Medios -->
+        <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/diagnostico-problema.jpg" alt="Daniela Gutiérrez">
+      </div>
+      <div class="lp-prob__copy">
+        <span class="lp-label lp-label--onlight">El problema real</span>
+        <h2>A veces el problema no está en las <span class="lp-mk">estadísticas.</span></h2>
+        <p>Tu cuenta puede tener buenas métricas, contenido frecuente, diseño pulido. Pero si tu marca no convierte, algo más está pasando. Y muchas veces ese «algo más» no aparece en Google Analytics.</p>
+        <p class="lp-quote">Tu negocio es un reflejo directo de tu estado interno.</p>
+        <p>Si tú no estás clara, tu marca tampoco lo estará. Si tú no confías en lo que vendes, nadie más lo hará.</p>
+        <p><strong>Este no es una auditoría fría de números.</strong> Es una sesión de 60 minutos donde miramos tu marca desde todos los ángulos: tu mensaje, tu posicionamiento, tu contenido, tus procesos de venta… y también tu energía, tu claridad y tu relación emocional con lo que haces.</p>
+        <p>Porque a veces el negocio no funciona simplemente porque su dueña no tiene la energía puesta en él. O porque vende desde la culpa, desde el miedo o desde la urgencia. Y eso se nota. Siempre se nota.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUÉ INCLUYE ===== -->
+  <section class="lp-section lp-bg-navy">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--ondark">Qué incluye</span>
+        <h2 class="lp-h2" style="color:#fff;">Una mirada completa a tu marca.</h2>
+      </div>
+      <div class="lp-feat lp-reveal">
+        <div class="lp-fcard"><span class="lp-fcard__ic">🎯</span><h4>Revisión estratégica y comercial</h4><p>Analizamos tu mensaje, tu posicionamiento, tu propuesta de valor, tu embudo de ventas, tu contenido y tu comunicación. Identificamos qué funciona y qué no.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">🧠</span><h4>Diagnóstico de mentalidad y energía</h4><p>Conversamos sobre tu relación con tu negocio, tus miedos, tus bloqueos, tu claridad y tu confianza. Si tú no estás alineada con lo que vendes, nadie lo comprará.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">📋</span><h4>Plan de acción inmediato</h4><p>No te dejo con un «está todo mal». Te entrego un plan claro, priorizado y ejecutable para que sepas exactamente qué hacer primero.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">🎙️</span><h4>Sesión de 60 minutos en vivo</h4><p>Una conversación real, profunda y honesta. No es un formulario automatizado: es una sesión conmigo, en vivo, donde hablamos de tu marca como si fuera mía.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">💬</span><h4>Seguimiento por WhatsApp</h4><p>No termina con la sesión. Tienes seguimiento directo por WhatsApp para resolver dudas o ajustar el plan mientras lo implementas.</p></div>
+        <div class="lp-fcard"><span class="lp-fcard__ic">🔁</span><h4>Segunda llamada explicativa</h4><p>Una segunda sesión para revisar el plan en detalle, resolver dudas y asegurarnos de que tienes claridad total sobre los siguientes pasos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CÓMO FUNCIONA ===== -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">Cómo funciona</span>
+        <h2 class="lp-h2">Tres pasos simples.</h2>
+      </div>
+      <div class="lp-steps lp-reveal">
+        <div class="lp-step">
+          <div class="lp-step__n">01</div>
+          <h4>Agendas la sesión</h4>
+          <p>Me escribes por WhatsApp, coordinamos fecha y hora, y te envío un formulario breve para conocer tu situación antes de la llamada.</p>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__n">02</div>
+          <h4>Sesión de 60 minutos</h4>
+          <p>Conversamos en vivo sobre tu marca, tu mensaje, tu propuesta, tus ventas, tu contenido, tu energía y tu relación con el negocio. Todo en una sola sesión.</p>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__n">03</div>
+          <h4>Recibes tu plan de acción</h4>
+          <p>Al finalizar, te entrego un plan de acción priorizado con los pasos exactos que necesitas dar para empezar a ver resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ¿ES PARA TI? ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">¿Es para ti?</span>
+        <h2 class="lp-h2">Este diagnóstico es para ti si…</h2>
+      </div>
+      <div class="lp-fit lp-reveal">
+        <div class="lp-fitcard lp-fitcard--yes">
+          <h3>✅ Sí es para ti</h3>
+          <ul>
+            <li>Estás trabajando en tu marca pero no ves resultados reales en ventas.</li>
+            <li>Sientes que algo no está funcionando, pero no sabes exactamente qué.</li>
+            <li>Tu contenido tiene buena respuesta pero no se traduce en clientes.</li>
+            <li>Tienes bloqueos emocionales o mentales con tu negocio y sabes que eso está afectando.</li>
+            <li>Quieres una mirada externa, honesta y estratégica de alguien que entiende el fondo.</li>
+            <li>Estás lista para hacer cambios reales, no solo cosméticos.</li>
+          </ul>
+        </div>
+        <div class="lp-fitcard lp-fitcard--no">
+          <h3>✕ No es para ti si…</h3>
+          <ul>
+            <li>Buscas que alguien te diga que todo está perfecto.</li>
+            <li>Quieres solo un checklist técnico sin profundizar.</li>
+            <li>No estás dispuesta a revisar tu mentalidad y tu energía frente al negocio.</li>
+            <li>Esperas resultados mágicos sin implementar nada.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="lp-section lp-bg-navy lp-cta">
+    <div class="lp-inner lp-cta__in lp-reveal">
+      <span class="lp-label lp-label--ondark">El siguiente paso</span>
+      <h2>¿Lista para saber exactamente <span class="lp-hl">qué está frenando tu marca?</span></h2>
+      <p>Una sesión de 60 minutos puede cambiar completamente la dirección de tu negocio. No más adivinar. Solo claridad, estrategia y acción.</p>
+      <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Agendar mi diagnóstico</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.10,rootMargin:'0px 0px -6% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>

@@ -1,0 +1,426 @@
+<!-- ============================================================
+     SERVICIOS / GESTIÓN DE MARCA (un solo bloque HTML para Elementor)
+     Mismo sistema visual que la homepage · Million Design + DM Sans · prefijos lp-
+     ------------------------------------------------------------
+     RECURSOS a subir a tu Biblioteca de Medios (revisa las URLs):
+       servicios1.jpg · gestionrrss.jpg · rayoverde.png · esenciademarcadaniela.pdf
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;--lp-purple:#bb65ee;--lp-deep:#310075;--lp-green:#a9e700;
+  --lp-dark:#141f33;--lp-gray:#f5f5f5;--lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+  font-family:var(--lp-body);color:var(--lp-dark);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  position:relative;width:100vw;max-width:100vw;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root p{margin:0;}
+.lp-root h1,.lp-root h2,.lp-root h3,.lp-root h4{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;}
+
+.lp-section{padding:clamp(4rem,8vw,7rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1.1rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.4vw,3.2rem);}
+.lp-lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.7;}
+.lp-hl{color:var(--lp-lime);}
+.lp-head{max-width:62ch;margin:0 auto 3rem;text-align:center;}
+
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-family:var(--lp-body);
+  font-weight:700;font-size:1rem;line-height:1;padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+.lp-btn--ghost{background:transparent;color:#fff !important;border-color:rgba(255,255,255,.4);}
+.lp-btn--ghost:hover{border-color:var(--lp-lime);color:var(--lp-lime) !important;transform:translateY(-3px);}
+
+.lp-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
+.lp-media{border-radius:22px;overflow:hidden;background:#0f1626;box-shadow:0 24px 50px rgba(0,0,0,.28);}
+.lp-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.lp-ar45{aspect-ratio:4/5;}.lp-ar34{aspect-ratio:3/4;}
+
+/* HERO */
+.lp-hero h1{color:#fff;font-size:clamp(2.4rem,5.4vw,4.2rem);margin-bottom:1.3rem;}
+.lp-hero__sub{color:#e7defb;margin-bottom:1.6rem;max-width:50ch;}
+.lp-hero__pill{display:inline-flex;align-items:center;gap:.5em;font-size:.85rem;font-weight:700;color:#141f33;
+  background:var(--lp-lime);padding:.5rem 1rem;border-radius:999px;}
+
+/* intro / no soy SMM */
+.lp-intro__copy h2{color:var(--lp-dark);margin-bottom:1.1rem;font-size:clamp(1.7rem,3vw,2.4rem);}
+.lp-intro__copy p{color:#3a4256;font-size:1.08rem;line-height:1.75;margin-bottom:1.4rem;max-width:52ch;}
+.lp-link{color:var(--lp-deep);font-weight:700;border-bottom:2px solid rgba(49,0,117,.25);transition:border-color .2s;}
+.lp-link:hover{border-bottom-color:var(--lp-deep);}
+
+/* aviso RAYO */
+.lp-rayonote{display:flex;align-items:flex-start;gap:14px;max-width:880px;margin:0 auto 2.5rem;
+  background:rgba(169,231,0,.08);border:1px solid rgba(169,231,0,.35);border-radius:16px;padding:20px 24px;}
+.lp-rayonote .ic{font-size:1.6rem;line-height:1;flex-shrink:0;}
+.lp-rayonote p{font-size:.98rem;color:#2a3145;line-height:1.6;}
+.lp-rayonote b{color:var(--lp-deep);}
+
+/* SERVICIOS cards */
+.lp-svc__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch;}
+.lp-svc{display:flex;flex-direction:column;background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:20px;
+  padding:26px 22px;transition:transform .25s,border-color .25s,box-shadow .25s;height:100%;position:relative;}
+.lp-svc:hover{transform:translateY(-6px);border-color:var(--lp-deep);box-shadow:0 24px 48px rgba(20,31,51,.12);}
+.lp-svc--pop{border-color:var(--lp-purple);box-shadow:0 18px 40px rgba(187,101,238,.18);}
+.lp-svc__pop{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--lp-purple);color:#fff;
+  font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .8rem;border-radius:999px;white-space:nowrap;}
+.lp-svc__tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lp-deep);margin-bottom:.7rem;}
+.lp-svc h3{font-size:1.25rem;color:var(--lp-dark);line-height:1.12;margin-bottom:.7rem;}
+.lp-svc__price{font-family:var(--lp-display);font-size:2rem;color:var(--lp-deep);line-height:1;margin-bottom:.2rem;}
+.lp-svc__price s{color:#aab;font-size:1rem;font-family:var(--lp-body);margin-left:.4rem;}
+.lp-svc__price2{font-size:.82rem;color:#6b7388;font-weight:600;margin-bottom:.9rem;}
+.lp-svc__who{font-size:.9rem;color:#3a4256;line-height:1.55;margin-bottom:1.1rem;min-height:3.2em;}
+.lp-svc ul{list-style:none;margin:0 0 1.1rem;padding:0;}
+.lp-svc li{font-size:.86rem;color:#2a3145;line-height:1.45;padding-left:1.3rem;position:relative;margin-bottom:.5rem;}
+.lp-svc li.y::before{content:"✓";position:absolute;left:0;color:var(--lp-green);font-weight:800;}
+.lp-svc li.n{color:#8a91a3;}
+.lp-svc li.n::before{content:"✗";position:absolute;left:0;color:#c2c2cc;font-weight:800;}
+.lp-svc__rayo{font-size:.74rem;font-weight:700;color:#141f33;background:var(--lp-lime);display:inline-block;
+  padding:.3rem .7rem;border-radius:999px;margin-bottom:1.1rem;}
+.lp-svc__rayo--opt{background:#e7e2f3;color:var(--lp-deep);}
+.lp-svc .lp-btn{margin-top:auto;width:100%;padding:.85rem 1rem;font-size:.92rem;}
+.lp-root .lp-ideas{max-width:880px;margin:2.4rem auto 0;text-align:center;color:#3a4256;font-size:.95rem;line-height:1.7;}
+.lp-ideas b{color:var(--lp-dark);}
+.lp-help{text-align:center;margin-top:2.6rem;}
+.lp-help p{color:#3a4256;margin-bottom:1rem;font-size:1.02rem;}
+.lp-help .lp-btn{white-space:nowrap;text-align:center;}
+
+/* FASES */
+.lp-phases{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.lp-phase{background:#1b2742;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px 18px;height:100%;
+  transition:transform .25s,border-color .25s;}
+.lp-phase:hover{transform:translateY(-5px);border-color:var(--lp-green);}
+.lp-phase__n{font-family:var(--lp-display);font-size:1rem;color:#141f33;background:var(--lp-lime);width:42px;height:42px;
+  border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.lp-phase h4{color:#fff;font-size:1rem;line-height:1.15;margin-bottom:.5rem;}
+.lp-phase p{color:#9aa6c0;font-size:.85rem;line-height:1.55;}
+.lp-addons{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:880px;margin:2rem auto 0;}
+.lp-addon{background:rgba(187,101,238,.1);border:1px solid rgba(187,101,238,.3);border-radius:16px;padding:20px 22px;}
+.lp-addon h4{color:var(--lp-lime);font-size:.95rem;margin-bottom:.6rem;}
+.lp-addon p{color:#d6c4ef;font-size:.9rem;line-height:1.6;}
+
+/* MÉTODO RAYO */
+.lp-mr__top{text-align:center;max-width:720px;margin:0 auto 3rem;}
+.lp-mr__logo{width:64px;height:auto;margin:0 auto 1.2rem;display:block;}
+.lp-mr__top h2{color:#fff;font-size:clamp(2rem,4.4vw,3.2rem);margin-bottom:1.2rem;}
+.lp-mr__top p{color:#e7defb;font-size:1.05rem;line-height:1.7;}
+.lp-mr__price{display:inline-flex;align-items:center;gap:.5em;margin-top:1.4rem;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.6rem 1.2rem;font-size:.92rem;color:#fff;font-weight:600;}
+.lp-mr__price b{color:var(--lp-lime);font-size:1.05rem;}
+.lp-pg{margin-bottom:2.4rem;}
+.lp-pg__head{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.lp-pg__letter{font-family:var(--lp-display);font-size:1.5rem;color:#310075;width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lp-pg__name{color:#fff;font-family:var(--lp-display);font-size:1.3rem;text-transform:uppercase;}
+.lp-folders{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 18px;}
+.lp-folder{position:relative;margin-top:15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:0 14px 14px 14px;padding:20px 18px;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s;}
+.lp-folder::before{content:"";position:absolute;top:-13px;left:-1px;width:48%;height:15px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);border-bottom:none;border-radius:9px 9px 0 0;transition:background .25s,border-color .25s;}
+.lp-folder:hover{transform:translateY(-7px);background:rgba(255,255,255,.09);border-color:var(--accent);box-shadow:0 18px 36px rgba(0,0,0,.4);}
+.lp-folder:hover::before{background:var(--accent);border-color:var(--accent);}
+.lp-folder__doc{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:.5rem;}
+.lp-folder h4{color:#fff;font-size:1.02rem;line-height:1.15;margin-bottom:.5rem;}
+.lp-folder p{color:#aeb8cf;font-size:.85rem;line-height:1.55;}
+.lp-Rg{--accent:#d5f379;}.lp-Ag{--accent:#a9e700;}.lp-Yg{--accent:#bb65ee;}.lp-Og{--accent:#d5f379;}
+.lp-Rg .lp-pg__letter{background:#d5f379;}.lp-Ag .lp-pg__letter{background:#a9e700;}
+.lp-Yg .lp-pg__letter{background:#bb65ee;color:#fff;}.lp-Og .lp-pg__letter{background:#fff;}
+
+/* ESENCIA magazine */
+.lp-mag{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;
+  max-width:1000px;margin:3.5rem auto 0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;padding:clamp(24px,4vw,40px);}
+.lp-mag__copy h3{color:#fff;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.15;margin-bottom:1rem;}
+.lp-mag__copy p{color:#cbb0e8;font-size:1rem;line-height:1.7;margin-bottom:1.6rem;}
+.lp-mag__frame{border-radius:14px;overflow:hidden;background:#0d0d0d;border:8px solid #0d0d0d;
+  box-shadow:0 26px 60px rgba(0,0,0,.5);}
+.lp-mag__frame iframe{width:100%;height:520px;border:0;display:block;background:#fff;}
+
+/* CTA */
+.lp-cta{text-align:center;}
+.lp-cta__in{max-width:720px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);margin-bottom:1.3rem;}
+.lp-cta p{color:#efe6ff;font-size:1.12rem;line-height:1.7;margin:0 auto 2.2rem;max-width:46ch;}
+
+/* reveal */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* responsive */
+@media(max-width:1024px){
+  .lp-svc__grid{grid-template-columns:repeat(2,1fr);}
+  .lp-phases{grid-template-columns:repeat(2,1fr);}
+  .lp-folders{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:880px){
+  .lp-split,.lp-mag{grid-template-columns:1fr;}
+  .lp-split .lp-media{order:-1;max-width:420px;margin:0 auto;width:100%;}
+  .lp-mag__frame iframe{height:440px;}
+}
+@media(max-width:620px){
+  .lp-svc__grid,.lp-phases,.lp-folders,.lp-addons{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+  .lp-help .lp-btn{white-space:normal;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ===== HERO ===== -->
+  <section class="lp-section lp-bg-purple lp-hero">
+    <div class="lp-inner lp-split lp-reveal">
+      <div>
+        <span class="lp-label lp-label--ondark">Servicios</span>
+        <h1>Tu marca, gestionada con <span class="lp-hl">estrategia real.</span></h1>
+        <p class="lp-lead lp-hero__sub">Construyo marcas que venden porque primero conectan. Cada publicación tiene intención: atraer, educar o convertir. Nada se sube «porque sí».</p>
+        <span class="lp-hero__pill">⚡ Todo incluye el Método RAYO</span>
+      </div>
+      <div class="lp-media lp-ar34">
+        <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/servicios1.jpg" alt="Daniela Gutiérrez trabajando con su laptop">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANTES DE EMPEZAR / NO SOY UN SMM ===== -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner lp-split lp-reveal">
+      <div class="lp-intro__copy">
+        <span class="lp-label lp-label--onlight">Antes de empezar</span>
+        <h2>No soy una Social Media Manager más.</h2>
+        <p>Mi enfoque no es igual al de un community manager. Construyo marcas desde la identidad, la psicología y la estrategia comercial — y eso lo cambia todo. No gestiono redes: construyo negocios que comunican con intención.</p>
+        <a class="lp-link" href="https://danielagutierrezmkt.com/conoceme">Conoce mi historia →</a>
+      </div>
+      <div class="lp-media lp-ar45">
+        <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/gestionrrss.jpg" alt="Daniela Gutiérrez gestionando redes desde su teléfono">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS (comparación) ===== -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--onlight">Elige tu plan</span>
+        <h2 class="lp-h2">Cuatro formas de trabajar conmigo.</h2>
+      </div>
+
+      <div class="lp-rayonote lp-reveal">
+        <span class="ic">⚡</span>
+        <p><b>Todo lo que hago incluye el Método RAYO.</b> Es mi filosofía: no construyo una marca sin entenderla primero. La única excepción es la Asesoría en su versión «solo estrategia» ($80), pensada para quien ya tiene su base lista.</p>
+      </div>
+
+      <div class="lp-svc__grid lp-reveal">
+
+        <!-- Asesoría 1:1 -->
+        <div class="lp-svc">
+          <p class="lp-svc__tag">Autogestión</p>
+          <h3>Asesoría 1:1</h3>
+          <div class="lp-svc__price">$100 <s>$177</s></div>
+          <p class="lp-svc__price2">o $80 solo estrategia (sin método)</p>
+          <p class="lp-svc__who">Para quien quiere manejar sus redes, pero con estrategia real e intención detrás.</p>
+          <span class="lp-svc__rayo">Método RAYO incluido</span>
+          <ul>
+            <li class="y">Llamada estratégica inicial</li>
+            <li class="y">Expediente de marca (Método RAYO)</li>
+            <li class="y">15 ideas: guión/diseño + caption + fecha</li>
+            <li class="y">Calendario mensual en Notion</li>
+            <li class="y">1 mes de acompañamiento</li>
+            <li class="n">No incluye diseño ni publicación</li>
+          </ul>
+          <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero este plan</a>
+        </div>
+
+        <!-- Plan Online -->
+        <div class="lp-svc lp-svc--pop">
+          <span class="lp-svc__pop">Más popular</span>
+          <p class="lp-svc__tag">Internacional</p>
+          <h3>Plan Online</h3>
+          <div class="lp-svc__price">$190</div>
+          <p class="lp-svc__price2">Método RAYO ($97) incluido gratis</p>
+          <p class="lp-svc__who">Para marcas fuera de Maracaibo o que no necesitan grabación presencial.</p>
+          <span class="lp-svc__rayo">Método RAYO incluido</span>
+          <ul>
+            <li class="y">Todo lo de la Asesoría 1:1</li>
+            <li class="y">Publicación en Instagram (feed)</li>
+            <li class="y">Edición de reels</li>
+            <li class="y">Diseño de piezas</li>
+            <li class="n">No incluye stories ni atención al cliente</li>
+          </ul>
+          <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero este plan</a>
+        </div>
+
+        <!-- Plan Presencial -->
+        <div class="lp-svc">
+          <p class="lp-svc__tag">Maracaibo</p>
+          <h3>Plan Presencial</h3>
+          <div class="lp-svc__price">$240</div>
+          <p class="lp-svc__price2">Método RAYO ($97) incluido gratis</p>
+          <p class="lp-svc__who">Para marcas en Maracaibo que quieren grabación de reels y fotografía.</p>
+          <span class="lp-svc__rayo">Método RAYO incluido</span>
+          <ul>
+            <li class="y">Todo lo del Plan Online</li>
+            <li class="y">Sesión de grabación de 3h, 1 vez al mes</li>
+            <li class="y">Fotografía con smartphone</li>
+            <li class="n">No incluye stories ni atención al cliente</li>
+          </ul>
+          <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Quiero este plan</a>
+        </div>
+
+        <!-- Diagnóstico -->
+        <div class="lp-svc">
+          <p class="lp-svc__tag">Primer paso</p>
+          <h3>Diagnóstico Estratégico</h3>
+          <div class="lp-svc__price">$87</div>
+          <p class="lp-svc__price2">Sesión + plan + seguimiento</p>
+          <p class="lp-svc__who">Si no sabes por dónde empezar: 60 min para ver qué frena tu marca.</p>
+          <span class="lp-svc__rayo lp-svc__rayo--opt">Mirada con enfoque RAYO</span>
+          <ul>
+            <li class="y">Revisión estratégica completa</li>
+            <li class="y">Diagnóstico de mentalidad</li>
+            <li class="y">Plan de acción inmediato</li>
+            <li class="y">Seguimiento + 2ª llamada</li>
+          </ul>
+          <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/diagnostico-estrategico">Ver diagnóstico →</a>
+        </div>
+
+      </div>
+
+      <p class="lp-ideas lp-reveal">Todos los planes de gestión incluyen <b>15 ideas de contenido mensuales</b>. Cada idea trae guión o guía de diseño + caption + fecha de publicación, entregadas en Notion. <br>La distribución entre reels, carruseles y posts depende de tu cuenta — lo definimos juntos en el diagnóstico.</p>
+
+      <div class="lp-help lp-reveal">
+        <p>¿No sabes por dónde empezar? No te preocupes, estoy para orientarte.</p>
+        <a class="lp-btn lp-btn--primary" href="https://wa.me/584227138195" target="_blank" rel="noopener">Escríbeme y vemos qué es lo mejor para ti</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CÓMO FUNCIONA / FASES ===== -->
+  <section class="lp-section lp-bg-navy">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal">
+        <span class="lp-label lp-label--ondark">Cómo trabajamos juntos</span>
+        <h2 class="lp-h2" style="color:#fff;">El proceso, paso a paso.</h2>
+        <p class="lp-lead" style="color:#aeb8cf;margin:1.1rem auto 0;">Esta es la ruta base de la Asesoría 1:1. Los planes Online y Presencial la incluyen completa y suman más.</p>
+      </div>
+      <div class="lp-phases lp-reveal">
+        <div class="lp-phase"><div class="lp-phase__n">01</div><h4>Diagnóstico inicial</h4><p>Llenas el formulario, nos reunimos y conversamos a fondo sobre tu marca.</p></div>
+        <div class="lp-phase"><div class="lp-phase__n">02</div><h4>Expediente con Método RAYO</h4><p>Creo el expediente completo de tu marca con la metodología.</p></div>
+        <div class="lp-phase"><div class="lp-phase__n">03</div><h4>Entrega y revisión</h4><p>Te entrego el expediente y lo revisamos juntas.</p></div>
+        <div class="lp-phase"><div class="lp-phase__n">04</div><h4>Calendario de contenido</h4><p>Creo y te entrego tu calendario mensual de contenido.</p></div>
+        <div class="lp-phase"><div class="lp-phase__n">05</div><h4>Acompañamiento</h4><p>Un mes resolviendo dudas y ayudándote con el calendario.</p></div>
+      </div>
+      <div class="lp-addons lp-reveal">
+        <div class="lp-addon"><h4>+ Plan Online suma</h4><p>Publicación en Instagram, edición de reels y diseño de piezas. Tú apruebas, yo ejecuto.</p></div>
+        <div class="lp-addon"><h4>+ Plan Presencial suma</h4><p>Todo lo del Online + una sesión de grabación de 3 horas una vez al mes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MÉTODO RAYO ===== -->
+  <section class="lp-section lp-bg-purple">
+    <div class="lp-inner">
+      <div class="lp-mr__top lp-reveal">
+        <img class="lp-mr__logo" src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/rayoverde.png" alt="Método RAYO">
+        <span class="lp-label lp-label--ondark">El diferencial</span>
+        <h2>Método RAYO ⚡</h2>
+        <p>Una metodología propia que construye tu marca desde adentro. No es un template genérico: es un sistema de <b>10 documentos estratégicos</b> que documentan cada capa de tu marca, creados específicamente para ti y entregados en Notion, listos para guiar todo lo que comunicas.</p>
+        <div class="lp-mr__price">Por sí solo vale <b>$97</b> · incluido en tus planes</div>
+      </div>
+
+      <!-- R -->
+      <div class="lp-pg lp-Rg lp-reveal">
+        <div class="lp-pg__head"><div class="lp-pg__letter">R</div><div class="lp-pg__name">Raíz — quién eres</div></div>
+        <div class="lp-folders">
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 01</div><h4>Esencia de Marca</h4><p>El corazón de tu marca: tu propósito real y lo que te hace única.</p></div>
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 02</div><h4>Voz de Marca</h4><p>Cómo suena tu marca: tu tono y las palabras que te posicionan.</p></div>
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 03</div><h4>Identidad de Marca</h4><p>Las 5 identidades: visual, verbal, simbólica, actitudinal y sensorial.</p></div>
+        </div>
+      </div>
+
+      <!-- A -->
+      <div class="lp-pg lp-Ag lp-reveal">
+        <div class="lp-pg__head"><div class="lp-pg__letter">A</div><div class="lp-pg__name">Arquitectura — cómo opera</div></div>
+        <div class="lp-folders">
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 04</div><h4>Perfil de Negocio</h4><p>La radiografía de tu marca: modelo, precios y posicionamiento.</p></div>
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 05</div><h4>Cliente Ideal</h4><p>Un retrato humano: sus miedos, cómo piensa y cómo compra.</p></div>
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 06</div><h4>Análisis de Mercado</h4><p>Dónde estás parada: tamaño, segmentos y tendencias.</p></div>
+        </div>
+      </div>
+
+      <!-- Y -->
+      <div class="lp-pg lp-Yg lp-reveal">
+        <div class="lp-pg__head"><div class="lp-pg__letter">Y</div><div class="lp-pg__name">Yo en el mercado — dónde estás</div></div>
+        <div class="lp-folders">
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 07</div><h4>Brand Gang</h4><p>Tu mapa competitivo: quién ocupa qué territorio y desde dónde lideras.</p></div>
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 08</div><h4>Catálogo de Ofertas</h4><p>Tu oferta deja de ser verbal: servicios documentados estratégicamente.</p></div>
+        </div>
+      </div>
+
+      <!-- O -->
+      <div class="lp-pg lp-Og lp-reveal">
+        <div class="lp-pg__head"><div class="lp-pg__letter">O</div><div class="lp-pg__name">Origen en acción — cómo lo vives</div></div>
+        <div class="lp-folders">
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 09</div><h4>Experiencia de Marca</h4><p>El viaje de tu cliente: los 10 momentos de oro + plan de 3 meses.</p></div>
+          <div class="lp-folder"><div class="lp-folder__doc">Documento 10</div><h4>Análisis FODA</h4><p>Diagnóstico honesto que termina con un plan de acción priorizado.</p></div>
+        </div>
+      </div>
+
+      <!-- ESENCIA — vista revista -->
+      <div class="lp-mag lp-reveal">
+        <div class="lp-mag__copy">
+          <h3>¿Quieres echar un vistazo a uno de los documentos?</h3>
+          <p>Te muestro mi propio documento de Esencia de Marca — para que veas el nivel de detalle y estrategia con el que trabajo cada capa de tu marca. Pásalo como una revista.</p>
+          <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/generadoresencia">Te regalo una parte de tu esencia de marca →</a>
+        </div>
+        <div>
+          <div class="lp-mag__frame">
+            <iframe src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/esenciademarcadaniela.pdf#view=FitH&toolbar=0" title="Esencia de Marca — Daniela Gutiérrez" loading="lazy"></iframe>
+          </div>
+          <a href="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/esenciademarcadaniela.pdf" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:12px;font-size:.85rem;color:#cbb0e8;font-weight:600;">Abrir el documento a pantalla completa →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="lp-section lp-bg-navy lp-cta">
+    <div class="lp-inner lp-cta__in lp-reveal">
+      <span class="lp-label lp-label--ondark" style="color:var(--lp-lime);">El siguiente paso</span>
+      <h2>¿Lista para dejar de publicar y empezar a vender?</h2>
+      <p>Agenda una sesión gratuita de 20 minutos para diagnosticar tu marca y saber desde dónde arrancar.</p>
+      <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/diagnostico-gratis">Agendar sesión diagnóstica</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.10,rootMargin:'0px 0px -6% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>

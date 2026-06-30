@@ -1,0 +1,338 @@
+<!-- ============================================================
+     DANIELA GUTIÉRREZ — CONÓCEME (bloque HTML para Elementor)
+     Mismo sistema visual que la homepage · prefijos lp- · CSS embebido
+     ------------------------------------------------------------
+     IMÁGENES: sube estas 2 fotos a tu Biblioteca de Medios.
+     Si las URLs no coinciden, reemplaza:
+       CONOCEME -> https://danielagutierrezmkt.com/wp-content/uploads/2026/06/conoceme.jpg
+       MI MAMÁ  -> https://danielagutierrezmkt.com/wp-content/uploads/2026/06/mimama.jpg
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Archivo+Black&display=swap');
+
+.lp-root{
+  --lp-lime:#d5f379;
+  --lp-purple:#bb65ee;
+  --lp-deep:#310075;
+  --lp-green:#a9e700;
+  --lp-dark:#141f33;
+  --lp-gray:#f5f5f5;
+  --lp-white:#ffffff;
+  --lp-display:'Million Design','Archivo Black','Arial Black',sans-serif;
+  --lp-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --lp-maxw:1200px;
+
+  font-family:var(--lp-body);
+  color:var(--lp-dark);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+
+  /* full-bleed: rompe el contenedor "boxed" de Elementor */
+  position:relative;
+  width:100vw;
+  max-width:100vw;
+  left:50%;
+  right:50%;
+  margin-left:-50vw;
+  margin-right:-50vw;
+  overflow-x:hidden;
+}
+.lp-root *,.lp-root *::before,.lp-root *::after{box-sizing:border-box;}
+.lp-root img{max-width:100%;display:block;}
+.lp-root a{text-decoration:none;color:inherit;}
+.lp-root p{margin:0;}
+.lp-root h1,.lp-root h2,.lp-root h3{margin:0;font-family:var(--lp-display);font-weight:400;line-height:1.04;letter-spacing:-.01em;text-transform:uppercase;}
+
+/* ---------- layout ---------- */
+.lp-section{padding:clamp(4.5rem,9vw,8rem) 1.5rem;position:relative;overflow:hidden;}
+.lp-inner{max-width:var(--lp-maxw);margin:0 auto;width:100%;}
+.lp-bg-navy{background:var(--lp-dark);color:#fff;}
+.lp-bg-purple{background:var(--lp-deep);color:#fff;}
+.lp-bg-white{background:var(--lp-white);color:var(--lp-dark);}
+.lp-bg-gray{background:var(--lp-gray);color:var(--lp-dark);}
+
+/* ---------- shared ---------- */
+.lp-label{display:inline-block;font-family:var(--lp-body);font-weight:700;font-size:.78rem;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.25rem;}
+.lp-label--ondark{color:var(--lp-green);}
+.lp-label--onlight{color:var(--lp-deep);}
+.lp-h2{font-size:clamp(2rem,4.6vw,3.4rem);}
+.lp-lead{font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.65;}
+.lp-hl{color:var(--lp-lime);}
+.lp-hl-purple{color:var(--lp-purple);}
+.lp-head{max-width:62ch;margin:0 auto;text-align:center;}
+
+/* ---------- buttons ---------- */
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  font-family:var(--lp-body);font-weight:700;font-size:1rem;line-height:1;
+  padding:1.05rem 1.9rem;border-radius:12px;border:2px solid transparent;cursor:pointer;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease,border-color .22s ease;}
+.lp-btn--primary{background:var(--lp-lime);color:#141f33 !important;box-shadow:0 8px 20px rgba(20,31,51,.14);}
+.lp-btn--primary:hover{background:var(--lp-green);color:#141f33 !important;transform:translateY(-3px);box-shadow:0 14px 30px rgba(169,231,0,.4);}
+
+/* ---------- HERO ---------- */
+.lp-hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.lp-hero__copy h1{font-size:clamp(2.6rem,6vw,4.6rem);color:var(--lp-dark);margin-bottom:1.5rem;}
+.lp-hero__copy p{color:#3a4256;font-size:1.1rem;line-height:1.7;margin-bottom:1.2rem;max-width:52ch;}
+.lp-hero__copy p strong{color:var(--lp-dark);}
+.lp-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem;}
+.lp-tag{font-weight:600;font-size:.82rem;padding:.5rem .95rem;border-radius:999px;
+  background:#fff;border:1px solid #e2e2e2;color:var(--lp-deep);}
+.lp-hero__photo{border-radius:24px;overflow:hidden;aspect-ratio:3/4;background:#dcdcdc;
+  box-shadow:0 30px 60px rgba(20,31,51,.18);}
+.lp-hero__photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+
+/* ---------- MI HISTORIA ---------- */
+.lp-story{max-width:760px;margin:0 auto;}
+.lp-story p{color:#cdd6e8;font-size:1.08rem;line-height:1.8;margin-bottom:1.4rem;}
+.lp-story__photo{border-radius:20px;overflow:hidden;margin:2.2rem 0;position:relative;
+  box-shadow:0 24px 50px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);}
+.lp-story__photo img{width:100%;height:auto;display:block;}
+.lp-story__cap{font-size:.85rem;color:#8b93a8;text-align:center;margin:-.6rem 0 2rem;}
+.lp-callout{background:rgba(213,243,121,.06);border:1px solid rgba(213,243,121,.25);border-left:4px solid var(--lp-lime);
+  border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0 1.5rem;text-align:center;}
+.lp-callout__top{font-size:.95rem;color:#aeb8cf;margin-bottom:.5rem;}
+.lp-callout__quote{font-family:var(--lp-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--lp-lime);
+  line-height:1.05;margin-bottom:.7rem;}
+.lp-callout__bottom{font-size:.98rem;color:#cdd6e8;}
+.lp-story__note{font-size:.95rem;color:#9aa3b8;font-style:italic;text-align:center;max-width:60ch;margin:0 auto;}
+
+/* ---------- FORMACIÓN ---------- */
+.lp-edu__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.lp-educard{background:var(--lp-gray);border:1px solid #e6e6e6;border-radius:20px;padding:2rem 1.6rem;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;height:100%;}
+.lp-educard:hover{transform:translateY(-6px);border-color:var(--lp-deep);box-shadow:0 22px 45px rgba(20,31,51,.1);}
+.lp-educard__year{display:inline-block;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.4rem .75rem;border-radius:999px;margin-bottom:1.2rem;}
+.lp-yr-1{background:var(--lp-deep);color:#fff;}
+.lp-yr-2{background:var(--lp-purple);color:#fff;}
+.lp-yr-3{background:var(--lp-green);color:#141f33;}
+.lp-yr-4{background:var(--lp-dark);color:#fff;}
+.lp-educard h3{font-size:1.2rem;color:var(--lp-dark);margin-bottom:.6rem;line-height:1.12;}
+.lp-educard p{font-size:.92rem;color:#3a4256;line-height:1.55;}
+.lp-edu__cta{text-align:center;margin-top:3rem;}
+
+/* ---------- FILOSOFÍA ---------- */
+.lp-phi__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.lp-phicard{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2.4rem 2rem;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;height:100%;}
+.lp-phicard:hover{transform:translateY(-6px);border-color:var(--lp-green);box-shadow:0 22px 45px rgba(0,0,0,.3);}
+.lp-phicard__n{font-family:var(--lp-display);font-size:1.3rem;color:#141f33;background:var(--lp-lime);
+  width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;}
+.lp-phicard:nth-child(2) .lp-phicard__n{background:var(--lp-purple);}
+.lp-phicard:nth-child(3) .lp-phicard__n{background:var(--lp-green);}
+.lp-phicard h3{font-size:1.3rem;color:#fff;margin-bottom:.8rem;line-height:1.12;}
+.lp-phicard p{font-size:1rem;color:#e7defb;line-height:1.65;}
+
+/* ---------- FUERA DEL TRABAJO ---------- */
+.lp-fun__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.lp-funcard{background:#fff;border:1px solid #e6e6e6;border-radius:20px;padding:2rem 1.6rem;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;height:100%;}
+.lp-funcard:hover{transform:translateY(-6px);border-color:var(--lp-purple);box-shadow:0 22px 45px rgba(20,31,51,.1);}
+.lp-funcard__emo{width:58px;height:58px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+  font-size:1.7rem;margin-bottom:1.3rem;}
+.lp-fe-1{background:rgba(49,0,117,.1);}
+.lp-fe-2{background:rgba(187,101,238,.18);}
+.lp-fe-3{background:rgba(169,231,0,.2);}
+.lp-fe-4{background:rgba(213,243,121,.4);}
+.lp-funcard h3{font-size:1.15rem;color:var(--lp-dark);margin-bottom:.6rem;line-height:1.12;}
+.lp-funcard p{font-size:.95rem;color:#3a4256;line-height:1.55;}
+
+/* ---------- CTA FINAL ---------- */
+.lp-cta{background:var(--lp-deep);text-align:center;}
+.lp-cta__inner{max-width:760px;margin:0 auto;}
+.lp-cta h2{color:#fff;font-size:clamp(2rem,4.8vw,3.6rem);margin-bottom:1.4rem;}
+.lp-cta p{color:#efe6ff;font-size:1.15rem;line-height:1.7;margin:0 auto 2.4rem;max-width:50ch;}
+
+/* ---------- reveal ---------- */
+.lp-root.lp-js .lp-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.lp-root.lp-js .lp-reveal.lp-in{opacity:1;transform:none;}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .lp-edu__grid,.lp-fun__grid{grid-template-columns:repeat(2,1fr);}
+  .lp-phi__grid{grid-template-columns:1fr;max-width:560px;margin:0 auto;}
+}
+@media (max-width:880px){
+  .lp-hero__grid{grid-template-columns:1fr;}
+  .lp-hero__copy{text-align:center;}
+  .lp-hero__copy p{margin-left:auto;margin-right:auto;}
+  .lp-tags{justify-content:center;}
+  .lp-hero__photo{max-width:380px;margin:0 auto;order:-1;aspect-ratio:3/4;}
+}
+@media (max-width:680px){
+  .lp-edu__grid,.lp-fun__grid{grid-template-columns:1fr;}
+  .lp-section{padding:clamp(3.5rem,12vw,5rem) 1.25rem;}
+}
+</style>
+
+<div class="lp-root">
+
+  <!-- ============ HERO / QUIÉN SOY ============ -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner lp-hero__grid">
+      <div class="lp-hero__copy lp-reveal">
+        <span class="lp-label lp-label--onlight">Neuromarketing &amp; Estrategia de Marca</span>
+        <h1>¡Hola! Soy <span class="lp-hl-purple">Dani</span></h1>
+        <p>Ayudo a marcas personales a dejar de publicar sin rumbo y construir una presencia digital que realmente vende—sin perder lo que las hace únicas.</p>
+        <p><strong>Licenciada en Mercadeo, Máster en Dirección de Marketing y estudiante de Psicología.</strong> Desde los 13 años supe que el marketing y la mente humana tenían que ir juntos. Hoy eso es mi método.</p>
+        <div class="lp-tags">
+          <span class="lp-tag">Neuromarketing</span>
+          <span class="lp-tag">Psicología del consumidor</span>
+          <span class="lp-tag">Estrategia de marca</span>
+          <span class="lp-tag">Ventas conscientes</span>
+          <span class="lp-tag">Marketing digital</span>
+        </div>
+      </div>
+      <div class="lp-hero__photo lp-reveal">
+        <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/conoceme.jpg" alt="Daniela Gutiérrez">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MI HISTORIA ============ -->
+  <section class="lp-section lp-bg-navy">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal" style="margin-bottom:3rem;">
+        <span class="lp-label lp-label--ondark">Mi historia</span>
+        <h2 class="lp-h2" style="color:#fff;">Todo empezó a los 13 años.</h2>
+      </div>
+      <div class="lp-story lp-reveal">
+        <p>Empecé ayudando a mi mamá con las redes sociales de su empresa, Sinergia. Lo que comenzó como algo divertido se convirtió en una pasión que me llevó a estudiar mercadeo y a construir una carrera enfocada en el mundo digital.</p>
+        <p>Sinergia es una empresa de formación, así que me metí en todos los cursos que pude: psicología, emociones, inteligencia emocional. Pero el clic llegó a los 15 años, cuando tomé mi primer curso de neuroventas. Ahí supe exactamente qué quería estudiar: algo que juntara la mente humana con las ventas.</p>
+        <div class="lp-story__photo">
+          <img src="https://danielagutierrezmkt.com/wp-content/uploads/2026/06/mimama.jpg" alt="Daniela Gutiérrez con su mamá">
+        </div>
+        <p class="lp-story__cap">Con mi mamá — donde todo empezó.</p>
+        <p>A lo largo del camino trabajé con empresas internacionales en creación de contenido, gestión de redes, copywriting y estrategia digital. Pero siempre sentí que faltaba algo: entender la mente detrás de cada decisión de compra.</p>
+        <p>Junto a mi mamá (psicóloga) fundé un Centro de Psicología y Neuroterapia, donde aprendí de cerca cómo las personas sienten, deciden y se vinculan. Esa experiencia cambió todo. Ya que con la herramienta que tenemos, Neurofeedback, me he puesto a "jugar" y hacer investigaciones informales de cómo las ondas cerebrales responden a ciertos estímulos. Hoy combino psicología y marketing como una sola filosofía.</p>
+        <div class="lp-callout">
+          <div class="lp-callout__top">En una empresa de offshoring me premiaron como...</div>
+          <div class="lp-callout__quote">"Lightning McQueen"</div>
+          <div class="lp-callout__bottom">Por hacer en tiempo récord lo que otros tardan días en completar.</div>
+        </div>
+        <p class="lp-story__note">No es casualidad que mi logo combine a Flash y Buzz Lightyear. Velocidad con propósito. Al infinito sin perder el rumbo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORMACIÓN ============ -->
+  <section class="lp-section lp-bg-white">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal" style="margin-bottom:3.5rem;">
+        <span class="lp-label lp-label--onlight">Formación</span>
+        <h2 class="lp-h2">Lo que he estudiado para llegar aquí.</h2>
+      </div>
+      <div class="lp-edu__grid">
+        <div class="lp-educard lp-reveal">
+          <span class="lp-educard__year lp-yr-1">2021</span>
+          <h3>Licenciatura en Administración</h3>
+          <p>Mención Mercadeo—Universidad Rafael Belloso Chacín.</p>
+        </div>
+        <div class="lp-educard lp-reveal">
+          <span class="lp-educard__year lp-yr-2">2022</span>
+          <h3>Máster en Dirección de Marketing (CMO)</h3>
+          <p>Tech Universidad Tecnológica.</p>
+        </div>
+        <div class="lp-educard lp-reveal">
+          <span class="lp-educard__year lp-yr-3">En curso</span>
+          <h3>Psicología</h3>
+          <p>Universidad Yacambú.</p>
+        </div>
+        <div class="lp-educard lp-reveal">
+          <span class="lp-educard__year lp-yr-4">Especialización</span>
+          <h3>Diplomado en Psicología y Neurociencia</h3>
+          <p>+ Neuroventas, PNL, Psicología del consumidor.</p>
+        </div>
+      </div>
+      <div class="lp-edu__cta lp-reveal">
+        <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/cv">Ver CV completo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MI FILOSOFÍA ============ -->
+  <section class="lp-section lp-bg-purple">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal" style="margin-bottom:3.5rem;">
+        <span class="lp-label lp-label--ondark">Mi filosofía</span>
+        <h2 class="lp-h2" style="color:#fff;">Lo que creo sobre el marketing.</h2>
+      </div>
+      <div class="lp-phi__grid">
+        <div class="lp-phicard lp-reveal">
+          <div class="lp-phicard__n">01</div>
+          <h3>La estrategia nace de adentro</h3>
+          <p>No empiezo por el contenido ni la estética. Empiezo por quién eres. Todo lo demás se construye desde ahí.</p>
+        </div>
+        <div class="lp-phicard lp-reveal">
+          <div class="lp-phicard__n">02</div>
+          <h3>La psicología no es opcional</h3>
+          <p>Tu cliente decide con emociones y lo justifica con lógica. Si tu marca no conecta con eso, no vende.</p>
+        </div>
+        <div class="lp-phicard lp-reveal">
+          <div class="lp-phicard__n">03</div>
+          <h3>El éxito se mide en ventas</h3>
+          <p>No en likes, no en seguidores. En clientes reales. Ingresos reales y una marca que crece con propósito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FUERA DEL TRABAJO ============ -->
+  <section class="lp-section lp-bg-gray">
+    <div class="lp-inner">
+      <div class="lp-head lp-reveal" style="margin-bottom:3.5rem;">
+        <span class="lp-label lp-label--onlight">Fuera del trabajo</span>
+        <h2 class="lp-h2">Soy humana y joven también, jaja.</h2>
+      </div>
+      <div class="lp-fun__grid">
+        <div class="lp-funcard lp-reveal">
+          <div class="lp-funcard__emo lp-fe-1">☕</div>
+          <h3>Adicta al café</h3>
+          <p>Negro, con azúcar, a las 4 p.m.</p>
+        </div>
+        <div class="lp-funcard lp-reveal">
+          <div class="lp-funcard__emo lp-fe-2">🎮</div>
+          <h3>Gamer de Mario</h3>
+          <p>Mario Bros y yo somos una. Me he pasado (casi) todos los juegos.</p>
+        </div>
+        <div class="lp-funcard lp-reveal">
+          <div class="lp-funcard__emo lp-fe-3">🪄</div>
+          <h3>Obsesionada con Orlando</h3>
+          <p>Los parques son mi lugar favorito en el mundo. Mi sueño es ir al mundo de Mario en Epic Universe.</p>
+        </div>
+        <div class="lp-funcard lp-reveal">
+          <div class="lp-funcard__emo lp-fe-4">⚡</div>
+          <h3>Lightning McQueen</h3>
+          <p>El halago que más recibo es "eres muy rápida en tu trabajo". Siempre al infinito y más allá.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="lp-section lp-cta">
+    <div class="lp-inner lp-cta__inner lp-reveal">
+      <span class="lp-label lp-label--ondark" style="color:var(--lp-lime);">El siguiente paso</span>
+      <h2>¿Lista para dejar de publicar y empezar a vender?</h2>
+      <p>Agenda una sesión gratuita de 20 minutos para diagnosticar tu marca y saber desde dónde arrancar.</p>
+      <a class="lp-btn lp-btn--primary" href="https://danielagutierrezmkt.com/diagnostico-gratis">Agendar sesión diagnóstica</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var root=document.currentScript.closest('body').querySelector('.lp-root')||document.querySelector('.lp-root');
+  if(!root)return;
+  root.classList.add('lp-js');
+  var items=root.querySelectorAll('.lp-reveal');
+  if(!('IntersectionObserver'in window)){items.forEach(function(el){el.classList.add('lp-in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lp-in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){io.observe(el);});
+})();
+</script>
