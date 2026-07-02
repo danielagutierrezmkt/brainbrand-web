@@ -1,0 +1,1369 @@
+<title>Kit ManyChat · BrainBrand Method</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* ── TOKENS ───────────────────────────────────────────────────────────────── */
+:root {
+  --bg:          #07061A;
+  --bg-card:     #0E0C28;
+  --bg-raised:   #181440;
+  --accent:      #7B5FFF;
+  --accent-dim:  rgba(123,95,255,.14);
+  --accent-glow: rgba(123,95,255,.28);
+  --pink:        #FF5FA0;
+  --pink-dim:    rgba(255,95,160,.13);
+  --cyan:        #00D4B8;
+  --text:        #EDE9FF;
+  --muted:       #8E87B8;
+  --faint:       #33305A;
+  --border:      rgba(123,95,255,.2);
+  --border-weak: rgba(255,255,255,.06);
+  --r:           14px;
+}
+
+/* ── RESET ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TYPE SCALE ───────────────────────────────────────────────────────────── */
+h1 {
+  font-size: clamp(2.4rem, 6.5vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.03;
+  text-wrap: balance;
+}
+h2 {
+  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; }
+h4 { font-size: 0.92rem; font-weight: 700; }
+p  { max-width: 60ch; }
+
+.eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* ── GRADIENT TEXT ────────────────────────────────────────────────────────── */
+.grad {
+  background: linear-gradient(130deg, var(--accent) 20%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── LAYOUT ───────────────────────────────────────────────────────────────── */
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 88px 0;
+  border-top: 1px solid var(--border-weak);
+}
+section:first-of-type { border-top: none; }
+
+.section-head { margin-bottom: 52px; }
+.section-head h2 { margin-bottom: 12px; }
+.section-head > p { color: var(--muted); }
+
+/* ── NAV ──────────────────────────────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,6,26,.88);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 54px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-brand {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color .2s, background .2s;
+}
+.nav-link:hover { color: var(--text); background: var(--accent-dim); }
+.nav-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── HERO ─────────────────────────────────────────────────────────────────── */
+#hero {
+  padding: 108px 0 88px;
+  border-top: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-orb-1 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,95,255,.16) 0%, transparent 65%);
+  top: -300px;
+  right: -200px;
+  pointer-events: none;
+}
+.hero-orb-2 {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,95,160,.1) 0%, transparent 65%);
+  bottom: -80px;
+  left: -120px;
+  pointer-events: none;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 16px 6px 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 30px;
+}
+.hero-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+#hero h1 { margin-bottom: 22px; }
+
+.hero-sub {
+  font-size: 1.08rem;
+  color: var(--muted);
+  margin-bottom: 56px;
+  max-width: 50ch;
+}
+
+/* ── STAT CARDS ───────────────────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 22px 24px;
+}
+
+.stat-num {
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.45;
+  max-width: 100%;
+}
+
+/* ── WHAT IS ──────────────────────────────────────────────────────────────── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.feat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--r);
+  padding: 26px 24px;
+  transition: border-color .25s;
+}
+.feat-card:hover { border-color: var(--border); }
+
+.feat-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.feat-card h4 { margin-bottom: 7px; }
+.feat-card p { font-size: 0.87rem; color: var(--muted); }
+
+/* ── STEPS ────────────────────────────────────────────────────────────────── */
+.steps { display: flex; flex-direction: column; }
+
+.step {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 20px;
+  padding-bottom: 44px;
+}
+.step:last-child { padding-bottom: 0; }
+
+.step-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-num {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: var(--accent);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: background .25s, border-color .25s;
+}
+.step:hover .step-num {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+.step-thread {
+  width: 2px;
+  flex: 1;
+  background: var(--border);
+  margin-top: 10px;
+}
+.step:last-child .step-thread { display: none; }
+
+.step-body { padding-top: 11px; }
+.step-body h3 { margin-bottom: 8px; }
+.step-body p { font-size: 0.9rem; color: var(--muted); }
+
+.step-note {
+  margin-top: 14px;
+  padding: 10px 16px;
+  background: var(--accent-dim);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 9px 9px 0;
+  font-size: 0.83rem;
+  color: var(--text);
+}
+
+/* ── TIMELINE (15 días) ───────────────────────────────────────────────────── */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.tl-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--r);
+  padding: 26px 24px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.tl-card:hover  { border-color: var(--border); }
+.tl-card.active {
+  border-color: var(--accent);
+  background: var(--bg-raised);
+}
+
+.tl-range {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.tl-card h3 { margin-bottom: 16px; }
+
+.tl-tasks { display: flex; flex-direction: column; gap: 8px; }
+
+.tl-task {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.tl-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--faint);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.tl-card.active .tl-dot { background: var(--accent); }
+.tl-card.active .tl-task { color: var(--text); }
+
+/* ── CALLOUT BOX ──────────────────────────────────────────────────────────── */
+.callout {
+  background: linear-gradient(130deg, rgba(123,95,255,.1), rgba(255,95,160,.07));
+  border: 1px solid rgba(123,95,255,.28);
+  border-radius: var(--r);
+  padding: 30px 32px;
+  margin-top: 32px;
+}
+.callout h3 { margin-bottom: 10px; }
+.callout p { font-size: 0.9rem; color: var(--muted); }
+.callout strong { color: var(--text); }
+
+/* ── TABS ─────────────────────────────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color .2s, background .2s;
+}
+.tab-btn.active { background: var(--accent); color: #fff; }
+.tab-btn:hover:not(.active) { color: var(--text); background: var(--accent-dim); }
+.tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── COMPARISON TABLE ─────────────────────────────────────────────────────── */
+.compare-wrap { overflow-x: auto; }
+
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: var(--bg-card);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.compare thead th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.compare thead th:nth-child(3) { color: var(--accent); }
+
+.compare tbody td {
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--border-weak);
+  vertical-align: middle;
+}
+.compare tbody tr:last-child td { border-bottom: none; }
+.compare tbody td:first-child { color: var(--muted); }
+
+.yes { color: var(--cyan); font-weight: 700; font-size: 0.85rem; }
+.no  { color: var(--faint); font-weight: 600; font-size: 0.85rem; }
+
+/* ── TEMPLATE CARDS ───────────────────────────────────────────────────────── */
+.template-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 40px;
+  transition: border-color .25s;
+}
+.template-card:hover { border-color: var(--border); }
+.template-card:last-child { margin-bottom: 0; }
+
+.tmpl-head {
+  padding: 30px 32px 26px;
+  border-bottom: 1px solid var(--border-weak);
+}
+
+.tmpl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--pink-dim);
+  border: 1px solid rgba(255,95,160,.25);
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 14px;
+}
+
+.tmpl-head h3 { margin-bottom: 8px; font-size: 1.22rem; }
+.tmpl-head p { font-size: 0.88rem; color: var(--muted); }
+
+.tmpl-body {
+  padding: 30px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  background: var(--bg);
+}
+
+.tmpl-body iframe {
+  width: 100%;
+  max-width: 620px;
+  height: 385px;
+  border: none;
+  border-radius: 10px;
+  display: block;
+}
+
+.tmpl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 11px 26px;
+  border-radius: 100px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: opacity .2s;
+}
+.tmpl-btn:hover { opacity: .82; }
+.tmpl-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.tmpl-btn-arrow { font-style: normal; }
+
+/* ── IMPORT STEPS ─────────────────────────────────────────────────────────── */
+.import-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.import-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.import-n {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.import-sep {
+  color: var(--faint);
+  font-size: 0.75rem;
+}
+
+/* ── ACCORDION (TIPS) ─────────────────────────────────────────────────────── */
+.accord { display: flex; flex-direction: column; gap: 8px; }
+
+.accord-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.accord-item.open { border-color: var(--border); }
+
+.accord-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  transition: background .2s;
+}
+.accord-trigger:hover { background: var(--accent-dim); }
+.accord-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.accord-caret {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: var(--muted);
+  transition: transform .3s, background .2s;
+}
+.accord-item.open .accord-caret {
+  transform: rotate(180deg);
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.accord-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .38s ease;
+}
+
+.accord-inner {
+  padding: 4px 22px 22px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.accord-inner p + p { margin-top: 10px; }
+.accord-inner strong { color: var(--text); }
+
+/* ── PRO TIP BANNER ───────────────────────────────────────────────────────── */
+.pro-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(0,212,184,.08);
+  border: 1px solid rgba(0,212,184,.22);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  font-size: 0.87rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.pro-tip-badge {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(0,212,184,.15);
+  padding: 4px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pro-tip strong { color: var(--text); }
+
+/* ── FOOTER ───────────────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border-weak);
+  padding: 56px 0;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .stats    { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
+  section   { padding: 64px 0; }
+  #hero     { padding: 76px 0 64px; }
+  .tmpl-head, .tmpl-body { padding: 20px; }
+  .callout  { padding: 22px 20px; }
+  .step     { grid-template-columns: 42px 1fr; gap: 14px; }
+  .step-num { width: 42px; height: 42px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .accord-body,
+  .step-num,
+  .feat-card,
+  .tl-card,
+  .template-card { transition: none; }
+}
+</style>
+
+<!-- ─── NAV ──────────────────────────────────────────────────────────────── -->
+<nav role="navigation" aria-label="Guía ManyChat">
+  <div class="nav-inner">
+    <span class="nav-brand">BrainBrand</span>
+    <a href="#que-es"    class="nav-link">Qué es</a>
+    <a href="#empezar"   class="nav-link">Cómo empezar</a>
+    <a href="#15dias"    class="nav-link">15 días</a>
+    <a href="#funciones" class="nav-link">Funciones</a>
+    <a href="#planes"    class="nav-link">Planes</a>
+    <a href="#plantillas" class="nav-link">Plantillas</a>
+    <a href="#tips"      class="nav-link">Tips</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<section id="hero" aria-labelledby="hero-h1">
+  <div class="hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb-2" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-pill" aria-label="Regalo exclusivo para alumnas">
+      <div class="hero-pill-dot" aria-hidden="true"></div>
+      Regalo exclusivo para alumnas
+    </div>
+    <h1 id="hero-h1">
+      Tu kit completo<br>
+      <span class="grad">de ManyChat</span>
+    </h1>
+    <p class="hero-sub">
+      Todo lo que necesitas para automatizar tus DMs, capturar leads y vender más —desde cero, sin morir en el intento.
+    </p>
+    <div class="stats" role="list">
+      <div class="stat-card" role="listitem">
+        <div class="stat-num grad">80%</div>
+        <div class="stat-desc">tasa de apertura en DMs vs 20% en email</div>
+      </div>
+      <div class="stat-card" role="listitem">
+        <div class="stat-num grad">1M+</div>
+        <div class="stat-desc">negocios activos usando ManyChat en todo el mundo</div>
+      </div>
+      <div class="stat-card" role="listitem">
+        <div class="stat-num grad">24/7</div>
+        <div class="stat-desc">responde a tus seguidores automáticamente, siempre</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUÉ ES ────────────────────────────────────────────────────────────── -->
+<section id="que-es" aria-labelledby="h2-que-es">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Punto de partida</span>
+      <h2 id="h2-que-es">¿Qué es <span class="grad">ManyChat</span>?</h2>
+      <p>ManyChat es una plataforma de automatización de mensajes directos. Conecta con Instagram, Facebook, WhatsApp y más — para que tú puedas estar en mil lugares a la vez (literalmente).</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">AU</div>
+        <h4>Automatización instantánea</h4>
+        <p>Configura respuestas automáticas que se activan cuando alguien comenta en tu post, usa una palabra clave, o te manda un DM. Sin que estés tú.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">LD</div>
+        <h4>Captura de leads</h4>
+        <p>Convierte comentarios y DMs en una lista de contactos. Pide nombre, email, y cualquier dato que necesites para tu negocio.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">VT</div>
+        <h4>Ventas en piloto automático</h4>
+        <p>Crea secuencias de mensajes que guían a tus seguidores desde el interés hasta la compra — sin que tú tengas que estar presente.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">MT</div>
+        <h4>Métricas reales</h4>
+        <p>Ve cuántas personas abrieron tu mensaje, cuántas hicieron clic, cuántas compraron. Datos claros para decisiones claras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CÓMO EMPEZAR ──────────────────────────────────────────────────────── -->
+<section id="empezar" aria-labelledby="h2-empezar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Paso a paso</span>
+      <h2 id="h2-empezar">Cómo entrar y<br><span class="grad">configurar todo</span></h2>
+      <p>Sin tecnicismos. Sin confusión. Esto es exactamente lo que haces, en este orden.</p>
+    </div>
+    <div class="steps" role="list">
+
+      <div class="step" role="listitem">
+        <div class="step-spine" aria-hidden="true">
+          <div class="step-num">01</div>
+          <div class="step-thread"></div>
+        </div>
+        <div class="step-body">
+          <h3>Crea tu cuenta en ManyChat</h3>
+          <p>Ve a <strong style="color:var(--text)">manychat.com</strong> y haz clic en "Get Started Free". Puedes registrarte con tu cuenta de Facebook (recomendado) o con tu email. El proceso toma menos de 2 minutos.</p>
+          <div class="step-note">Usa la misma cuenta de Facebook que está vinculada a tu página de negocio — eso facilita todo lo que viene después.</div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-spine" aria-hidden="true">
+          <div class="step-num">02</div>
+          <div class="step-thread"></div>
+        </div>
+        <div class="step-body">
+          <h3>Conecta tu Instagram Business</h3>
+          <p>Para conectar Instagram necesitas dos cosas: (1) una cuenta de Instagram convertida a <strong style="color:var(--text)">Cuenta Profesional o de Creador</strong>, y (2) esa cuenta vinculada a una <strong style="color:var(--text)">Página de Facebook</strong>. En ManyChat ve a Settings → Channels → Instagram y sigue los pasos.</p>
+          <div class="step-note">Si tu Instagram ya está conectado a Facebook, esto tarda menos de 3 clics.</div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-spine" aria-hidden="true">
+          <div class="step-num">03</div>
+          <div class="step-thread"></div>
+        </div>
+        <div class="step-body">
+          <h3>Activa tu prueba Pro de 15 días</h3>
+          <p>Una vez dentro del dashboard, ManyChat te ofrecerá activar el plan Pro gratis por 15 días. Acéptalo. Necesitarás agregar una tarjeta de crédito — pero <strong style="color:var(--text)">no se te cobra nada</strong> hasta que termine la prueba, y puedes cancelar antes sin costo.</p>
+          <div class="step-note">Pon un recordatorio en tu calendario para el día 13 — así decides con calma si sigues o cancelas.</div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-spine" aria-hidden="true">
+          <div class="step-num">04</div>
+          <div class="step-thread"></div>
+        </div>
+        <div class="step-body">
+          <h3>Explora el dashboard</h3>
+          <p>El menú principal tiene cinco áreas: <strong style="color:var(--text)">Automation</strong> (tus flujos), <strong style="color:var(--text)">Broadcasting</strong> (mensajes masivos), <strong style="color:var(--text)">Growth Tools</strong> (crecer tu lista), <strong style="color:var(--text)">Audience</strong> (tus contactos) y <strong style="color:var(--text)">Analytics</strong> (métricas). Tómate 10 minutos para explorar cada sección antes de crear algo.</p>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-spine" aria-hidden="true">
+          <div class="step-num">05</div>
+        </div>
+        <div class="step-body">
+          <h3>Crea (o importa) tu primer flujo</h3>
+          <p>Ve a <strong style="color:var(--text)">Automation → Flows → New Flow</strong>. Puedes empezar desde cero con el builder visual (drag-and-drop), o usar una de las plantillas que te dejo más abajo en esta guía. Mi recomendación honesta: empieza con las plantillas.</p>
+          <div class="step-note">Los flujos se activan por triggers: un comentario, una palabra clave en DM, o un botón. Todo el poder está en los triggers.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── 15 DÍAS ────────────────────────────────────────────────────────────── -->
+<section id="15dias" aria-labelledby="h2-15dias">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Plan de acción</span>
+      <h2 id="h2-15dias">Los <span class="grad">15 días de oro</span></h2>
+      <p>Cómo usar cada día de la prueba Pro para salir con resultados reales — no solo con el sistema "configurado" y sin haberlo usado.</p>
+    </div>
+
+    <div class="timeline" role="list">
+      <div class="tl-card active" role="listitem" tabindex="0" aria-label="Días 1 al 3: Setup y configuración">
+        <div class="tl-range">Días 1 – 3</div>
+        <h3>Setup y configuración</h3>
+        <div class="tl-tasks">
+          <div class="tl-task"><div class="tl-dot"></div>Crear cuenta y conectar Instagram</div>
+          <div class="tl-task"><div class="tl-dot"></div>Activar prueba Pro</div>
+          <div class="tl-task"><div class="tl-dot"></div>Explorar el dashboard completo</div>
+          <div class="tl-task"><div class="tl-dot"></div>Definir qué automatización quieres primero</div>
+          <div class="tl-task"><div class="tl-dot"></div>Ver 2–3 tutoriales rápidos en YouTube</div>
+        </div>
+      </div>
+
+      <div class="tl-card" role="listitem" tabindex="0" aria-label="Días 4 al 7: Tu primer flujo activo">
+        <div class="tl-range">Días 4 – 7</div>
+        <h3>Tu primer flujo activo</h3>
+        <div class="tl-tasks">
+          <div class="tl-task"><div class="tl-dot"></div>Importar o crear tu primer flujo</div>
+          <div class="tl-task"><div class="tl-dot"></div>Configurar el trigger (keyword o comentario)</div>
+          <div class="tl-task"><div class="tl-dot"></div>Probar el flujo tú misma antes de publicar</div>
+          <div class="tl-task"><div class="tl-dot"></div>Publicar un post con la keyword activa</div>
+          <div class="tl-task"><div class="tl-dot"></div>Revisar las primeras métricas</div>
+        </div>
+      </div>
+
+      <div class="tl-card" role="listitem" tabindex="0" aria-label="Días 8 al 11: Crecimiento y optimización">
+        <div class="tl-range">Días 8 – 11</div>
+        <h3>Crecimiento y optimización</h3>
+        <div class="tl-tasks">
+          <div class="tl-task"><div class="tl-dot"></div>Activar un Growth Tool (link en bio o Story)</div>
+          <div class="tl-task"><div class="tl-dot"></div>Crear un segundo flujo (ventas o lead magnet)</div>
+          <div class="tl-task"><div class="tl-dot"></div>Enviar tu primer broadcast a la lista</div>
+          <div class="tl-task"><div class="tl-dot"></div>Analizar qué flujo convierte más</div>
+        </div>
+      </div>
+
+      <div class="tl-card" role="listitem" tabindex="0" aria-label="Días 12 al 15: Decisión informada">
+        <div class="tl-range">Días 12 – 15</div>
+        <h3>Decisión informada</h3>
+        <div class="tl-tasks">
+          <div class="tl-task"><div class="tl-dot"></div>Revisar analytics: aperturas, clics, leads</div>
+          <div class="tl-task"><div class="tl-dot"></div>Calcular el ROI de los flujos activos</div>
+          <div class="tl-task"><div class="tl-dot"></div>Comparar plan gratuito vs Pro</div>
+          <div class="tl-task"><div class="tl-dot"></div>Decidir: continuar Pro o bajar a gratis</div>
+          <div class="tl-task"><div class="tl-dot"></div>Si cancelas: exportar tu lista de contactos</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>La regla de los 15 días</h3>
+      <p>Si en 15 días conseguiste al menos <strong>50 leads nuevos</strong> o una venta que pague el plan anual, tienes tu respuesta. ManyChat no es un gasto — es una empleada que trabaja sola mientras tú duermes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FUNCIONES ─────────────────────────────────────────────────────────── -->
+<section id="funciones" aria-labelledby="h2-funciones">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Funciones clave</span>
+      <h2 id="h2-funciones">Lo que necesitas<br><span class="grad">saber usar</span></h2>
+      <p>No necesitas conocer todo ManyChat. Necesitas dominar estas cinco funciones. El resto es extra.</p>
+    </div>
+
+    <div class="tab-bar" role="tablist" aria-label="Funciones de ManyChat">
+      <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-kw"    id="btn-kw"    data-tab="kw">Keywords</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-fl"    id="btn-fl"    data-tab="fl">Flujos</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-gt"    id="btn-gt"    data-tab="gt">Growth Tools</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-bc"    id="btn-bc"    data-tab="bc">Broadcast</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-int"   id="btn-int"   data-tab="int">Integraciones</button>
+    </div>
+
+    <!-- KEYWORDS -->
+    <div id="tab-kw" class="tab-panel active" role="tabpanel" aria-labelledby="btn-kw">
+      <div class="feature-grid">
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">KW</div>
+          <h4>¿Qué son?</h4>
+          <p>Las keywords son palabras clave que, cuando alguien las comenta en tu post o te las manda por DM, activan un flujo automático. Sin que tú hagas nada.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">CFG</div>
+          <h4>Cómo configurarlas</h4>
+          <p>En Automation → Keywords, crea una nueva y escribe la palabra (ej: "INFO", "QUIERO", "PRECIO"). Luego conéctala al flujo que quieres que se active.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">EST</div>
+          <h4>Estrategia</h4>
+          <p>En tus posts escribe exactamente: "Comenta <strong style="color:var(--text)">QUIERO</strong> y te mando todo por DM." La gente sigue instrucciones cuando son claras y hay algo que ganar.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLUJOS -->
+    <div id="tab-fl" class="tab-panel" role="tabpanel" aria-labelledby="btn-fl">
+      <div class="feature-grid">
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">FL</div>
+          <h4>¿Qué son?</h4>
+          <p>Los flujos (Flows) son secuencias de mensajes automatizados. Diseñas conversaciones completas: preguntas, respuestas, botones, links, condicionales.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">VIS</div>
+          <h4>El builder visual</h4>
+          <p>ManyChat tiene un editor drag-and-drop donde ves el flujo como un mapa visual. Arrastra bloques de texto, imagen, botones, condiciones y acciones. Sin código.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">IF</div>
+          <h4>Condicionales</h4>
+          <p>Puedes crear ramas: "Si dijo SÍ → enviar precio. Si dijo NO → preguntar por qué objeción tiene." El bot suena humano porque responde según lo que la persona elige.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROWTH TOOLS -->
+    <div id="tab-gt" class="tab-panel" role="tabpanel" aria-labelledby="btn-gt">
+      <div class="feature-grid">
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">GT</div>
+          <h4>¿Qué son?</h4>
+          <p>Herramientas para hacer crecer tu lista de contactos: desde links en la bio hasta botones en Stories y anuncios de Facebook que abren un DM automáticamente.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">LNK</div>
+          <h4>Link en bio</h4>
+          <p>Genera un link único de ManyChat para tu bio. Cuando alguien hace clic, se abre un DM con tu flujo activado. Zero fricción, cero pasos intermedios.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">STR</div>
+          <h4>Story Mention</h4>
+          <p>Cuando alguien menciona tu cuenta en una Story, ManyChat puede responderle automáticamente. Perfecto para convertir menciones orgánicas en leads.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BROADCAST -->
+    <div id="tab-bc" class="tab-panel" role="tabpanel" aria-labelledby="btn-bc">
+      <div class="feature-grid">
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">BC</div>
+          <h4>¿Qué es?</h4>
+          <p>Broadcasting te permite enviar un mensaje a toda tu lista de suscriptores (o a un segmento). Como un email masivo, pero por DM — con 80% de apertura.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">REG</div>
+          <h4>Regla importante</h4>
+          <p>Instagram solo permite broadcasts a personas que <strong style="color:var(--text)">interactuaron contigo en los últimos 7 días</strong>. Es una limitación de Meta para proteger al usuario final. No es un bug.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">SEG</div>
+          <h4>Segmentación</h4>
+          <p>Filtra tu lista por etiquetas: "interesadas en curso", "compraron antes", "leads fríos". Mensajes más específicos = más aperturas y más conversiones.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTEGRACIONES -->
+    <div id="tab-int" class="tab-panel" role="tabpanel" aria-labelledby="btn-int">
+      <div class="feature-grid">
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">ZAP</div>
+          <h4>Zapier</h4>
+          <p>Conecta ManyChat con casi cualquier herramienta: Google Sheets, Notion, Mailchimp, ConvertKit, Airtable. Cuando alguien da su email, va directo a tu lista.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">SHT</div>
+          <h4>Google Sheets</h4>
+          <p>La integración más popular para captura de leads. Cada contacto nuevo que entra por ManyChat se registra automáticamente en tu hoja de cálculo.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">API</div>
+          <h4>API personalizada</h4>
+          <p>Si tienes una tienda, CRM o plataforma propia, ManyChat puede conectarse vía webhook para disparar acciones en tu sistema cuando alguien interactúa con un flujo.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PLANES ─────────────────────────────────────────────────────────────── -->
+<section id="planes" aria-labelledby="h2-planes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Comparativa</span>
+      <h2 id="h2-planes">Gratis vs <span class="grad">Pro</span></h2>
+      <p>Lo que tienes con cada plan para que puedas decidir con información, no con presión.</p>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Función</th>
+            <th>Plan Gratuito</th>
+            <th>Plan Pro (~$15 USD/mes)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contactos activos</td>
+            <td>Hasta 1,000</td>
+            <td class="yes">Ilimitados</td>
+          </tr>
+          <tr>
+            <td>Flujos básicos</td>
+            <td class="yes">Incluido</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Flujos con condicionales</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Keywords en DMs</td>
+            <td class="yes">Incluido</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Keywords en comentarios</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Broadcasts</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Growth Tools avanzados</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Analytics detallados + A/B</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Integraciones (Zapier, Sheets)</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Etiquetas y segmentación</td>
+            <td class="no">No disponible</td>
+            <td class="yes">Incluido</td>
+          </tr>
+          <tr>
+            <td>Soporte</td>
+            <td>Email</td>
+            <td class="yes">Email + Chat en vivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <h3>Mi recomendación honesta</h3>
+      <p>Si acabas de empezar, el plan gratuito te da suficiente para saber si ManyChat funciona para ti. Pero si quieres usar keywords en comentarios (la función más viral) o broadcasts, necesitas Pro. Con los 15 días gratis ya tienes tiempo para decidir con datos reales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PLANTILLAS ────────────────────────────────────────────────────────── -->
+<section id="plantillas" aria-labelledby="h2-plantillas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Regalo exclusivo</span>
+      <h2 id="h2-plantillas">Mis plantillas<br><span class="grad">listas para usar</span></h2>
+      <p>Las copias, las pegas en ManyChat, y en 10 minutos las tienes activas. Ya están probadas — solo ajusta el texto con tu oferta.</p>
+    </div>
+
+    <div class="template-card">
+      <div class="tmpl-head">
+        <div class="tmpl-tag">Plantilla 01 — Ventas</div>
+        <h3>Flujo sencillo de ventas</h3>
+        <p>Ideal para responder con información de tu oferta, precio y forma de pago cuando alguien comenta una keyword o te escribe por DM. Convierte interés en acción.</p>
+      </div>
+      <div class="tmpl-body">
+        <iframe
+          src="https://app.manychat.com/flowPlayerEmbed?share_hash=2501412_34dc20d59f69862da96110310c594275e9036a88"
+          allowfullscreen
+          title="Vista previa: Plantilla sencilla de ventas"
+          loading="lazy">
+        </iframe>
+        <a
+          href="https://app.manychat.com/flowPlayerPage?share_hash=2501412_34dc20d59f69862da96110310c594275e9036a88"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tmpl-btn"
+          aria-label="Ver e importar la plantilla de ventas en ManyChat">
+          Ver e importar esta plantilla <span class="tmpl-btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <div class="tmpl-head">
+        <div class="tmpl-tag">Plantilla 02 — Lead Magnet</div>
+        <h3>Regala un lead magnet y gana seguidores</h3>
+        <p>El flujo perfecto para entregar un recurso gratuito (PDF, guía, descuento) a cambio del email de tus seguidores. Creces tu lista y les das valor desde el primer mensaje.</p>
+      </div>
+      <div class="tmpl-body">
+        <iframe
+          src="https://app.manychat.com/flowPlayerEmbed?share_hash=2501412_c10671cc7f57c27f7399ee36d6bb0f86cbc01fea"
+          allowfullscreen
+          title="Vista previa: Plantilla lead magnet"
+          loading="lazy">
+        </iframe>
+        <a
+          href="https://app.manychat.com/flowPlayerPage?share_hash=2501412_c10671cc7f57c27f7399ee36d6bb0f86cbc01fea"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tmpl-btn"
+          aria-label="Ver e importar la plantilla de lead magnet en ManyChat">
+          Ver e importar esta plantilla <span class="tmpl-btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>Cómo importar en 30 segundos</h3>
+      <div class="import-steps" role="list">
+        <div class="import-step" role="listitem"><div class="import-n">1</div>Clic en "Ver e importar"</div>
+        <span class="import-sep" aria-hidden="true">→</span>
+        <div class="import-step" role="listitem"><div class="import-n">2</div>ManyChat te pide confirmar</div>
+        <span class="import-sep" aria-hidden="true">→</span>
+        <div class="import-step" role="listitem"><div class="import-n">3</div>El flujo aparece en tu cuenta</div>
+        <span class="import-sep" aria-hidden="true">→</span>
+        <div class="import-step" role="listitem"><div class="import-n">4</div>Edita el texto con tu oferta</div>
+        <span class="import-sep" aria-hidden="true">→</span>
+        <div class="import-step" role="listitem"><div class="import-n">5</div>Activa el trigger y listo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TIPS ──────────────────────────────────────────────────────────────── -->
+<section id="tips" aria-labelledby="h2-tips">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Tips de la operadora</span>
+      <h2 id="h2-tips">Lo que nadie<br><span class="grad">te cuenta</span></h2>
+      <p>Errores que evitar, trucos que funcionan, y lo que sí hace diferencia en los resultados.</p>
+    </div>
+
+    <div class="pro-tip">
+      <span class="pro-tip-badge">Antes de todo</span>
+      <p><strong>Prueba tu flujo siempre antes de publicar.</strong> Desde otra cuenta (de una amiga, tu pareja, otro teléfono), comenta la keyword o activa el trigger. Revisa que todos los mensajes lleguen bien y los links abran. Los errores en un flujo activo llegan a cientos de personas.</p>
+    </div>
+
+    <div class="accord" role="list">
+
+      <div class="accord-item" role="listitem">
+        <button class="accord-trigger" aria-expanded="false">
+          <span>El error más común: keywords complicadas</span>
+          <span class="accord-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="accord-body" role="region">
+          <div class="accord-inner">
+            <p>La keyword tiene que ser algo que la gente realmente escriba. Si pones "BRANDING2024", nadie la va a comentar. Las que funcionan son cortas, intuitivas y fáciles de recordar: <strong>INFO, QUIERO, SÍ, PRECIO, ENVÍAME, GRATIS</strong>.</p>
+            <p>En el copy del post, di exactamente qué escribir. "Comenta <strong>QUIERO</strong> y te mando los detalles." La gente sigue instrucciones cuando son claras y hay algo que ganar al otro lado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accord-item" role="listitem">
+        <button class="accord-trigger" aria-expanded="false">
+          <span>El primer mensaje importa más que el resto del flujo</span>
+          <span class="accord-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="accord-body" role="region">
+          <div class="accord-inner">
+            <p>El primer DM que manda tu bot determina si la persona sigue leyendo. Tiene que ser corto, personalizado (usa <strong>{{first_name}}</strong> para el nombre), y dejar claro qué viene después.</p>
+            <p><strong>Mal:</strong> "Hola, gracias por escribir. Aquí tienes información sobre nuestros servicios."</p>
+            <p><strong>Bien:</strong> "¡Hola {{first_name}}! Te tengo todo aquí. ¿Empezamos?"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accord-item" role="listitem">
+        <button class="accord-trigger" aria-expanded="false">
+          <span>No abuses del bot — la regla de oro</span>
+          <span class="accord-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="accord-body" role="region">
+          <div class="accord-inner">
+            <p>ManyChat es para automatizar, no para spam. Si mandas demasiados mensajes seguidos o tus contactos los marcan como spam, Instagram puede suspenderte el acceso al API.</p>
+            <p><strong>Regla de oro:</strong> máximo 2–3 mensajes en la secuencia inicial. Después, que el usuario tome una acción (clic, respuesta) para continuar. Los broadcasts úsalos máximo 1–2 veces por semana.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accord-item" role="listitem">
+        <button class="accord-trigger" aria-expanded="false">
+          <span>Etiqueta a tus contactos desde el día uno</span>
+          <span class="accord-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="accord-body" role="region">
+          <div class="accord-inner">
+            <p>Las etiquetas (tags) son la función más infrautilizada de ManyChat. Cuando alguien entra por un flujo de ventas, etiquétala como "interesada-ventas". Cuando alguien descarga un lead magnet, etiquétala como "lead-frío".</p>
+            <p>Con etiquetas puedes hacer broadcasts segmentados: solo a las que dijeron que sí pero no compraron, solo a las que bajaron el PDF gratis. Eso sí convierte — porque el mensaje llega al momento correcto a la persona correcta.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accord-item" role="listitem">
+        <button class="accord-trigger" aria-expanded="false">
+          <span>Cómo saber si tu flujo está funcionando</span>
+          <span class="accord-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="accord-body" role="region">
+          <div class="accord-inner">
+            <p>En Analytics puedes ver las métricas de cada flujo: cuántas personas lo iniciaron, cuántas llegaron a cada paso, cuántas completaron el objetivo.</p>
+            <p><strong>Benchmarks saludables:</strong> apertura del primer mensaje: 70–90% · clic en botón: 40–60% · captura de email: 20–40%. Si tus números están muy abajo, el problema casi siempre está en el primer mensaje o en el copy de los botones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accord-item" role="listitem">
+        <button class="accord-trigger" aria-expanded="false">
+          <span>La combinación que más convierte</span>
+          <span class="accord-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="accord-body" role="region">
+          <div class="accord-inner">
+            <p>La secuencia que más resultados da: <strong>post con keyword → flujo de captura de email → broadcast de seguimiento 48 horas después → oferta directa</strong>.</p>
+            <p>No necesitas complicarla. Cuatro pasos bien ejecutados superan cualquier flujo elaborado con copy mediocre. Empieza simple, mide, ajusta.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-logo grad">BrainBrand Method</div>
+    <p>Guía creada con cariño por Daniela Gutiérrez — para alumnas que quieren resultados, no solo herramientas.</p>
+  </div>
+</footer>
+
+<!-- ─── JS ────────────────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── TABS ─────────────────────────────────────────────────────────────── */
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(function (p) {
+        p.classList.remove('active');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById('tab-' + tab);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ── ACCORDION ────────────────────────────────────────────────────────── */
+  document.querySelectorAll('.accord-trigger').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var item = trigger.closest('.accord-item');
+      var body = item.querySelector('.accord-body');
+      var isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.accord-item').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.accord-trigger').setAttribute('aria-expanded', 'false');
+        i.querySelector('.accord-body').style.maxHeight = '0';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ── TIMELINE CARDS ───────────────────────────────────────────────────── */
+  document.querySelectorAll('.tl-card').forEach(function (card) {
+    function activate() {
+      document.querySelectorAll('.tl-card').forEach(function (c) {
+        c.classList.remove('active');
+      });
+      card.classList.add('active');
+    }
+    card.addEventListener('click', activate);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+  });
+
+})();
+</script>
